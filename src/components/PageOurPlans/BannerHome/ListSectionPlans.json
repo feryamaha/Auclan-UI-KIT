@@ -1,0 +1,194 @@
+{
+    "plans": [
+        {
+            "id": "idCardBronze",
+            "name": "Plano Bronze",
+            "price": "23,40",
+            "description": "por mes por beneficiário no cartao de crédito",
+            "IncludTitle": "O que está incluso?",
+            "includA": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludA": "Consultas"
+                }
+            ],
+            "includB": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludB": "Tratamento de Canal"
+                }
+            ],
+            "includC": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludC": "Extração do siso"
+                }
+            ],
+            "includD": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludD": "Restauração"
+                }
+            ],
+            "includE": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludE": "Limpeza"
+                }
+            ],
+            "procedures": "166 procedimentos"
+        },
+        {
+            "id": "idCardPrata",
+            "name": "Plano Prata",
+            "price": "25,40",
+            "description": "por mes por beneficiário no cartao de crédito",
+            "IncludTitle": "O que está incluso?",
+            "includA": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludA": "Plano Prata"
+                }
+            ],
+            "includB": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludB": "Tratamento de Canal"
+                }
+            ],
+            "includC": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludC": "Extração do siso"
+                }
+            ],
+            "includD": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludD": "Restauração"
+                }
+            ],
+            "includE": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludE": "Limpeza"
+                }
+            ],
+            "procedures": "166 procedimentos"
+        },
+        {
+            "id": "idCardOuro",
+            "name": "Plano Ouro",
+            "price": "27,40",
+            "description": "por mes por beneficiário no cartao de crédito",
+            "IncludTitle": "O que está incluso?",
+            "includA": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludA": "Plano Ouro"
+                }
+            ],
+            "includB": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludB": "Tratamento de Canal"
+                }
+            ],
+            "includC": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludC": "Extração do siso"
+                }
+            ],
+            "includD": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludD": "Restauração"
+                }
+            ],
+            "includE": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludE": "Limpeza"
+                }
+            ],
+            "procedures": "166 procedimentos"
+        },
+        {
+            "id": "idCardPlatina",
+            "name": "Plano Platina",
+            "price": "31,40",
+            "description": "por mes por beneficiário no cartao de crédito",
+            "IncludTitle": "O que está incluso?",
+            "includA": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludA": "Plano Platina"
+                }
+            ],
+            "includB": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludB": "Tratamento de Canal"
+                }
+            ],
+            "includC": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludC": "Extração do siso"
+                }
+            ],
+            "includD": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludD": "Restauração"
+                }
+            ],
+            "includE": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludE": "Limpeza"
+                }
+            ],
+            "procedures": "166 procedimentos"
+        },
+        {
+            "id": "idCardDiamante",
+            "name": "Plano Diamante",
+            "price": "37,40",
+            "description": "por mes por beneficiário no cartao de crédito",
+            "IncludTitle": "O que está incluso?",
+            "includA": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludA": "Plano Diamante"
+                }
+            ],
+            "includB": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludB": "Tratamento de Canal"
+                }
+            ],
+            "includC": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludC": "Extração do siso"
+                }
+            ],
+            "includD": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludD": "Restauração"
+                }
+            ],
+            "includE": [
+                {
+                    "iconInclud": "IconIncludPlans",
+                    "textIncludE": "Limpeza"
+                }
+            ],
+            "procedures": "166 procedimentos"
+        }
+    ]
+}

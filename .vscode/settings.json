@@ -1,0 +1,26 @@
+{
+    "cSpell.words": [
+        "autoplay",
+        "dentaluni",
+        "embla",
+        "endereco",
+        "flechabaixo",
+        "localizacao",
+        "Localizacoes",
+        "turbopack",
+        "Urgencia"
+    ],
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "enabled": false
+    },
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    "editor.quickSuggestions": {
+        "strings": true
+    }
+}

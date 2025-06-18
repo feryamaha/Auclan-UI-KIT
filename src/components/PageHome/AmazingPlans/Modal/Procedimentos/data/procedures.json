@@ -1,0 +1,864 @@
+{
+  "plan": {
+    "name": "Plano Bronze",
+    "price": "23.40",
+    "priceUnit": "/mês por beneficiário"
+  },
+  "procedures": [
+    {
+      "name": "Acompanhamento de tratamento / Procedimento cirúrgico em odontologia",
+      "code": "82000026",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Anestesia birradiculares com obturação retrógrada",
+      "code": "82000085",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Apicetomia birradiculares com obturação retrógrada",
+      "code": "82000123",
+      "coverage": "Não"
+    },
+    {
+      "name": "Apicetomia multirradiculares com obturação retrógrada",
+      "code": "82000155",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Apicetomia birradiculares sem obturação retrógrada",
+      "code": "82000086",
+      "coverage": "Não"
+    },
+    {
+      "name": "Apicetomia multirradiculares sem obturação retrógrada",
+      "code": "82000156",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 1",
+      "code": "82001001",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 2",
+      "code": "82001002",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 3",
+      "code": "82001003",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 4",
+      "code": "82001004",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 5",
+      "code": "82001005",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 6",
+      "code": "82001006",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 7",
+      "code": "82001007",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 8",
+      "code": "82001008",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 9",
+      "code": "82001009",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 10",
+      "code": "82001010",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 11",
+      "code": "82001011",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 12",
+      "code": "82001012",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 13",
+      "code": "82001013",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 14",
+      "code": "82001014",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 15",
+      "code": "82001015",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 16",
+      "code": "82001016",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 17",
+      "code": "82001017",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 18",
+      "code": "82001018",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 19",
+      "code": "82001019",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 20",
+      "code": "82001020",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 21",
+      "code": "82001021",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 22",
+      "code": "82001022",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 23",
+      "code": "82001023",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 24",
+      "code": "82001024",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 25",
+      "code": "82001025",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 26",
+      "code": "82001026",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 27",
+      "code": "82001027",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 28",
+      "code": "82001028",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 29",
+      "code": "82001029",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 30",
+      "code": "82001030",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 31",
+      "code": "82001031",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 32",
+      "code": "82001032",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 33",
+      "code": "82001033",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 34",
+      "code": "82001034",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 35",
+      "code": "82001035",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 36",
+      "code": "82001036",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 37",
+      "code": "82001037",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 38",
+      "code": "82001038",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 39",
+      "code": "82001039",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 40",
+      "code": "82001040",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 41",
+      "code": "82001041",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 42",
+      "code": "82001042",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 43",
+      "code": "82001043",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 44",
+      "code": "82001044",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 45",
+      "code": "82001045",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 46",
+      "code": "82001046",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 47",
+      "code": "82001047",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 48",
+      "code": "82001048",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 49",
+      "code": "82001049",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 50",
+      "code": "82001050",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 51",
+      "code": "82001051",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 52",
+      "code": "82001052",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 53",
+      "code": "82001053",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 54",
+      "code": "82001054",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 55",
+      "code": "82001055",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 56",
+      "code": "82001056",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 57",
+      "code": "82001057",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 58",
+      "code": "82001058",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 59",
+      "code": "82001059",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 60",
+      "code": "82001060",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 61",
+      "code": "82001061",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 62",
+      "code": "82001062",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 63",
+      "code": "82001063",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 64",
+      "code": "82001064",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 65",
+      "code": "82001065",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 66",
+      "code": "82001066",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 67",
+      "code": "82001067",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 68",
+      "code": "82001068",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 69",
+      "code": "82001069",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 70",
+      "code": "82001070",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 71",
+      "code": "82001071",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 72",
+      "code": "82001072",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 73",
+      "code": "82001073",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 74",
+      "code": "82001074",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 75",
+      "code": "82001075",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 76",
+      "code": "82001076",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 77",
+      "code": "82001077",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 78",
+      "code": "82001078",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 79",
+      "code": "82001079",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 80",
+      "code": "82001080",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 81",
+      "code": "82001081",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 82",
+      "code": "82001082",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 83",
+      "code": "82001083",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 84",
+      "code": "82001084",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 85",
+      "code": "82001085",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 86",
+      "code": "82001086",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 87",
+      "code": "82001087",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 88",
+      "code": "82001088",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 89",
+      "code": "82001089",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 90",
+      "code": "82001090",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 91",
+      "code": "82001091",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 92",
+      "code": "82001092",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 93",
+      "code": "82001093",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 94",
+      "code": "82001094",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 95",
+      "code": "82001095",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 96",
+      "code": "82001096",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 97",
+      "code": "82001097",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 98",
+      "code": "82001098",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 99",
+      "code": "82001099",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 100",
+      "code": "82001100",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 101",
+      "code": "82001101",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 102",
+      "code": "82001102",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 103",
+      "code": "82001103",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 104",
+      "code": "82001104",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 105",
+      "code": "82001105",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 106",
+      "code": "82001106",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 107",
+      "code": "82001107",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 108",
+      "code": "82001108",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 109",
+      "code": "82001109",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 110",
+      "code": "82001110",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 111",
+      "code": "82001111",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 112",
+      "code": "82001112",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 113",
+      "code": "82001113",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 114",
+      "code": "82001114",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 115",
+      "code": "82001115",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 116",
+      "code": "82001116",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 117",
+      "code": "82001117",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 118",
+      "code": "82001118",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 119",
+      "code": "82001119",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 120",
+      "code": "82001120",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 121",
+      "code": "82001121",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 122",
+      "code": "82001122",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 123",
+      "code": "82001123",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 124",
+      "code": "82001124",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 125",
+      "code": "82001125",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 126",
+      "code": "82001126",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 127",
+      "code": "82001127",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 128",
+      "code": "82001128",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 129",
+      "code": "82001129",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 130",
+      "code": "82001130",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 131",
+      "code": "82001131",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 132",
+      "code": "82001132",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 133",
+      "code": "82001133",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 134",
+      "code": "82001134",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 135",
+      "code": "82001135",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 136",
+      "code": "82001136",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 137",
+      "code": "82001137",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 138",
+      "code": "82001138",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 139",
+      "code": "82001139",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 140",
+      "code": "82001140",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 141",
+      "code": "82001141",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 142",
+      "code": "82001142",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 143",
+      "code": "82001143",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 144",
+      "code": "82001144",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 145",
+      "code": "82001145",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 146",
+      "code": "82001146",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 147",
+      "code": "82001147",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 148",
+      "code": "82001148",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 149",
+      "code": "82001149",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 150",
+      "code": "82001150",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 151",
+      "code": "82001151",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 152",
+      "code": "82001152",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 153",
+      "code": "82001153",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 154",
+      "code": "82001154",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 155",
+      "code": "82001155",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 156",
+      "code": "82001156",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 157",
+      "code": "82001157",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 158",
+      "code": "82001158",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 159",
+      "code": "82001159",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 160",
+      "code": "82001160",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 161",
+      "code": "82001161",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 162",
+      "code": "82001162",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 163",
+      "code": "82001163",
+      "coverage": "Não"
+    },
+    {
+      "name": "Procedimento Genérico 164",
+      "code": "82001164",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Procedimento Genérico 165",
+      "code": "82001165",
+      "coverage": "Não"
+    }
+  ]
+}

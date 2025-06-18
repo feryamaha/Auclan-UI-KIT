@@ -1,0 +1,58 @@
+[
+    {
+        "imageSrc": "/assets/img/img-dental-uni-FAQ.webp",
+        "items": [
+            {
+                "icon": "",
+                "text": "Pesquise agora a rede de atendimento na sua localização."
+            },
+            {
+                "icon": "",
+                "text": ""
+            }
+        ],
+        "finalDescription": "Torne-se um beneficiário da Dental Uni e garanta sorrisos saudáveis com serviço de qualidade."
+    },
+    {
+        "imageSrc": "/assets/img/img-dentistaFAQ.webp",
+        "items": [
+            {
+                "icon": "IconShieldFAQ",
+                "text": "70% dos nossos profissionais são especialistas"
+            },
+            {
+                "icon": "IconShieldFAQ",
+                "text": "Média de 14 anos de experiência"
+            }
+        ],
+        "finalDescription": "Busque agora o dentista mais próximo de você!"
+    },
+    {
+        "imageSrc": "/assets/img/img-familyFAQ.webp",
+        "items": [
+            {
+                "icon": "",
+                "text": "Acesso também à cobertura adicional"
+            },
+            {
+                "icon": "",
+                "text": ""
+            }
+        ],
+        "finalDescription": "Possibilidade de parcelamento dos atos complementares ao plano contratado. Uma facilidade incrível para dar acesso a uma odontologia completa."
+    },
+    {
+        "imageSrc": "/assets/img/img-sorrisoFAQ.webp",
+        "items": [
+            {
+                "icon": "IconStarFAQ",
+                "text": "Equipes especializadas e preparadas para fazer palestras de prevenção e educação bucal"
+            },
+            {
+                "icon": "",
+                "text": ""
+            }
+        ],
+        "finalDescription": ""
+    }
+]

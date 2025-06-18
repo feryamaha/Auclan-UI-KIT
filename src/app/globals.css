@@ -1,0 +1,25 @@
+/* Arquivo: src/app/globals.css */
+/* Propósito: Estilos globais para a aplicação */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Lato";
+  font-weight: 600;
+  src: url("/fonts/lato-600.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer base {
+  body {
+    @apply font-inter antialiased;
+  }
+
+  /* Outline global de 1px sólido */
+  * {
+    //outline: 1px solid #000;
+    outline-offset: 0;
+  }
+}

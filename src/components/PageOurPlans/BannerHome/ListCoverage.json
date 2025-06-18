@@ -1,0 +1,70 @@
+{
+  "coverage": [
+    {
+      "id": "idCoverage",
+      "includA": [
+        {
+          "iconInclud": "IconIncludPlans",
+          "textIncludA": "Urgências"
+        }
+      ],
+      "includB": [
+        {
+          "iconInclud": "IconIncludPlans",
+          "textIncludB": "Exames Clínicos"
+        }
+      ],
+      "includC": [
+        {
+          "iconInclud": "IconIncludPlans",
+          "textIncludC": "RX (Periapical, Bite Wing, Panorámica Simples)"
+        }
+      ],
+      "includD": [
+        {
+          "iconInclud": "IconIncludPlans",
+          "textIncludD": "Restaurações (Amalgama e Resina)"
+        }
+      ],
+      "includE": [
+        {
+          "iconInclud": "IconIncludPlans",
+          "textIncludE": "Tratamento/Retratamento de Canal e Polpa Dertária"
+        }
+      ]
+    },
+    {
+      "id": "idNotCoverage",
+      "includA": [
+        {
+          "iconInclud": "IconNotCoverage",
+          "textIncludA": "Consultas"
+        }
+      ],
+      "includB": [
+        {
+          "iconInclud": "IconNotCoverage",
+          "textIncludB": "Tratamento de Canal"
+        }
+      ],
+      "includC": [
+        {
+          "iconInclud": "IconNotCoverage",
+          "textIncludC": "Extração do siso"
+        }
+      ],
+      "includD": [
+        {
+          "iconInclud": "IconNotCoverage",
+          "textIncludD": "Restauração"
+        }
+      ],
+      "includE": [
+        {
+          "iconInclud": "IconNotCoverage",
+          "textIncludE": "Limpeza"
+        }
+      ]
+    }
+  ]
+}

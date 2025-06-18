@@ -1,0 +1,140 @@
+{
+  "menu": {
+    "menu1": {
+      "col1": [
+        {
+          "id": 1,
+          "name": "PLANOS",
+          "data": [
+            {
+              "title": "Individuais e familiares",
+              "description": "Planos odontológicos de qualidade a preço baixo para você e a sua família.",
+              "link": "#"
+            },
+            {
+              "title": "Planos corporativos",
+              "description": "Planos odontológicos para empresas acima de 100 funcionários.",
+              "link": "#"
+            },
+            {
+              "title": "Planos empresariais PME",
+              "description": "Planos odontológicos para empresas entre 30 a 99 funcionários.",
+              "link": "#"
+            }
+          ]
+        }
+      ],
+      "col2": [
+        {
+          "id": 1,
+          "title": "RECURSOS",
+          "content": [
+            {
+              "title": "Promoção de páscoa",
+              "description": "15% de desconto para os 3 primeiros meses. Veja agora!",
+              "image": "https://rabbit.png",
+              "link": "#"
+            }
+          ]
+        }
+      ],
+      "banner": {
+        "imageUrl": "",
+        "altText": "",
+        "link": ""
+      }
+    },
+    "menu2": {
+      "col1": [
+        {
+          "id": 1,
+          "name": "A DENTAL UNI",
+          "data": [
+            {
+              "title": "Sobre nós",
+              "description": "Veja nossa história, o que nos motiva a levar o sorriso a mais de 1 milhão de pessoas.",
+              "link": "/sobre-nos"
+            },
+            {
+              "title": "IDSS",
+              "description": "Veja como alcançamos um dos melhores índices de qualidade em planos odontológicos.",
+              "link": "/idss"
+            },
+            {
+              "title": "Membros do conselho",
+              "description": "Conheça os profissionais e especialistas que garantem a excelência dos nossos planos.",
+              "link": "/membros-conselho"
+            },
+            {
+              "title": "Informações financeiras",
+              "description": "Acesse os nossos demonstrativos anuais de forma transparente.",
+              "link": "/informacoes-financeiras"
+            },
+            {
+              "title": "Pesquisa de satisfação",
+              "description": "Descubra a opinião dos nossos clientes e como buscamos melhorar.",
+              "link": "/pesquisa-satisfacao"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "PARA VOCÊ",
+          "data": [
+            {
+              "title": "Beneficiários",
+              "description": "Planos odontológicos de qualidade a preço baixo para você e a sua família.",
+              "link": "/beneficiarios"
+            },
+            {
+              "title": "Dentista",
+              "description": "Ferramentas e atualizações para aprimorar sua prática profissional.",
+              "link": "/dentista"
+            },
+            {
+              "title": "Empresa",
+              "description": "Recursos, novidades e soluções personalizadas para a sua organização.",
+              "link": "/empresa"
+            },
+            {
+              "title": "Corretor",
+              "description": "Materiais de apoio, notícias e oportunidades para expandir seus negócios.",
+              "link": "/corretor"
+            }
+          ]
+        }
+      ],
+      "col2": [
+        {
+          "id": 1,
+          "title": "RECURSOS",
+          "content": [
+            {
+              "title": "Trabalhe conosco",
+              "description": "Faça parte do nosso time.",
+              "image": "",
+              "link": "/trabalhe-conosco"
+            },
+            {
+              "title": "Seja dentista credenciado",
+              "description": "Junte-se a nossa rede de profissionais.",
+              "image": "",
+              "link": "/cadastro/cadastro-dentista/"
+            },
+            {
+              "title": "Seja um corretor",
+              "description": "Amplie agora a sua carteira com os planos Dental Uni",
+              "image": "",
+              "link": "/cadastro/corretores"
+            }
+          ]
+        }
+      ],
+      "banner": {
+        "imageUrl": "/images/banner-resources.png",
+        "altText": "Banner recursos",
+        "link": "/promocao"
+      }
+    }
+  }
+}

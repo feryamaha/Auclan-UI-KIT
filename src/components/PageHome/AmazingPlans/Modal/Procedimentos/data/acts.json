@@ -1,0 +1,100 @@
+{
+  "plan": {
+    "name": "Plano Bronze",
+    "price": "23.40",
+    "priceUnit": "/mês por beneficiário"
+  },
+  "acts": [
+    {
+      "name": "Descrição",
+      "code": "83000001",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Urgências",
+      "code": "83000002",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Exames clínicos",
+      "code": "83000003",
+      "coverage": "Sim"
+    },
+    {
+      "name": "RX (Periapical, Bite Wing, Panorâmica Simples)",
+      "code": "83000004",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Restauração (Amálgama e Resina)",
+      "code": "83000005",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Consultas",
+      "code": "83000006",
+      "coverage": "Não"
+    },
+    {
+      "name": "Ato Genérico 1",
+      "code": "83001001",
+      "coverage": "Não"
+    },
+    {
+      "name": "Ato Genérico 2",
+      "code": "83001002",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Ato Genérico 3",
+      "code": "83001003",
+      "coverage": "Não"
+    },
+    {
+      "name": "Ato Genérico 4",
+      "code": "83001004",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Ato Genérico 5",
+      "code": "83001005",
+      "coverage": "Não"
+    },
+    {
+      "name": "Ato Genérico 6",
+      "code": "83001006",
+      "coverage": "Sim"
+    },
+
+    {
+      "name": "Ato Genérico 160",
+      "code": "8300160",
+      "coverage": "Não"
+    },
+    {
+      "name": "Ato Genérico 161",
+      "code": "8300161",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Ato Genérico 162",
+      "code": "8300162",
+      "coverage": "Não"
+    },
+    {
+      "name": "Ato Genérico 163",
+      "code": "8300163",
+      "coverage": "Sim"
+    },
+    {
+      "name": "Ato Genérico 164",
+      "code": "8300164",
+      "coverage": "Não"
+    },
+    {
+      "name": "Ato Genérico 165",
+      "code": "8300165",
+      "coverage": "Sim"
+    }
+  ]
+}
