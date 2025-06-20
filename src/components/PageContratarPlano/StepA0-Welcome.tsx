@@ -2,6 +2,8 @@
 
 // Importações de dependências e componentes
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "../ui/Button";
 import ContractPlansLayout from "@/app/page/contractPlans/layout";
@@ -43,7 +45,7 @@ export function StepA0Welcome() {
 
   // Constante React com conteúdo secundário (tipo: ReactNode) para a célula de 32%
   const sideContent = (
-    <div className="w-full h-max flex flex-col">
+    <div className="w-full h-max flex flex-col ">
       <div className="flex items-center gap-[16px] mb-[16px]">
         <Icon name="IconFaviconDental" />{" "}
         {/* Componente Icon (tipo: ReactNode) para o favicon da Dental Uni */}
@@ -56,6 +58,62 @@ export function StepA0Welcome() {
       <div className="w-full h-max py-[16px] px-[24px] bg-white rounded-[8px]">
         <PlanDetailsCard />
         <IncludeItemsPlans />
+      </div>
+      <div className="max-w-[359px] h-max justify-between flex items-center mx-auto gap-[26px] ">
+        <div className="w-full @Desktop:h-[74px] grid grid-cols-2 @mobile:grid-cols-3 @Desktop:flex @mobile:gap-x-[74px] gap-[32px] @Desktop:gap-[32px]  @mobile:justify-center items-center py-[30px] @Desktop:mx-auto ">
+          <Link
+            href="https://www.paranacooperativo.coop.br/ppc/"
+            target="_blank"
+            className="w-full flex justify-center"
+          >
+            <Image
+              className="w-12 h-12 object-cover"
+              src="/assets/icons/footer/IconCoperativaFooter.svg"
+              alt="Cooperativas"
+              width={110}
+              height={110}
+            />
+          </Link>
+
+          <Link
+            href="https://www.paranacooperativo.coop.br/ppc/"
+            target="_blank"
+            className=" w-full flex justify-center"
+          >
+            <Image
+              src="/assets/icons/footer/IconIGRFooter.svg"
+              alt="IGR"
+              width={79}
+              height={33}
+            />
+          </Link>
+
+          <Link
+            href="https://www.ans.gov.br/prestadores/tiss-troca-de-informacao-de-saude-suplementar"
+            target="_blank"
+            className=" w-full"
+          >
+            <Image
+              src="/assets/icons/footer/IconTISSFooter.svg"
+              alt="TISS"
+              width={110}
+              height={110}
+            />
+          </Link>
+
+          <Link
+            href="https://www.dentaluni.com.br/pagina/ans"
+            target="_blank"
+            className=" w-full"
+          >
+            <Image
+              src="/assets/icons/footer/IconANSFooter.svg"
+              alt="ANS"
+              width={110}
+              height={110}
+            />
+          </Link>
+        </div>
       </div>
     </div>
   );

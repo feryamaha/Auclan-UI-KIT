@@ -9,6 +9,7 @@ export default function PagecontractPlans() {
   return (
     <main className="w-full h-full flex flex-col items-center justify-center">
       <StepA0Welcome />
+      
     </main>
   );
 }

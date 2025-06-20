@@ -33,7 +33,7 @@ export function PlanDetailsCard({
 }: PlanDetailsCardProps) {
   return (
     <div className="w-full h-max ">
-      <div className="flex flex-col items-start border-b pb-[24px]">
+      <div className="flex flex-col items-start border-b pb-[24px] ">
         <div className="w-full flex justify-between">
           <p className="TypographyPinter16w500g900">Valor do Plano</p>
           <div className="w-[106px] h-[29px] relative">
@@ -49,8 +49,8 @@ export function PlanDetailsCard({
           <p className="TypographyPinter14w400 pb-1">/mês por beneficiário</p>
         </div>
       </div>
-      <div className="flex flex-col gap-[16px] py-[24px] border-b">
-        <h2 className="TypographyPlato24">Cobertura</h2>
+      <div className="flex flex-col gap-[16px] py-[24px] border-b ">
+        <h2 className="TypographyPlato20">Cobertura</h2>
         <div className="flex flex-col gap-[8px]">
           {coverageItems.map((item, index) => (
             <div key={index} className="w-full btnCoverage">

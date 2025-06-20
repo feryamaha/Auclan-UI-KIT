@@ -95,7 +95,7 @@ export function IncludeItemsPlans({
 
   return (
     <div className="mt-[24px]">
-      <h3 className="TypographyPlato24">{IncludTitle || defaultTitle}</h3>
+      <h3 className="TypographyPlato20">{IncludTitle || defaultTitle}</h3>
       <div className="flex flex-col gap-[8px] pt-[16px]">
         {items.map((item, index) => (
           <div key={index} className="flex items-center gap-[8px]">
