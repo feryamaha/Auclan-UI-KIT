@@ -455,6 +455,23 @@ export default {
             "0px 1px 4px 0px rgba(0, 0, 0, 0.08), 0px 1px 2px 0px rgba(25, 25, 25, 0.08)",
         },
 
+        ".btnCoverage": {
+          color: theme("colors.gray950"),
+          fontFamily: theme("fontFamily.inter"),
+          fontSize: "16px",
+          fontStyle: "normal",
+          fontWeight: "500",
+          lineHeight: "140%",
+          letterSpacing: "-0.32px",
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "8px 16px",
+          alignItems: "center",
+          borderRadius: "8px",
+          background: theme("colors.grayCoverage"),
+          border: "1px solid #E7E7E7",
+        },
+
         ".TypographyPinter16green": {
           color: theme("colors.greenCoverage"),
           fontFamily: theme("fontFamily.inter"),

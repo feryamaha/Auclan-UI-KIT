@@ -3257,6 +3257,24 @@ const IconPathFaq = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const IconArrowCoverage = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <path
+      d="M10 16L14 12L10 8"
+      stroke="#191919"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
 const IconStarFAQ = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -3771,6 +3789,7 @@ export const icons = {
   IconVetorCardPlansCoverage,
   IconFrameBGBarComparePlans,
   IconPathFaq,
+  IconArrowCoverage,
   IconStarFAQ,
   IconShieldFAQ,
   IconArrowFAQ,

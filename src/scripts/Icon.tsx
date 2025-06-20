@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import { icons } from './IconsList'
 import { SVGProps } from 'react'
 
-interface IconProps extends SVGProps<SVGSVGElement> {
+export interface IconProps extends SVGProps<SVGSVGElement> {
   name: keyof typeof icons
   className?: string
   fill?: string
