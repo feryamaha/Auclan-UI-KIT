@@ -1,7 +1,6 @@
 "use client";
 
-// Importações de dependências e componentes
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "../ui/Button";
 import ContractPlansLayout from "@/app/page/contractPlans/layout";
@@ -17,25 +16,27 @@ export function StepA3LocationData({
   onNext: () => void;
   onBack: () => void;
 }) {
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  // Ajuste dos estados para os campos corretos
+  const [cep, setCep] = useState("");
   const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
+  const [number, setNumber] = useState("");
+  const [complement, setComplement] = useState("");
   const [state, setState] = useState("");
+  const [city, setCity] = useState("");
 
+  // Validação dos campos obrigatórios
   const isFormValid = () => {
     return (
-      email.trim() !== "" &&
-      phone.trim() !== "" &&
+      cep.trim() !== "" &&
       address.trim() !== "" &&
-      city.trim() !== "" &&
-      state.trim() !== ""
+      number.trim() !== "" &&
+      state.trim() !== "" &&
+      city.trim() !== ""
     );
   };
 
   const handleSubmit = () => {
     if (isFormValid()) {
-      // Salva os dados no localStorage
       const storedData = localStorage.getItem("mockDataStorage");
       const initialData = [
         { step: 0, data: {} },
@@ -46,7 +47,14 @@ export function StepA3LocationData({
         { step: 5, data: {} },
       ];
       const updatedStorage = storedData ? JSON.parse(storedData) : initialData;
-      updatedStorage[2].data = { email, phone, address, city, state };
+      updatedStorage[2].data = {
+        cep,
+        address,
+        number,
+        complement,
+        state,
+        city,
+      };
       localStorage.setItem("mockDataStorage", JSON.stringify(updatedStorage));
       onNext();
     }
@@ -73,9 +81,9 @@ export function StepA3LocationData({
               Voltar
             </Button>
             <div className="w-[210px] pt-[8px]">
-              <h2 className="TypographyPlato24 pb-[8px]">Contato</h2>
+              <h2 className="TypographyPlato24 pb-[8px]">Endereço</h2>
               <p className="TypographyPinter16w400">
-                Agora precisamos de alguns dados para contato.
+                Adicione abaixo os dados de endereço.
               </p>
             </div>
           </div>
@@ -84,59 +92,81 @@ export function StepA3LocationData({
           </div>
         </div>
         <div className="w-full justify-between flex">
-          <p className="TypographyPlato20">Dados contato</p>
+          <p className="TypographyPlato20">Dados endereço</p>
           <div className="max-w-[542px]">
-            <form className="w-full flex flex-col gap-4">
+            <form
+              className="w-full flex flex-col gap-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
+            >
               <input
                 type="text"
-                id="email"
-                name="email"
+                id="cep"
+                name="cep"
                 required
-                placeholder="E-mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                placeholder="CEP"
+                value={cep}
+                onChange={(e) => setCep(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
               <input
                 type="text"
-                id="confirme"
-                name="Confirme-mail"
+                id="address"
+                name="address"
                 required
-                placeholder="Confirme seu e-mail"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Endereço"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
 
               <div className="flex gap-4">
                 <input
                   type="text"
-                  id="celular"
-                  name="celular"
+                  id="number"
+                  name="number"
                   required
-                  placeholder="Celular"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
+                  placeholder="Número"
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
                   className="w-1/2 p-2 border border-gray-300 rounded-md"
                 />
                 <input
                   type="text"
-                  id="telefone"
-                  name="telefone"
+                  id="complement"
+                  name="complement"
+                  placeholder="Complemento"
+                  value={complement}
+                  onChange={(e) => setComplement(e.target.value)}
+                  className="w-1/2 p-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              <div className="flex gap-4">
+                <input
+                  type="text"
+                  id="state"
+                  name="state"
                   required
-                  placeholder="Telefone"
+                  placeholder="Estado"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
                   className="w-1/2 p-2 border border-gray-300 rounded-md"
                 />
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  required
+                  placeholder="Cidade"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  className="w-1/2 p-2 border border-gray-300 rounded-md"
+                />
               </div>
               {isFormValid() ? (
-                <Button
-                  variant="btnFormHover"
-                  className="w-full"
-                  type="button"
-                  onClick={handleSubmit}
-                >
+                <Button variant="btnFormHover" className="w-full" type="submit">
                   Avançar
                   <Icon name="IconArrowright" className="w-5 h-5" />
                 </Button>

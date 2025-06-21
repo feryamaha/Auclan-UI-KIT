@@ -18,18 +18,16 @@ export function StepA2ContactData({
   onBack: () => void;
 }) {
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
+  const [celular, setCelular] = useState("");
+  const [telefone, setTelefone] = useState("");
 
   const isFormValid = () => {
     return (
       email.trim() !== "" &&
-      phone.trim() !== "" &&
-      address.trim() !== "" &&
-      city.trim() !== "" &&
-      state.trim() !== ""
+      confirmEmail.trim() !== "" &&
+      celular.trim() !== "" &&
+      telefone.trim() !== ""
     );
   };
 
@@ -46,7 +44,7 @@ export function StepA2ContactData({
         { step: 5, data: {} },
       ];
       const updatedStorage = storedData ? JSON.parse(storedData) : initialData;
-      updatedStorage[2].data = { email, phone, address, city, state };
+      updatedStorage[2].data = { email, confirmEmail, celular, telefone };
       localStorage.setItem("mockDataStorage", JSON.stringify(updatedStorage));
       onNext();
     }
@@ -103,8 +101,8 @@ export function StepA2ContactData({
                 name="Confirme-mail"
                 required
                 placeholder="Confirme seu e-mail"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={confirmEmail}
+                onChange={(e) => setConfirmEmail(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
 
@@ -115,8 +113,8 @@ export function StepA2ContactData({
                   name="celular"
                   required
                   placeholder="Celular"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
+                  value={celular}
+                  onChange={(e) => setCelular(e.target.value)}
                   className="w-1/2 p-2 border border-gray-300 rounded-md"
                 />
                 <input
@@ -125,8 +123,8 @@ export function StepA2ContactData({
                   name="telefone"
                   required
                   placeholder="Telefone"
-                  value={state}
-                  onChange={(e) => setState(e.target.value)}
+                  value={telefone}
+                  onChange={(e) => setTelefone(e.target.value)}
                   className="w-1/2 p-2 border border-gray-300 rounded-md"
                 />
               </div>
