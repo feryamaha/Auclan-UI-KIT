@@ -283,6 +283,26 @@ export default {
           letterSpacing: "-0.28px",
           opacity: "0.7",
         },
+
+        ".Typography14STDsidebar": {
+          color: theme("colors.gray500"),
+          fontFamily: theme("fontFamily.inter"),
+          fontSize: "14px",
+          fontStyle: "normal",
+          fontWeight: "500",
+          lineHeight: "140%",
+          letterSpacing: "-0.28px",
+        },
+
+        ".Typography14hoversidebarOK": {
+          color: theme("colors.gray950"),
+          fontFamily: theme("fontFamily.inter"),
+          fontSize: "14px",
+          fontStyle: "normal",
+          fontWeight: "500",
+          lineHeight: "140%",
+          letterSpacing: "-0.28px",
+        },
         ".TypographyPinter14w500": {
           color: theme("colors.gray900"),
           fontFamily: theme("fontFamily.inter"),

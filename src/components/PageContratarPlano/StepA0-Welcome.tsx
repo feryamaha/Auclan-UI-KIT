@@ -1,7 +1,7 @@
 "use client";
 
 // Importações de dependências e componentes
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/scripts/Icon";
@@ -9,8 +9,36 @@ import { Button } from "../ui/Button";
 import ContractPlansLayout from "@/app/page/contractPlans/layout";
 import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
 import IncludeItemsPlans from "@/components/ui/IncludeItemsPlans";
+import matriculasData from "@/data/mockContracPlans/matriculas.json";
 
-export function StepA0Welcome() {
+type HandleIniciar = (matricula: string) => void;
+
+export function StepA0Welcome({ onIniciar }: { onIniciar: HandleIniciar }) {
+  const [matricula, setMatricula] = useState("");
+  const [error, setError] = useState("");
+
+  // Validação em tempo real do input
+  const isValidMatricula = () => {
+    const isLengthValid = matricula.length === 8 && /^\d+$/.test(matricula); // Exatamente 8 dígitos
+    const isInList = matriculasData.matriculas.some(
+      (m) => m.numero === matricula
+    );
+    return isLengthValid && isInList;
+  };
+
+  const handleIniciarClick = () => {
+    if (onIniciar) {
+      if (!isValidMatricula()) {
+        setError("Número de matrícula inválido. Tente novamente.");
+        return;
+      }
+      onIniciar(matricula);
+      setError(""); // Limpa o erro ao avançar com sucesso
+    } else {
+      setError("Erro ao processar a matrícula.");
+    }
+  };
+
   // Constante React com conteúdo principal (tipo: ReactNode) para a célula de 68%
   const mainContent = (
     <div className="max-w-[366px] flex flex-col items-start gap-[12px] mb-[24px]">
@@ -25,10 +53,18 @@ export function StepA0Welcome() {
       <input
         type="text"
         placeholder="Número da matrícula"
-        className="w-full p-2 border rounded-md mb-4"
+        className={`w-full p-2 border border-gray300 rounded-md mb-4 ${
+          matricula && !isValidMatricula() ? "border-redSTD" : "border-gray300"
+        }`}
+        value={matricula}
+        onChange={(e) => {
+          setMatricula(e.target.value);
+          if (error) setError(""); // Limpa erro ao digitar
+        }}
       />
+      {error && <p className="text-red-500 text-sm">{error}</p>}
       <div className="flex w-full flex-col mt-[32px] gap-[24px]">
-        <Button href="/sobre-nos" variant="btnSecondary">
+        <Button variant="btnSecondary" onClick={handleIniciarClick}>
           Iniciar
         </Button>
         <Button

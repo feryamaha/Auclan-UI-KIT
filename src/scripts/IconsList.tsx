@@ -3423,6 +3423,33 @@ const IconIncludPlans = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const IconSidebar = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M10 17.5V17.5C5.8575 17.5 2.5 14.1425 2.5 10V10C2.5 5.8575 5.8575 2.5 10 2.5V2.5C14.1425 2.5 17.5 5.8575 17.5 10V10C17.5 14.1425 14.1425 17.5 10 17.5Z"
+      stroke="#8A1724"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M13.3332 8.33301L9.1665 12.4997L6.6665 9.99967"
+      stroke="#8A1724"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
 const IconNotCoverage = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -3802,4 +3829,5 @@ export const icons = {
   IconLocation,
   IconInfo,
   IconFlagPlan,
+  IconSidebar,
 };

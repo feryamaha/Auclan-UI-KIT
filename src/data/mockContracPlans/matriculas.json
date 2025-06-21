@@ -1,0 +1,7 @@
+{
+  "matriculas": [
+    { "numero": "20250001", "nome": "John Rambo" },
+    { "numero": "20250002", "nome": "Sarah Connor" },
+    { "numero": "20250003", "nome": "Elon Musk" }
+  ]
+}
