@@ -44,8 +44,8 @@ export default function ContractPlansLayout({
 
       {/*  Bloco estático para o conteúdo dinâmico com props children e sideContent */}
       <div className="w-full h-full flex ">
-        <div className="w-[68%] bg-white ">
-          <div className="max-w-[427px] mx-auto pt-[112px]">
+        <div className="w-[68%] bg-white  ">
+          <div className="w-full mx-auto px-[32px] pt-[112px] flex justify-center">
             {children}{" "}
             {/* // Renderiza prop children (tipo: ReactNode) para a célula de 68% */}
           </div>

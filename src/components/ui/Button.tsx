@@ -8,6 +8,9 @@ type ButtonVariant =
   | "btnSecondary"
   | "btnTertiary"
   | "btnLink"
+  | "btnForm"
+  | "btnFormHover"
+  | "btnCoverage"
   | "btnScrollDown";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -33,6 +36,9 @@ export function Button({
     btnSecondary: "btnSecondary",
     btnTertiary: "btnTertiary",
     btnLink: "btnLink",
+    btnForm: "btnForm",
+    btnFormHover: "btnFormHover",
+    btnCoverage: "btnCoverage",
     btnScrollDown: "btnScrollDown",
   };
 

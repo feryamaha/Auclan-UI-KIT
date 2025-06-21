@@ -1,59 +1,75 @@
 "use client";
 
-// Importações de dependências e componentes
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "@/scripts/Icon";
-import Link from "next/link";
 
+// Definindo a interface de props para o MenuSidebar
 interface MenuSidebarProps {
-  activeStep: number; // Passo atual (0 a 5)
-  onStepChange: (step: number) => void; // Função para mudar o passo
+  onMenuClick: (step: number) => void; // Função para lidar com o clique no menu
+  currentStep: number; // Passo atual do processo
+  completedSteps: number[]; // Etapas já concluídas
 }
 
-export function MenuSidebar({ activeStep, onStepChange }: MenuSidebarProps) {
-  // Lista de itens do menu com estados iniciais
-  const steps = [
-    { id: 1, label: "Identificação Inicial", isCompleted: true },
-    { id: 2, label: "Titular do plano", isCompleted: false },
-    { id: 3, label: "Contato", isCompleted: false },
-    { id: 4, label: "Endereço", isCompleted: false },
-    { id: 5, label: "Dependentes", isCompleted: false },
-    { id: 6, label: "Aceite e conclusão", isCompleted: false },
-  ];
+// Definindo os itens do menu com os estados da propriedade 'pageStep' para controle de navegação
+const menuItems = [
+  { number: "1", text: "Identificação Inicial", pageStep: 0 },
+  { number: "2", text: "Titular do Plano", pageStep: 1 },
+  { number: "3", text: "Contato", pageStep: 2 },
+  { number: "4", text: "Endereço", pageStep: 3 },
+  { number: "5", text: "Aceite e Conclusão", pageStep: 4 },
+  { number: "6", text: "Sucesso", pageStep: 5 },
+];
+
+export function MenuSidebar({
+  onMenuClick,
+  currentStep,
+  completedSteps,
+}: MenuSidebarProps) {
+  const [savedSteps, setSavedSteps] = useState<number[]>([]);
+
+  // Carrega os dados salvos do localStorage ao montar e sempre que mudar
+  useEffect(() => {
+    const storedData = localStorage.getItem("mockDataStorage");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      const stepsWithData = parsedData
+        .map((item: { step: number; data: object }) => item.step)
+        .filter(
+          (step: number) => Object.keys(parsedData[step].data).length > 0
+        );
+      setSavedSteps(stepsWithData);
+    }
+  }, [currentStep]); // Reexecuta quando currentStep mudar
 
   return (
-    <nav className="w-[250px] bg-white p-4">
-      {steps.map((step) => (
-        <Link
-          key={step.id}
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            onStepChange(step.id - 1);
-          }}
-          className="block"
-        >
-          <span
-            className={`flex items-center gap-2 py-2 px-2 rounded-md ${
-              step.id - 1 === activeStep && !step.isCompleted
-                ? "bg-red25 Typography14hoversidebarOK"
-                : step.isCompleted
+    <div className="w-[233px] flex flex-col gap-[8px]">
+      {menuItems.map((item, index) => {
+        const isCompleted =
+          completedSteps.includes(item.pageStep) ||
+          savedSteps.includes(item.pageStep);
+        const isActive = item.pageStep === currentStep;
+        const isDisabled = item.pageStep > currentStep && !isCompleted;
+
+        return (
+          <button
+            key={index}
+            className={`w-full flex gap-[5px] items-center py-[6px] px-[8px] ${
+              isCompleted || isActive
                 ? "Typography14hoversidebarOK"
                 : "Typography14STDsidebar"
-            } hover:bg-gray-100`}
+            } ${isActive ? "bg-red25 rounded-[6px]" : ""} ${
+              isDisabled ? "cursor-not-allowed opacity-50" : ""
+            }`}
+            onClick={!isDisabled ? () => onMenuClick(item.pageStep) : undefined}
+            disabled={isDisabled}
           >
-            {step.isCompleted ? (
-              <Icon name="IconChack" />
-            ) : step.id - 1 === activeStep ? (
-              <span className="text-redSTD">{step.id}</span>
-            ) : (
-              <span>{step.id}</span>
-            )}
-            <span>{step.label}</span>
-          </span>
-        </Link>
-      ))}
-    </nav>
+            {isCompleted && <Icon name="IconSidebar" className="mr-2" />}
+            {!isCompleted && item.number}
+            <span>{item.text}</span>
+          </button>
+        );
+      })}
+    </div>
   );
 }
 

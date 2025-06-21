@@ -561,6 +561,38 @@ export default {
           boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)",
         },
 
+        ".btnForm": {
+          display: "flex",
+          padding: "12px 24px",
+          justifyContent: "space-between",
+          alignItems: "center",
+          borderRadius: "4px",
+          background: theme("colors.gray300"),
+          boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)",
+          color: theme("colors.gray500"),
+          fontFamily: theme("fontFamily.inter"),
+          fontSize: "16px",
+          fontStyle: "normal",
+          fontWeight: "600",
+          lineHeight: "150%",
+        },
+
+        ".btnFormHover": {
+          display: "flex",
+          padding: "12px 24px",
+          justifyContent: "space-between",
+          alignItems: "center",
+          borderRadius: "4px",
+          background: theme("colors.redSTD"),
+          boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)",
+          color: theme("colors.white"),
+          fontFamily: theme("fontFamily.inter"),
+          fontSize: "16px",
+          fontStyle: "normal",
+          fontWeight: "600",
+          lineHeight: "150%",
+        },
+
         ".btnScrollDown": {
           display: "flex",
           padding: "7px 16px",

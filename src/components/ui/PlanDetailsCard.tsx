@@ -3,12 +3,14 @@
 // Importações de dependências e componentes
 import React from "react";
 import { Icon } from "@/scripts/Icon";
+import { Button } from "../ui/Button";
 
 // Definição de tipos para ícones válidos (ajuste conforme Icon.tsx)
 type ValidIconNames =
   | "IconIncludPlans"
   | "IconNotCoverage"
   | "IconArrowCoverage"
+  | "IconProcedure"
   | "IconFlagPlan";
 
 interface CoverageItem {
@@ -29,6 +31,7 @@ export function PlanDetailsCard({
   coverageItems = [
     { text: "6 atos cobertos", icon: "IconIncludPlans" },
     { text: "6 atos complementares", icon: "IconNotCoverage" },
+    { text: "166 procedimentos", icon: "IconProcedure" },
   ],
 }: PlanDetailsCardProps) {
   return (
@@ -49,19 +52,21 @@ export function PlanDetailsCard({
           <p className="TypographyPinter14w400 pb-1">/mês por beneficiário</p>
         </div>
       </div>
-      <div className="flex flex-col gap-[16px] py-[24px] border-b ">
+      <div className="flex flex-col gap-[16px] pt-[24px] pb-[12px]  ">
         <h2 className="TypographyPlato20">Cobertura</h2>
-        <div className="flex flex-col gap-[8px]">
+        <div className="flex flex-col gap-[8px] ">
           {coverageItems.map((item, index) => (
-            <div key={index} className="w-full btnCoverage">
+            <Button
+              key={index}
+              variant="btnCoverage"
+              className="w-full flex items-center justify-between "
+            >
               <div className="flex items-center gap-[8px]">
-                <Icon name={item.icon || "IconIncludPlans"} />{" "}
-                {/* Componente Icon (tipo: ReactNode) para cobertura */}
-                <p className="TypographyPinter16w400">{item.text}</p>
+                <Icon name={item.icon || "IconIncludPlans"} />
+                <span className="TypographyPinter16w400">{item.text}</span>
               </div>
-              <Icon name="IconArrowCoverage" />{" "}
-              {/* Componente Icon (tipo: ReactNode) para seta de expansão */}
-            </div>
+              <Icon name="IconArrowCoverage" />
+            </Button>
           ))}
         </div>
       </div>

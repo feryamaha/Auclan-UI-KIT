@@ -18,6 +18,91 @@ const IconArrowSliderControlLeft = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const IconProcedure = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+  >
+    <path
+      d="M14.1667 14.1663V15.833C14.1667 16.7535 13.4205 17.4997 12.5 17.4997H4.16667C3.24619 17.4997 2.5 16.7535 2.5 15.833V7.49967C2.5 6.5792 3.24619 5.83301 4.16667 5.83301H5.83333"
+      stroke="#6D6D6D"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M12.9863 6.66667H14.653"
+      stroke="#6D6D6D"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M12.9863 6.66667H14.653"
+      stroke="#6D6D6D"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <rect
+      x="5.8335"
+      y="2.5"
+      width="11.6667"
+      height="11.6667"
+      rx="2"
+      stroke="#6D6D6D"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M8.75 6.25L9.58333 7.08333"
+      stroke="#6D6D6D"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M10.8335 5.83301L9.5835 7.08301"
+      stroke="#6D6D6D"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M12.9863 9.99967H14.653"
+      stroke="#6D6D6D"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M12.9863 9.99967H14.653"
+      stroke="#6D6D6D"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M8.75 9.58301L9.58333 10.4163"
+      stroke="#6D6D6D"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M10.8335 9.16699L9.5835 10.417"
+      stroke="#6D6D6D"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
 const IconArrowSliderControlRight = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -3830,4 +3915,5 @@ export const icons = {
   IconInfo,
   IconFlagPlan,
   IconSidebar,
+  IconProcedure,
 };

@@ -94,7 +94,7 @@ export function IncludeItemsPlans({
   ];
 
   return (
-    <div className="mt-[24px]">
+    <div className="mt-[12px] pt-[24px] border-t">
       <h3 className="TypographyPlato20">{IncludTitle || defaultTitle}</h3>
       <div className="flex flex-col gap-[8px] pt-[16px]">
         {items.map((item, index) => (
