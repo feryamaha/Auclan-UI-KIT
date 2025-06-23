@@ -36,7 +36,7 @@ export default function ContractPlansPage() {
   const handleNext = () => {
     setCompletedSteps((prev) => new Set(prev).add(step));
     if (step === 3) {
-      setStep(30); // Vai para StepB0IncludeDependent
+      setStep(30); // Vai para StepB0IncludeDependent como modal
     } else if (step >= 30 && step < 34) {
       setStep(step + 1); // Avança nas seções de dependentes
     } else if (step === 34) {
@@ -74,13 +74,18 @@ export default function ContractPlansPage() {
     }
   };
 
+  // Renderiza o MenuSidebar apenas para steps principais (1 a 5)
+  const shouldShowSidebar = step >= 1 && step <= 5;
+
   return (
-    <main className="w-full h-full flex flex-col items-center justify-center">
-      <MenuSidebar
-        currentStep={step}
-        completedSteps={Array.from(completedSteps)}
-        onMenuClick={handleMenuClick}
-      />
+    <main className="w-full h-full flex flex-col items-center justify-center relative">
+      {shouldShowSidebar && (
+        <MenuSidebar
+          currentStep={step}
+          completedSteps={Array.from(completedSteps)}
+          onMenuClick={handleMenuClick}
+        />
+      )}
       {step === 0 && <StepA0Welcome onIniciar={handleNextStep} />}
       {step === 1 && (
         <StepA1HolderData onNext={handleNext} onBack={handleBack} />
@@ -88,15 +93,19 @@ export default function ContractPlansPage() {
       {step === 2 && (
         <StepA2ContactData onNext={handleNext} onBack={handleBack} />
       )}
-      {step === 3 && (
-        <StepA3LocationData onNext={handleNext} onBack={handleBack} />
-      )}
-      {step === 30 && (
-        <StepB0IncludeDependent
-          onIncludeNow={handleIncludeDependentsNow}
-          onIncludeLater={handleIncludeDependentsLater}
-          onBack={handleBack}
-        />
+      {(step === 3 || step === 30) && (
+        <>
+          <StepA3LocationData onNext={handleNext} onBack={handleBack} />
+          {step === 30 && (
+            <div className="fixed inset-0 bg-gray950 bg-opacity-70 flex items-center justify-center z-50">
+              <StepB0IncludeDependent
+                onIncludeNow={handleIncludeDependentsNow}
+                onIncludeLater={handleIncludeDependentsLater}
+                onBack={handleBack}
+              />
+            </div>
+          )}
+        </>
       )}
       {step === 31 && (
         <StepB1AddDependent onNext={handleNext} onBack={handleBack} />

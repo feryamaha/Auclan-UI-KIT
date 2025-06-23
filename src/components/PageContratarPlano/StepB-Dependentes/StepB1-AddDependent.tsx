@@ -13,7 +13,7 @@ export function StepB1AddDependent({
   onBack: () => void;
 }) {
   const mainContent = (
-    <div className="w-screen flex items-start ">
+    <div className="w-screen flex flex-col items-start  ">
       <h2>Pagina teste Incluir dependentes </h2>
       <p>
         Esta é uma seção generica para testar a inclusao de dependentes antes do
@@ -24,6 +24,9 @@ export function StepB1AddDependent({
       </Button>
       <Button variant="btnPrimary" className="w-full" onClick={onBack}>
         Avançar
+      </Button>
+      <Button variant="btnLink" className="w-full" onClick={onBack}>
+        Voltar
       </Button>
     </div>
   );

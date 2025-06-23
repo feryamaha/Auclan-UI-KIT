@@ -81,8 +81,9 @@ export default {
         BgBannerHomeOurPlans: "url(/assets/img/bg-BannerHomeOurPlans.webp)",
         bgFooter: "url(/assets/icons/footer/bgFooter.png)",
         BgCardModalComparePlans: "url(/assets/img/BgCardModalComparePlan.webp)",
-        BGStepB0: "url(/assets/img/BgStepB0.webp)",
+        BGStepB0: "url(/assets/img/BGStepB0.webp)",
         BGCardStepB0: "url(/assets/img/BGCardStepB0.webp)",
+        BGBlur: "url(/assets/img/BGBlur.webp)",
       },
       fontFamily: {
         openSans: ["Open Sans", "sans-serif"],
