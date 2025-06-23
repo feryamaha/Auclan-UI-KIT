@@ -27,28 +27,18 @@ export function MenuSidebar({
 }: MenuSidebarProps) {
   const [savedSteps, setSavedSteps] = useState<number[]>([]);
 
-  // Carrega os dados salvos do localStorage ao montar e sempre que mudar
+  // Carrega os dados salvos do localStorage apenas se contiverem dados válidos (desativado por enquanto)
   useEffect(() => {
-    const storedData = localStorage.getItem("mockDataStorage");
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      const stepsWithData = parsedData
-        .map((item: { step: number; data: object }) => item.step)
-        .filter(
-          (step: number) => Object.keys(parsedData[step].data).length > 0
-        );
-      setSavedSteps(stepsWithData);
-    }
-  }, [currentStep]); // Reexecuta quando currentStep mudar
+    setSavedSteps([]); // Desativa a lógica de savedSteps até implementação da API
+  }, [currentStep]);
 
   return (
     <div className="w-[233px] flex flex-col gap-[8px]">
       {menuItems.map((item, index) => {
-        const isCompleted =
-          completedSteps.includes(item.pageStep) ||
-          savedSteps.includes(item.pageStep);
+        // Lógica baseada em posição: concluído se já passou, ativo se atual, pendente se futuro
+        const isCompleted = currentStep > item.pageStep;
         const isActive = item.pageStep === currentStep;
-        const isDisabled = item.pageStep > currentStep && !isCompleted;
+        const isDisabled = item.pageStep > currentStep;
 
         return (
           <button

@@ -16,7 +16,6 @@ export function StepA3LocationData({
   onNext: () => void;
   onBack: () => void;
 }) {
-  // Ajuste dos estados para os campos corretos
   const [cep, setCep] = useState("");
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
@@ -24,7 +23,6 @@ export function StepA3LocationData({
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
 
-  // Validação dos campos obrigatórios
   const isFormValid = () => {
     return (
       cep.trim() !== "" &&
@@ -47,7 +45,8 @@ export function StepA3LocationData({
         { step: 5, data: {} },
       ];
       const updatedStorage = storedData ? JSON.parse(storedData) : initialData;
-      updatedStorage[2].data = {
+      updatedStorage[3].data = {
+        // Corrigido de 2 para 3
         cep,
         address,
         number,
@@ -65,7 +64,7 @@ export function StepA3LocationData({
       <div className="w-max">
         <MenuSidebar
           onMenuClick={() => {}}
-          currentStep={2}
+          currentStep={3} // Ajustado para refletir o step atual
           completedSteps={[]}
         />
       </div>
@@ -121,7 +120,6 @@ export function StepA3LocationData({
                 onChange={(e) => setAddress(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
-
               <div className="flex gap-4">
                 <input
                   type="text"

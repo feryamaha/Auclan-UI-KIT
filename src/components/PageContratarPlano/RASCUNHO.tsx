@@ -1,20 +1,14 @@
-//src/components/PageContratarPlano/StepA5-Successfully.tsx
-
 "use client";
 
 // Importações de dependências e componentes
 import React from "react";
 import ContractPlansLayout from "@/app/page/contractPlans/layout";
-import { Button } from "@/components/ui/Button";
 
-export function StepA5Sucessfully({ onBack }: { onBack: () => void }) {
+export function StepA5Sucessfully() {
   const mainContent = (
     <div className="w-full flex flex-col items-start gap-[12px] mb-[24px]">
       <h2>Sucesso - Placeholder</h2>
       <p>Esta é uma seção temporária para confirmação de sucesso.</p>
-      <Button variant="btnLink" onClick={onBack}>
-        Voltar
-      </Button>
     </div>
   );
 
