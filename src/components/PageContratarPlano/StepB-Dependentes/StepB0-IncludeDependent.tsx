@@ -2,6 +2,7 @@
 
 "use client";
 import React from "react";
+import { Icon } from "@/scripts/Icon";
 import { Button } from "@/components/ui/Button";
 
 export function StepB0IncludeDependent({
@@ -13,10 +14,19 @@ export function StepB0IncludeDependent({
   onIncludeLater: () => void;
   onBack: () => void;
 }) {
+  // Função handleClose (tipo: Function) para fechar o overlay e redirecionar à página inicial
+  const handleClose = () => {};
   const mainContent = (
     <>
       <div className="w-screen h-screen absolute inset-0 flex items-center justify-center backdrop-filter backdrop-blur-sm">
-        <div className="w-[1062px] h-[662px] flex  items-start justify-center gap-[32px] z-50  rounded-2xl p-[24px] bg-BGStepB0 bg-cover">
+        <div className="w-[1062px] h-[662px] flex  items-start justify-center gap-[32px] z-50  rounded-2xl p-[24px] bg-BGStepB0 bg-cover relative">
+          {/* esse botao precisa fechar esse overlay e ter a mesma funcao do botao  */}
+          <button
+            className="w-[48px] h-auto p-[12px] bg-white border border-gray100 rounded-full flex justify-center absolute top-[40px] right-[40px] "
+            onClick={onIncludeLater}
+          >
+            <Icon name="IconClose" />
+          </button>
           <div className="w-[50%]">
             <h2 className="TypographyPlato20">
               Pode sorrir. <br /> A gente garante.

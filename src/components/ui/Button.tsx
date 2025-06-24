@@ -11,7 +11,8 @@ type ButtonVariant =
   | "btnForm"
   | "btnFormHover"
   | "btnCoverage"
-  | "btnScrollDown";
+  | "btnScrollDown"
+  | "btnLinkForm";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
@@ -40,24 +41,11 @@ export function Button({
     btnFormHover: "btnFormHover",
     btnCoverage: "btnCoverage",
     btnScrollDown: "btnScrollDown",
-  };
-
-  // Mapeamento das classes de texto para cada variante
-  const textStyles = {
-    btnPrimary: "textBtn",
-    btnLink: "textbtnLink",
+    btnLinkForm: "btnLinkForm",
   };
 
   // Função para renderizar o conteúdo do botão
-  const renderContent = () => {
-    if (typeof children === "string") {
-      // Se for variante link, usa textbtnLink, senão usa textBtn
-      const textClass =
-        variant === "btnLink" ? textStyles.btnLink : textStyles.btnPrimary;
-      return <span className={textClass}>{children}</span>;
-    }
-    return children;
-  };
+  const renderContent = () => children;
 
   // Lógica para variante 'btnLink'
   if (variant === "btnLink") {

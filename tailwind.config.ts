@@ -562,6 +562,7 @@ export default {
           borderRadius: "4px",
           background: theme("colors.redSTD"),
           boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)",
+          color: theme("colors.white"),
         },
 
         ".btnForm": {
@@ -620,6 +621,7 @@ export default {
           borderRadius: "4px",
           background: theme("colors.redSTD"),
           boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)",
+          color: theme("colors.white"),
         },
         ".btnTertiary": {
           display: "inline-flex",
@@ -638,6 +640,19 @@ export default {
           alignItems: "center",
           gap: "8px",
         },
+
+        ".btnLinkForm": {
+          display: "inline-flex",
+          padding: "12px 24px",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "8px",
+          borderRadius: "4px",
+          border: "1px solid #8A1724",
+          /* background: theme("colors.white"),
+          boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)", */
+          color: theme("colors.redSTD"),
+        },
         ".textbtnLink": {
           color: theme("colors.redSTD"),
           fontFamily: theme("fontFamily.inter"),
@@ -647,7 +662,6 @@ export default {
           lineHeight: "150%",
         },
         ".textBtn": {
-          color: theme("colors.white"),
           fontFamily: theme("fontFamily.inter"),
           fontSize: "16px",
           fontStyle: "normal",

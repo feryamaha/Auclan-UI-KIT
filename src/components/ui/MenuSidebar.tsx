@@ -16,8 +16,8 @@ const menuItems = [
   { number: "2", text: "Titular do Plano", pageStep: 1 },
   { number: "3", text: "Contato", pageStep: 2 },
   { number: "4", text: "Endereço", pageStep: 3 },
-  { number: "5", text: "Aceite e Conclusão", pageStep: 4 },
-  { number: "6", text: "Sucesso", pageStep: 5 },
+  { number: "5", text: "Dependentes", pageStep: 4 },
+  { number: "6", text: "Aceite e conclusão", pageStep: 5 },
 ];
 
 export function MenuSidebar({
