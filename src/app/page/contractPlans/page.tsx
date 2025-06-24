@@ -107,7 +107,7 @@ export default function ContractPlansPage() {
           )}
         </>
       )}
-      {(step === 31 || step === 32) && (
+      {(step === 31 || step === 32 || step === 33) && (
         <>
           <StepB1AddDependent onNext={handleNext} onBack={handleBack} />
           {step === 32 && (
@@ -115,10 +115,12 @@ export default function ContractPlansPage() {
               <StepB2InitialData onNext={handleNext} onBack={handleBack} />
             </div>
           )}
+          {step === 33 && (
+            <div className="fixed inset-0 bg-gray950 bg-opacity-70 flex items-center justify-center z-50">
+              <StepB3BasicData onNext={handleNext} onBack={handleBack} />
+            </div>
+          )}
         </>
-      )}
-      {step === 33 && (
-        <StepB3BasicData onNext={handleNext} onBack={handleBack} />
       )}
       {step === 34 && (
         <StepB4AddCompletionData onNext={handleNext} onBack={handleBack} />

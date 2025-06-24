@@ -83,9 +83,20 @@ export function StepB2InitialData({
           <Button variant="btnLinkForm" className="w-max" onClick={onBack}>
             Cancelar
           </Button>
-          <Button variant="btnSecondary" className="w-max" onClick={onNext}>
-            Avançar
-          </Button>
+          {isFormValid() ? (
+            <Button
+              variant="btnFormHover"
+              className="w-max"
+              type="submit"
+              onClick={onNext}
+            >
+              Adicionar
+            </Button>
+          ) : (
+            <Button variant="btnForm" className="w-max" disabled>
+              Adicionar
+            </Button>
+          )}
         </div>
       </div>
     </div>
