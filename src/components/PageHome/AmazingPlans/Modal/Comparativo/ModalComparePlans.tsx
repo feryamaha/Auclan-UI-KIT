@@ -2,6 +2,7 @@ import React from "react";
 import comparePlansData from "./ComparePlansData.json";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/scripts/Icon";
+import Link from "next/link";
 
 interface Plan {
   id: string;
@@ -39,7 +40,7 @@ const ModalComparePlans: React.FC<ModalComparePlansProps> = ({ onClose }) => {
           {comparePlansData.plans.map((plan: Plan) => (
             <div
               key={plan.id}
-              className="w-[188px] h-[188px] p-[16px] flex flex-col justify-between relative "
+              className="w-max h-[188px] p-[16px] flex flex-col justify-between relative "
             >
               <div className="flex flex-col gap-[8px]">
                 <h3 className="TypographyMenuMobile">{plan.name}</h3>
@@ -47,12 +48,9 @@ const ModalComparePlans: React.FC<ModalComparePlansProps> = ({ onClose }) => {
                 <p className="TypographyPlato24">R$ {plan.price}</p>
               </div>
               <div>
-                <Button
-                  href="https://www.planosdentaluni.com.br/"
-                  variant="btnScrollDown"
-                >
-                  Contratar agora
-                </Button>
+                <Link href="/page/contractPlans">
+                  <Button variant="btnPrimary">Contratar agora</Button>
+                </Link>
               </div>
               <div className="absolute pr-[16px] left-0">
                 <Icon name="IconVetorCardScrolldown" />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Icon } from "@/scripts/Icon";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import proceduresData from "./data/procedures.json";
 import actsData from "./data/acts.json";
@@ -92,12 +93,9 @@ export default function ModalProcedimentos({
                 </div>
               </div>
               <div>
-                <Button
-                  href="https://www.planosdentaluni.com.br/"
-                  variant="btnScrollDown"
-                >
-                  Contratar agora
-                </Button>
+                <Link href="/page/contractPlans">
+                  <Button variant="btnPrimary">Contratar agora</Button>
+                </Link>
               </div>
             </div>
             <div className="w-full flex flex-col">

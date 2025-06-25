@@ -1,0 +1,44 @@
+"use client";
+
+import React from "react";
+
+interface Plan {
+  id: string;
+  name: string;
+  price: number;
+}
+
+interface SelectPlansProps {
+  plans: Plan[];
+  selectedPlan: string;
+  onPlanChange: (plan: string) => void;
+}
+
+export function SelectPlans({
+  plans,
+  selectedPlan,
+  onPlanChange,
+}: SelectPlansProps) {
+  return (
+    <div className="flex flex-col">
+      <h2 className="TypographyPlato20 pb-[20px]">Selecione o plano</h2>
+      <div className="w-full flex items-start justify-between gap-[13px] overflow-x-auto scrollbar-hidden">
+        {plans.map((plan) => (
+          <button
+            key={plan.id}
+            className={`TypographyIntraMenuSlider cursor-pointer ${
+              selectedPlan === plan.name
+                ? "TypographyIntraMenuSliderHover font-bold"
+                : "hover:TypographyIntraMenuSliderHover"
+            }`}
+            onClick={() => onPlanChange(plan.name)}
+          >
+            {plan.name.split("Plano ")[1]}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default SelectPlans;

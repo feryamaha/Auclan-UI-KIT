@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/scripts/Icon";
 import { icons } from "@/scripts/IconsList";
 import React, { useState } from "react";
+import Link from "next/link";
 import ModalProcedimentos from "../AmazingPlans/Modal/Procedimentos/ModalProcedimentos";
 
 interface IncludeItem {
@@ -61,12 +62,9 @@ export function CardSectionPlans({
               {description}
             </p>
           </div>
-          <Button
-            href="https://www.planosdentaluni.com.br/"
-            variant="btnSecondary"
-          >
-            Contratar agora
-          </Button>
+          <Link href="/page/contractPlans">
+            <Button variant="btnSecondary">Contratar agora</Button>
+          </Link>
           <div className="h-max relative flex flex-col my-[32px]">
             <div className="w-[280px] h-[32px] hidden @laptop:block">
               <Icon name="IconBGCardPlans" className="hidden " />

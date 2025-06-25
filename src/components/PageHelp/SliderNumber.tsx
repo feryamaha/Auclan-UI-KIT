@@ -16,9 +16,16 @@ import React, { useState } from "react";
  *    - Preto (#000) se preenchido
  *    - #8A1724 se selecionado
  */
-export function SliderNumber() {
-  // Estado para o step selecionado (inicia no 1 pode ser alterado para qualquer step se necessario)
-  const [selected, setSelected] = useState(3);
+type SliderNumberProps = {
+  initialValue?: number;
+  onChange?: (value: number) => void;
+};
+
+export function SliderNumber({
+  initialValue = 3,
+  onChange,
+}: SliderNumberProps) {
+  const [selected, setSelected] = useState(initialValue);
 
   // Total de steps
   const steps = 8;
@@ -44,18 +51,24 @@ export function SliderNumber() {
   const numberFilled = "#000";
   const numberDefault = "#C0C0C0";
 
+  // Notifica o componente pai sobre a mudança
+  const handleSelect = (step: number) => {
+    setSelected(step);
+    if (onChange) onChange(step);
+  };
+
   return (
-    <div className="w-full flex flex-col items-center ">
+    <div className="w-full flex flex-col items-center">
       {/* Slider */}
       <div
-        className="styleSlider w-[411px] h-[16px] rounded-[8px] p-[4px] flex justify-between items-center cursor-pointer "
+        className="styleSlider w-[412px] h-[16px] rounded-[8px] p-[4px] flex justify-between items-center cursor-pointer"
         style={{
           background: `linear-gradient(to right, ${styleSliderHoverColor} ${fillToCenter}%, ${styleSliderColor} ${fillToCenter}%)`,
           border: "1px solid #E7E7E7",
           borderRadius: "17.5px",
           boxShadow:
             "0px 1px 2px 0px rgba(0, 0, 0, 0.16) inset, 0px 2px 4px 2px rgba(0, 0, 0, 0.06) inset",
-          transition: "background 0.3s",
+          transition: "background 0.2s",
         }}
       >
         {Array.from({ length: steps }).map((_, idx) => {
@@ -66,7 +79,7 @@ export function SliderNumber() {
               <div
                 key={step}
                 className="selectSliderHover"
-                onClick={() => setSelected(step)}
+                onClick={() => handleSelect(step)}
                 aria-label={`Selecionar etapa ${step}`}
                 tabIndex={0}
                 role="button"
@@ -79,7 +92,7 @@ export function SliderNumber() {
               <div
                 key={step}
                 className="stepSliderHover"
-                onClick={() => setSelected(step)}
+                onClick={() => handleSelect(step)}
                 aria-label={`Selecionar etapa ${step}`}
                 tabIndex={0}
                 role="button"
@@ -91,7 +104,7 @@ export function SliderNumber() {
             <div
               key={step}
               className="stepSlider"
-              onClick={() => setSelected(step)}
+              onClick={() => handleSelect(step)}
               aria-label={`Selecionar etapa ${step}`}
               tabIndex={0}
               role="button"

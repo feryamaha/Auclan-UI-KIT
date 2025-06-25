@@ -1,39 +1,39 @@
 {
-    "plans": [
-        {
-            "id": "idCardBronze",
-            "name": "Plano Bronze",
-            "price": "23,40",
-            "description": "por mes por beneficiário no cartao de crédito",
-            "procedures": "166 procedimentos"
-        },
-        {
-            "id": "idCardPrata",
-            "name": "Plano Prata",
-            "price": "25,40",
-            "description": "por mes por beneficiário no cartao de crédito",
-            "procedures": "166 procedimentos"
-        },
-        {
-            "id": "idCardOuro",
-            "name": "Plano Ouro",
-            "price": "27,40",
-            "description": "por mes por beneficiário no cartao de crédito",
-            "procedures": "166 procedimentos"
-        },
-        {
-            "id": "idCardPlatina",
-            "name": "Plano Platina",
-            "price": "31,40",
-            "description": "por mes por beneficiário no cartao de crédito",
-            "procedures": "166 procedimentos"
-        },
-        {
-            "id": "idCardDiamante",
-            "name": "Plano Diamante",
-            "price": "37,40",
-            "description": "por mes por beneficiário no cartao de crédito",
-            "procedures": "166 procedimentos"
-        }
-    ]
+  "plans": [
+    {
+      "id": "idCardBronze",
+      "name": "Plano Bronze",
+      "price": "23,40",
+      "description": "por mes por beneficiário no cartao de crédito",
+      "procedures": "166 procedimentos"
+    },
+    {
+      "id": "idCardPrata",
+      "name": "Plano Prata",
+      "price": "25,40",
+      "description": "por mes por beneficiário no cartao de crédito",
+      "procedures": "166 procedimentos"
+    },
+    {
+      "id": "idCardOuro",
+      "name": "Plano Ouro",
+      "price": "27,40",
+      "description": "por mes por beneficiário no cartao de crédito",
+      "procedures": "166 procedimentos"
+    },
+    {
+      "id": "idCardPlatina",
+      "name": "Plano Platina",
+      "price": "31,40",
+      "description": "por mes por beneficiário no cartao de crédito",
+      "procedures": "166 procedimentos"
+    },
+    {
+      "id": "idCardDiamante",
+      "name": "Plano Diamante",
+      "price": "37,40",
+      "description": "por mes por beneficiário no cartao de crédito",
+      "procedures": "166 procedimentos"
+    }
+  ]
 }

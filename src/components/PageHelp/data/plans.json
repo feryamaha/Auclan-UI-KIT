@@ -1,0 +1,9 @@
+{
+  "plans": [
+    { "id": "idCardBronze", "name": "Plano Bronze", "price": 23.4 },
+    { "id": "idCardPrata", "name": "Plano Prata", "price": 25.4 },
+    { "id": "idCardOuro", "name": "Plano Ouro", "price": 27.4 },
+    { "id": "idCardPlatina", "name": "Plano Platina", "price": 31.4 },
+    { "id": "idCardDiamante", "name": "Plano Diamante", "price": 37.4 }
+  ]
+}
