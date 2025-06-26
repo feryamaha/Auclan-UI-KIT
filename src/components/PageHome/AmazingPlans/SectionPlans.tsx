@@ -25,7 +25,7 @@ export function SectionPlans() {
   }, []);
 
   return (
-    <section className="w-full h-auto">
+    <section className="w-full h-auto" id="idSectionPlans">
       <Container className="py-[64px]">
         <div className="flex flex-col gap-[16px] justify-between">
           <div className="w-full @tablet:h-[196px] flex flex-wrap @tablet:flex-row @tablet:gap-[152px] pb-[40px]">
@@ -45,8 +45,8 @@ export function SectionPlans() {
                 detalhes de cada plano.
               </p>
               <Button
-                href="https://www.planosdentaluni.com.br/"
-                target="_blank"
+                href="/plans"
+                /* target="_blank" */
                 variant="btnLink"
                 className="textbtnLink"
               >

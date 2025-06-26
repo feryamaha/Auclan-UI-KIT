@@ -34,7 +34,7 @@ export function HomePlans() {
   return (
     <>
       {/* Section principal */}
-      <section className="w-full ">
+      <section className="w-full " id="idPageOurPlans" >
         <Container>
           <div className="mt-[24px]">
             <IntraMenu />

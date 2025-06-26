@@ -1,15 +1,14 @@
-import Image from 'next/image'
-import { Button } from '../ui/Button'
-import { Container } from '../ui/Container'
-import { Icon } from '@/scripts/Icon'
+import Image from "next/image";
+import { Button } from "../ui/Button";
+import { Container } from "../ui/Container";
+import { Icon } from "@/scripts/Icon";
 
 export function SmileCare() {
   return (
     <>
-      <section >
+      <section>
         <Container className=" px-[16px] @tablet:p-[5%] w-full mx-auto ">
-          <div className='flex flex-col @laptop:flex-row gap-[24px]  '>
-
+          <div className="flex flex-col @laptop:flex-row gap-[24px]  ">
             <div className="w-full flex flex-col  @tablet:flex-row justify-between">
               {/* DIV1 */}
               <div className="max-w-md flex flex-col items-start mb-8 @laptop:mb-0 md:max-w-full">
@@ -25,18 +24,14 @@ export function SmileCare() {
                   de alta qualidade.
                 </p>
                 <div className="flex w-full flex-col @mobile:flex-row gap-8 mt-8">
-                  <Button
-                    href="/sobre-nos"
-                    variant="btnSecondary"
-                  >
+                  <Button href="/sobre-nos" variant="btnSecondary">
                     Saber mais
                   </Button>
                   <Button
-                    href="https://www.planosdentaluni.com.br/"
-                    target="_blank"
+                    href="/plans"
+                    /* target="_blank" */
                     variant="btnLink"
-                    className='textbtnLink'
-
+                    className="textbtnLink"
                   >
                     Conhecer planos
                     <Icon name="IconArrowright" className="w-5 h-5" />
@@ -56,7 +51,6 @@ export function SmileCare() {
               </div>
             </div>
 
-
             {/* DIV3 */}
             {/* Visível abaixo de desktop, escondido em desktop+ */}
             <div className="flex hidden @laptop:flex flex-col gap-8 max-w-[17.25rem]  ">
@@ -65,8 +59,8 @@ export function SmileCare() {
                   <Icon name="IconGroupstar" className="w-6 h-6 " />
                 </div>
                 <p className="pl-4 border-l-2 border-redSTD TypographyPinter16w500g900 ">
-                  <span className="text-redSTD ">Nota máxima</span> no
-                  Índice de Desempenho da Saúde Suplementar (IDSS)
+                  <span className="text-redSTD ">Nota máxima</span> no Índice de
+                  Desempenho da Saúde Suplementar (IDSS)
                 </p>
               </div>
 
@@ -74,7 +68,7 @@ export function SmileCare() {
                 <p className="">
                   <span className="text-redSTD ">
                     +1 milhão de beneficiários
-                  </span>{' '}
+                  </span>{" "}
                   Dental Uni por todo o Brasil
                 </p>
               </div>
@@ -83,7 +77,7 @@ export function SmileCare() {
                 <p className="">
                   <span className="text-redSTD ">
                     +15 mil áreas de atendimento
-                  </span>{' '}
+                  </span>{" "}
                   qualificado no Brasil
                 </p>
               </div>
@@ -92,35 +86,32 @@ export function SmileCare() {
                 <p className="">
                   <span className="text-redSTD ">
                     +70% dos nossos profissionais são especialistas
-                  </span>{' '}
+                  </span>{" "}
                   em suas áreas
                 </p>
               </div>
-
             </div>
-
 
             {/* DIV3 - MOBILE */}
             {/* Visível (como flex-col) abaixo de desktop, escondido em desktop+ */}
             <div className="flex flex-col  w-full @laptop:hidden overflow-x-auto">
-              <div className='pl-4' >
+              <div className="pl-4">
                 <Icon name="IconGroupstar" className=" w-6 h-6 " />
               </div>
-
 
               <div className="flex w-[1056px] items-center h-[67px] gap-[24px]  ">
                 <div className="relative h-full  ">
                   <p className=" pl-4 w-[200px] border-l-2 border-redSTD TypographyPinter16w500g900 ">
-                    <span className="text-redSTD ">Nota máxima</span> no
-                    Índice de Desempenho da Saúde Suplementar <span className='text-redSTD'>(IDSS)</span>
+                    <span className="text-redSTD ">Nota máxima</span> no Índice
+                    de Desempenho da Saúde Suplementar{" "}
+                    <span className="text-redSTD">(IDSS)</span>
                   </p>
-
                 </div>
                 <div className="h-full w-[210px] border-l-2 border-redSTD pl-4  TypographyPinter16w500g900  ">
                   <p className="">
                     <span className="text-redSTD ">
                       +1 milhão de beneficiários
-                    </span>{' '}
+                    </span>{" "}
                     Dental Uni por todo o Brasil
                   </p>
                 </div>
@@ -128,7 +119,7 @@ export function SmileCare() {
                   <p className="">
                     <span className="text-redSTD ">
                       +15 mil áreas de atendimento
-                    </span>{' '}
+                    </span>{" "}
                     qualificado no Brasil
                   </p>
                 </div>
@@ -136,7 +127,7 @@ export function SmileCare() {
                   <p className="">
                     <span className="text-redSTD ">
                       +70% dos nossos profissionais são especialistas
-                    </span>{' '}
+                    </span>{" "}
                     em suas áreas
                   </p>
                 </div>
@@ -146,5 +137,5 @@ export function SmileCare() {
         </Container>
       </section>
     </>
-  )
+  );
 }

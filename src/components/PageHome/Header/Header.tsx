@@ -47,9 +47,9 @@ export function Header({ children }: HeaderProps) {
             </button>
 
             <div className="hidden @tablet:flex">
-              <Link href="/page/contractPlans">
+              <a href="#idSectionPlans">
                 <Button variant="btnPrimary">Contratar agora</Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
