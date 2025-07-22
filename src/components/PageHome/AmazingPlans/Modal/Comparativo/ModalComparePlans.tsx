@@ -49,7 +49,7 @@ const ModalComparePlans: React.FC<ModalComparePlansProps> = ({ onClose }) => {
               </div>
               <div>
                 <Link href="/page/contractPlans">
-                  <Button variant="btnPrimary">Contratar agora</Button>
+                  <Button variant="btnPrimary" className="hover:bg-red700">Contratar agora</Button>
                 </Link>
               </div>
               <div className="absolute pr-[16px] left-0">

@@ -13,7 +13,7 @@ export function BarComparePlans() {
 
   return (
     <>
-      <section className="w-full relative hidden @tablet:flex justify-between py-2 @Desktop:py-[24px] px-[88px] items-center cursor-pointer">
+      <section className="w-full relative hidden @tablet:flex justify-between py-2 @Desktop:py-[24px] px-[88px] items-center cursor-pointer mt-[16px]">
         <div className="w-full absolute left-0 top-0 bg-redSTD hover:bg-dark rounded-[8.5px] object-contain">
           <Icon name="IconFrameBGBarComparePlans" />
         </div>

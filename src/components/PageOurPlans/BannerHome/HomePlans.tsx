@@ -34,11 +34,12 @@ export function HomePlans() {
   return (
     <>
       {/* Section principal */}
-      <section className="w-full " id="idPageOurPlans" >
+      <section className="w-full " id="idPageOurPlans">
         <Container>
-          <div className="mt-[24px]">
+          {/* Submenu ocultado por solicitaçao de alteracao no design. Ocultado em 21.07.2025 Fernando Moreira  */}
+          {/*           <div className="mt-[24px] ">
             <IntraMenu />
-          </div>
+          </div> */}
 
           <div className="max-w-[671px] flex flex-col justify-center mx-auto text-center mt-[56px] mb-[64px]">
             <div className="w-[153px] mx-auto">
@@ -88,16 +89,16 @@ export function HomePlans() {
             className={
               isCoverageVisible
                 ? "hidden"
-                : "block w-[80%] @laptop:w-[93%] h-[10px] mt-[-0.5px] mb-2 mx-auto spaceFalseCoverage"
+                : "block w-[80%] @laptop:w-[93%] h-[18px] mt-[-0.5px] mb-2 mx-auto spaceFalseCoverage"
             }
           ></div>
 
           {/* Botao ver mais / ver menos para fazer surgir o conteudo coverage que fica sempre ocutado abaixo dos card plans */}
           <div
-            className="max-w-[1116px] flex items-center justify-center mx-auto p-6 gap-[8px] cursor-pointer  z-40 "
+            className="max-w-[1116px] flex items-center justify-center mx-auto pt-[18px] pb-[26px] gap-[8px] cursor-pointer  z-40 "
             onClick={toggleCoverageVisibility}
           >
-            <a className="TypographyPinter16w600">
+            <a className="TypographyPinter16w600 hover:text-red700">
               {isCoverageVisible ? "Ver menos" : "Ver mais"}
             </a>
             <div

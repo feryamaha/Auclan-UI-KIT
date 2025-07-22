@@ -7,8 +7,8 @@ export function SmileCare() {
   return (
     <>
       <section>
-        <Container className=" px-[16px] @tablet:p-[5%] w-full mx-auto ">
-          <div className="flex flex-col @laptop:flex-row gap-[24px]  ">
+        <Container className=" w-full ">
+          <div className="flex flex-col @laptop:flex-row gap-[24px] @tablet:my-[120px] ">
             <div className="w-full flex flex-col  @tablet:flex-row justify-between">
               {/* DIV1 */}
               <div className="max-w-md flex flex-col items-start mb-8 @laptop:mb-0 md:max-w-full">
@@ -24,16 +24,19 @@ export function SmileCare() {
                   de alta qualidade.
                 </p>
                 <div className="flex w-full flex-col @mobile:flex-row gap-8 mt-8">
-                  <Button href="/sobre-nos" variant="btnSecondary">
+                  <Button
+                    href="https://site.dentaluni.com.br/sobre-nos"
+                    variant="btnSecondary"
+                    className=" hover:bg-red700"
+                  >
                     Saber mais
                   </Button>
                   <Button
                     href="/plans"
-                    /* target="_blank" */
                     variant="btnLink"
-                    className="textbtnLink"
+                    className="textbtnLink hover:text-red700"
                   >
-                    Conhecer planos
+                    Conhecer os planos
                     <Icon name="IconArrowright" className="w-5 h-5" />
                   </Button>
                 </div>
@@ -59,8 +62,8 @@ export function SmileCare() {
                   <Icon name="IconGroupstar" className="w-6 h-6 " />
                 </div>
                 <p className="pl-4 border-l-2 border-redSTD TypographyPinter16w500g900 ">
-                  <span className="text-redSTD ">Nota máxima</span> no Índice de
-                  Desempenho da Saúde Suplementar (IDSS)
+                  <span className="text-redSTD ">Excelente nota</span> no Índice
+                  de Desempenho da Saúde Suplementar (IDSS)
                 </p>
               </div>
 

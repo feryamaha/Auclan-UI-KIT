@@ -14,7 +14,7 @@
 
 @layer base {
   body {
-    @apply font-inter antialiased;
+    @apply font-inter antialiased subpixel-antialiased;
   }
 
   /* Outline global de 1px sólido */

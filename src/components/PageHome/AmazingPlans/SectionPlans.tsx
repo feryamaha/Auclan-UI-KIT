@@ -26,8 +26,8 @@ export function SectionPlans() {
 
   return (
     <section className="w-full h-auto" id="idSectionPlans">
-      <Container className="py-[64px]">
-        <div className="flex flex-col gap-[16px] justify-between">
+      <Container>
+        <div className="flex flex-col  justify-between mb-[120px]">
           <div className="w-full @tablet:h-[196px] flex flex-wrap @tablet:flex-row @tablet:gap-[152px] pb-[40px]">
             <div className="max-w-[502px] flex flex-col justify-between">
               <h1 className="TypographyH1">
@@ -48,7 +48,7 @@ export function SectionPlans() {
                 href="/plans"
                 /* target="_blank" */
                 variant="btnLink"
-                className="textbtnLink"
+                className="textbtnLink hover:text-red700"
               >
                 Ir para a página planos
                 <Icon name="IconArrowright" className="w-5 h-5" />

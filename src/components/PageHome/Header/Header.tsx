@@ -26,12 +26,12 @@ export function Header({ children }: HeaderProps) {
                 <Icon name="IconLogoinstitucional" className="w-full h-full " />
               </a>
 
-              <nav className="flex items-center gap-8 hidden  @tablet:flex ">
+              <nav className="flex items-center gap-4 hidden @tablet:flex ">
                 {menuItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.link}
-                    className="flex items-center TypographyNavHeader "
+                    className="flex items-center TypographyNavHeader subpixel-antialiased hover:TypographyNavHeaderHover"
                   >
                     {item.name}
                   </Link>
@@ -47,8 +47,10 @@ export function Header({ children }: HeaderProps) {
             </button>
 
             <div className="hidden @tablet:flex">
-              <a href="#idSectionPlans">
-                <Button variant="btnPrimary">Contratar agora</Button>
+              <a href="/page/contractPlans">
+                <Button variant="btnPrimary" className="hover:bg-red700">
+                  Contratar agora
+                </Button>
               </a>
             </div>
           </div>

@@ -17,9 +17,9 @@ const FormHelp = () => {
 
   const getInputClass = (fieldName: keyof FormHelpData) => {
     const baseClass =
-      "w-full py-[12px] px-[16px] border rounded TypographyPinter16w500g";
+      "w-full py-[12px] px-[16px] border rounded-[8px]  text-red500 ";
     if (errors[fieldName]) {
-      return `${baseClass} border-orange-500`;
+      return `${baseClass} border-red300`;
     }
     return baseClass;
   };
@@ -34,7 +34,7 @@ const FormHelp = () => {
     <form
       action="https://formsubmit.co/feryamaha@hotmail.com"
       method="POST"
-      className="w-full @tablet:max-w-[520px] h-[585px] bg-white rounded-[16px] border p-[32px]"
+      className="w-[520px] @tablet:max-w-[520px] h-max bg-white rounded-[16px] border p-[32px]"
     >
       {/* Campos ocultos para controle do FormSubmit */}
       <input type="hidden" name="_next" value="https://seusite.com/obrigado" />
@@ -46,59 +46,66 @@ const FormHelp = () => {
       />
 
       <h2 className="TypographyPlato24 mb-[24px]">Preencha o formulário</h2>
-      <div className="space-y-5">
-        <div>
-          <label className="TypographyPlato20">Sobre você:</label>
+
+      <div className="flex flex-col gap-[32px]">
+        <div className="flex flex-col gap-[16px]">
+          <div>
+            <label className="TypographyPlato20">Sobre você:</label>
+          </div>
+
+          <input
+            {...register("userName")}
+            name="name"
+            placeholder="Nome completo"
+            className={getInputClass("userName")}
+          />
+
+          <input
+            {...register("email")}
+            name="email"
+            type="email"
+            placeholder="E-mail"
+            className={getInputClass("email")}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
+
+          <input
+            {...register("phone")}
+            name="phone"
+            type="tel"
+            placeholder="Telefone"
+            className={getInputClass("phone")}
+          />
+          {errors.phone && (
+            <p className="text-red-500 text-sm">{errors.phone.message}</p>
+          )}
         </div>
 
-        <input
-          {...register("userName")}
-          name="name"
-          placeholder="Nome completo"
-          className={getInputClass("userName")}
-        />
+        <div className="flex flex-col gap-[16px]">
+          <div>
+            <label className="TypographyPlato20">Sua mensagem:</label>
+          </div>
 
-        <input
-          {...register("email")}
-          name="email"
-          type="email"
-          placeholder="E-mail"
-          className={getInputClass("email")}
-        />
-        {errors.email && (
-          <p className="text-red-500 text-sm">{errors.email.message}</p>
-        )}
-
-        <input
-          {...register("phone")}
-          name="phone"
-          type="tel"
-          placeholder="Telefone"
-          className={getInputClass("phone")}
-        />
-        {errors.phone && (
-          <p className="text-red-500 text-sm">{errors.phone.message}</p>
-        )}
-
-        <div>
-          <label className="TypographyPlato20">Sua mensagem:</label>
+          <textarea
+            {...register("message")}
+            name="message"
+            placeholder="Digite sua mensagem"
+            className={`${getInputClass("message")} h-[94px] `}
+          />
         </div>
 
-        <textarea
-          {...register("message")}
-          name="message"
-          placeholder="Digite sua mensagem"
-          className={getInputClass("message")}
-        />
-
-        <Button
-          variant="btnForm"
-          className={getButtonClass()}
-          type="submit"
-          disabled={!isValid}
-        >
-          <span className="w-full">Enviar mensagem</span>
-        </Button>
+        <div>
+          <Button
+            variant="btnForm"
+            className={getButtonClass()}
+            type="submit"
+            disabled={!isValid}
+          >
+            <span className="w-full">Enviar mensagem</span>
+          </Button>
+        </div>
       </div>
     </form>
   );

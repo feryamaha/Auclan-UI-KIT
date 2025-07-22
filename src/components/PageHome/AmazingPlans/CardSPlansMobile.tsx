@@ -44,7 +44,7 @@ export function CardSPlansMobile({
           <div className="absolute bottom-0">
             {" "}
             {/* Manter posicionamento para texto/botão Ver Procedimentos */}
-            <p className=" pb-[8px] TypographyPinter16w500g950">{procedures}</p>
+            <p className=" pb-[8px] TypographyPinter16g950">{procedures}</p>
             <Button className=" TypographyPinter16w500r " variant="btnLink">
               Ver procedimentos
             </Button>

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 
-// Definindo os tipos de variantes disponíveis
 type ButtonVariant =
   | "btnPrimary"
   | "btnSecondary"
@@ -31,7 +30,6 @@ export function Button({
   variant = "btnPrimary",
   ...props
 }: ButtonProps) {
-  // Mapeamento das classes de layout para cada variante
   const variantStyles = {
     btnPrimary: "btnPrimary",
     btnSecondary: "btnSecondary",
@@ -44,38 +42,38 @@ export function Button({
     btnLinkForm: "btnLinkForm",
   };
 
-  // Função para renderizar o conteúdo do botão
   const renderContent = () => children;
 
-  // Lógica para variante 'btnLink'
-  if (variant === "btnLink") {
-    if (href) {
-      // Renderiza um Link apenas se href for fornecido
-      return (
-        <Link
-          href={href}
-          className={`${variantStyles[variant]} ${className}`}
-          target={target}
-          {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
-        >
-          {renderContent()}
-        </Link>
-      );
-    } else {
-      // Renderiza um button se href não for fornecido
-      return (
-        <button
-          className={`${variantStyles[variant]} ${className}`}
-          onClick={onClick}
-          {...props}
-        >
-          {renderContent()}
-        </button>
-      );
-    }
+  // Links externos (começam com http ou https)
+  if (href && (href.startsWith("http") || href.startsWith("https"))) {
+    return (
+      <a
+        href={href}
+        className={`${variantStyles[variant]} ${className}`}
+        target={target || "_blank"} // Usa target fornecido ou _blank por padrão
+        rel="noopener noreferrer"
+        {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+      >
+        {renderContent()}
+      </a>
+    );
   }
 
-  // Para outras variantes, renderiza um button
+  // Links internos (usaméquences
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className={`${variantStyles[variant]} ${className}`}
+        target={target}
+        {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+      >
+        {renderContent()}
+      </Link>
+    );
+  }
+
+  // Botão sem href
   return (
     <button
       className={`${variantStyles[variant]} ${className}`}

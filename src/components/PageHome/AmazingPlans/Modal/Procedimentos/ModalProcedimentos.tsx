@@ -94,7 +94,9 @@ export default function ModalProcedimentos({
               </div>
               <div>
                 <Link href="/page/contractPlans">
-                  <Button variant="btnPrimary">Contratar agora</Button>
+                  <Button variant="btnPrimary" className="hover:bg-red700">
+                    Contratar agora
+                  </Button>
                 </Link>
               </div>
             </div>

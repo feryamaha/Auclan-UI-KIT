@@ -63,17 +63,24 @@ export function CardSectionPlans({
             </p>
           </div>
           <Link href="/page/contractPlans">
-            <Button variant="btnSecondary">Contratar agora</Button>
+            <Button
+              variant="btnSecondary"
+              className="w-full mb-[32px] hover:bg-red700"
+            >
+              Contratar agora
+            </Button>
           </Link>
-          <div className="h-max relative flex flex-col my-[32px]">
-            <div className="w-[280px] h-[32px] hidden @laptop:block">
-              <Icon name="IconBGCardPlans" className="hidden " />
+          <div className="h-max relative flex flex-col ">
+            <div className="max-w-[280px] h-[32px] hidden @laptop:block">
+              <Icon name="IconBGCardPlans" className="hidden" />
             </div>
-            <div className="w-[280px] h-[32px] block @laptop:hidden ">
+            <div className="max-w-[280px] h-[32px] block @laptop:hidden ">
               <Icon name="IconBGCardPlansMobile" className="hidden " />
             </div>
-            <div className="flex flex-col gap-[8px] ">
-              {/* Included list */}
+
+            <div className="flex flex-col gap-[8px]">
+              {" "}
+              {/* div list include */}
               {IncludTitle && (
                 <h3 className="TypographyPinter16w500g950 mb-[12px] ">
                   {IncludTitle}
@@ -118,18 +125,18 @@ export function CardSectionPlans({
               {includE?.map((item, index) => (
                 <div
                   key={`includeE-${index}`}
-                  className="flex gap-[12px] items-center"
+                  className="flex gap-[12px] items-center mb-[24px]"
                 >
                   <Icon name={item.iconInclud} />
                   <p className="TypographyPinter16w400 ">{item.textIncludE}</p>
                 </div>
               ))}
             </div>
-            <div className="h-max flex flex-col gap-[8px] mt-[24px]">
-              <p className="TypographyPinter16w500g950">{procedures}</p>
-              <div className=" ">
+            <div className="h-max flex flex-col gap-[10px] ">
+              <p className="TypographyPinter16g950">{procedures}</p>
+              <div>
                 <Button
-                  className="TypographyPinter16w500r absolute"
+                  className="TypographyPinter16w500r hover:text-red700"
                   variant="btnLink"
                   onClick={() => setIsModalOpen(true)}
                 >

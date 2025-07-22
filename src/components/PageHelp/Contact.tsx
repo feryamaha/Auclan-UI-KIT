@@ -5,7 +5,7 @@ import FormHelp from "./FormHelp";
 export function Contact() {
   return (
     <>
-      <section className=" w-full h-[429px] bg-BgContactMobile @mobile:bg-BgContactTablet @laptop:bg-BgContact  bg-cover border mx-auto">
+      <section className=" w-full h-[429px] bg-BgContactMobile @mobile:bg-BgContactTablet @laptop:bg-BgContact bg-cover mx-auto">
         <Container className="mx-auto">
           <div className="w-full pt-[48px] @laptop:pt-[80px]">
             <h1 className="TypographyH1white max-w-[437px] pb-[16px]">
@@ -18,9 +18,9 @@ export function Contact() {
           </div>
         </Container>
       </section>
-      <section className="w-full h-max relative pb-[80px] pt-[400px] @mobile:pt-[480px] @tablet:pt-0 @tablet:mb-[120px] @laptop:mb-0 ">
+      <section className="w-full h-max relative pt-[400px] @mobile:pt-[480px] @tablet:pt-0 @tablet:mb-[120px] @laptop:mb-0">
         <Container>
-          <div className="py-[32px]  ">
+          <div className="py-[32px]">
             <div className="max-w-[508px] h-[204px] flex flex-col gap-[24px]">
               <div className="flex items-center gap-[16px]">
                 <div>

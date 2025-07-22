@@ -4,23 +4,23 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import SliderControl from "./SliderControl";
-import { Icon } from '@/scripts/Icon'
-import { Button } from '@/components/ui/Button'
+import { Icon } from "@/scripts/Icon";
+import { Button } from "@/components/ui/Button";
 
 // Imagens do banner - agora referenciando da pasta public
 const bannerImages = [
   {
-    src: '/assets/img/bg-home.webp',
-    alt: 'Banner Dental Uni - Plano Odontológico'
+    src: "/assets/img/bg-home.webp",
+    alt: "Banner Dental Uni - Plano Odontológico",
   },
   {
-    src: '/assets/img/bg-home2.webp',
-    alt: 'Banner Dental Uni - Plano Odontológico'
+    src: "/assets/img/bg-home2.webp",
+    alt: "Banner Dental Uni - Plano Odontológico",
   },
   {
-    src: '/assets/img/bg-home3.webp',
-    alt: 'Banner Dental Uni - Plano Odontológico'
-  }
+    src: "/assets/img/bg-home3.webp",
+    alt: "Banner Dental Uni - Plano Odontológico",
+  },
 ];
 
 const TOTAL_SLIDES = bannerImages.length;
@@ -51,10 +51,13 @@ const BannerHome: React.FC = () => {
             alt={bannerImages[currentImage].alt}
             fill
             priority // Pré-carregar todas as imagens
-            className={`object-cover object-center transition-opacity duration-[1500ms] ease-in-out ${isTransitioning ? "opacity-0" : "opacity-100"
-              }`}
+            className={`object-cover object-center transition-opacity duration-[1500ms] ease-in-out ${
+              isTransitioning ? "opacity-0" : "opacity-100"
+            }`}
             style={{
-              animation: isTransitioning ? "fadeOut 1500ms ease-in-out forwards" : "none",
+              animation: isTransitioning
+                ? "fadeOut 1500ms ease-in-out forwards"
+                : "none",
             }}
           />
         </div>
@@ -97,24 +100,29 @@ const BannerHome: React.FC = () => {
 
       {/* Conteúdo do banner */}
       <Container className="relative h-full flex flex-col py-[32px] justify-between @tablet:flex-row ">
-        <div className="  px-4 max-w-[420px]  ">
+        <div className="  px-4 max-w-[445px]  ">
           <Icon name="IconDucol" className="w-5 h-5 " />
-          <h1 className=" mb-4 mt-[32px] TypographyH1home ">
+          <h1 className=" mb-4 mt-[32px] TypographyH1home">
             Docol e Dental Uni juntos pelo seu sorriso
           </h1>
           <p className="mb-8 TypographyPinter18home ">
-            Planos odontológicos com uma das maiores redes credenciadas e cobertura com preços incríveis..
+            Planos odontológicos com uma das maiores redes credenciadas e
+            cobertura com preços incríveis..
           </p>
           <Button
-            href="https://www.planosdentaluni.com.br/"
-            variant="btnTertiary"
+            href="/plans"
+            variant="btnSecondary"
+            className="hover:bg-red700"
           >
-            Conhecer planos
+            Conhecer os planos
           </Button>
         </div>
 
         <div className="w-full max-w-[500px] relative mt-8 @tablet:absolute @tablet:bottom-8 @tablet:left-1/2 @tablet:-translate-x-1/2 @tablet:mt-0 ">
-          <SliderControl images={bannerImages} onSlideChange={handleSlideChange}  />
+          <SliderControl
+            images={bannerImages}
+            onSlideChange={handleSlideChange}
+          />
         </div>
       </Container>
     </div>

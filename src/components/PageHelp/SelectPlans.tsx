@@ -21,8 +21,8 @@ export function SelectPlans({
 }: SelectPlansProps) {
   return (
     <div className="flex flex-col">
-      <h2 className="TypographyPlato20 pb-[20px]">Selecione o plano</h2>
-      <div className="w-full flex items-start justify-between gap-[13px] overflow-x-auto scrollbar-hidden">
+      <h2 className="TypographyPlato20 pb-[16px]">Selecione o plano</h2>
+      <div className="w-full flex items-start justify-between gap-[12px] overflow-x-auto scrollbar-hidden">
         {plans.map((plan) => (
           <button
             key={plan.id}

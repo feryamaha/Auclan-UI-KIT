@@ -33,11 +33,13 @@ export function CardCustomersPlans({
             {selectedPlan.toLowerCase()}
           </span>{" "}
           para
-          <h2 className="TypographyH2">{beneficiaries} beneficiários</h2>
+          <h2 className="TypographyH2 pt-[8px]">
+            {beneficiaries} beneficiários
+          </h2>
         </p>
       </div>
-      <div className="mb-[40px]">
-        <p className="TypographyPinter16w400">por apenas</p>
+      <div className="mb-[48px] flex flex-col gap-[8px]">
+        <p className="TypographyPinter16w400 ">por apenas</p>
         <h1 className="TypographyH1">R$ {totalPrice}</h1>
         <p className="max-w-[162px] TypographyPinter14w400">
           por mês por beneficiário no cartão de crédito.
@@ -45,15 +47,17 @@ export function CardCustomersPlans({
       </div>
       <div className="w-full">
         <Link href="/page/contractPlans">
-          <Button variant="btnPrimary" className="w-full mb-[24px]">
+          <Button
+            variant="btnSecondary"
+            className="w-full mb-[24px] py-[12px] hover:bg-red700"
+          >
             Contratar agora
           </Button>
         </Link>
         <Button
-          href="https://www.planosdentaluni.com.br/"
-          target="_blank"
+          href="/plans"
           variant="btnLink"
-          className="textbtnLink"
+          className="textbtnLink hover:text-red700"
         >
           Conhecer mais o plano
           <Icon name="IconArrowright" className="w-5 h-5" />

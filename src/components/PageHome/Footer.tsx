@@ -122,13 +122,13 @@ export function Footer() {
             <h4 className="pb-6 TypographyPinter16w500g95 ">
               Fale com a gente
             </h4>
-            <ul className=" flex flex-col gap-2">
+            <ul className=" flex flex-col gap-2 ">
               <li className="flex flex-col gap-1">
                 <span className="TypographyPinter14w400footer">
                   Capitais e região metropolitana
                 </span>
                 <a
-                  className="transition-colors duration-200 ease-linear TypographyPinter14w500 "
+                  className="transition-colors duration-200 ease-linear TypographyPinter14w500 hover:text-redSTD "
                   href="tel:40072525"
                 >
                   4007 2525
@@ -139,7 +139,7 @@ export function Footer() {
                   Demais localidades
                 </span>
                 <a
-                  className="transition-colors duration-200 ease-linear TypographyPinter14w500 "
+                  className="transition-colors duration-200 ease-linear TypographyPinter14w500 hover:text-redSTD  "
                   href="tel:08006033683"
                 >
                   0800 603 3683
@@ -148,7 +148,7 @@ export function Footer() {
               <li className="flex flex-col gap-1">
                 <span className="TypographyPinter14w400footer">Vendas</span>
                 <a
-                  className="transition-colors duration-200 ease-linear TypographyPinter14w500 "
+                  className="transition-colors duration-200 ease-linear TypographyPinter14w500 hover:text-redSTD  "
                   href="tel:08000526000"
                 >
                   0800 052 6000
@@ -165,7 +165,7 @@ export function Footer() {
                   Capitais e região metropolitana
                 </span>
                 <a
-                  className="transition-colors duration-200 ease-linear TypographyPinter14w500 "
+                  className="transition-colors duration-200 ease-linear TypographyPinter14w500 hover:text-redSTD  "
                   href="tel:40072400"
                 >
                   4007 2400
@@ -176,7 +176,7 @@ export function Footer() {
                   Demais localidades
                 </span>
                 <a
-                  className="transition-colors duration-200 ease-linear TypographyPinter14w500"
+                  className="transition-colors duration-200 ease-linear TypographyPinter14w500 hover:text-redSTD "
                   href="tel:08006434300"
                 >
                   0800 643 4300
@@ -190,7 +190,7 @@ export function Footer() {
             <ul className="flex flex-col gap-2 ">
               <li>
                 <a
-                  className="transition-colors duration-200 ease-linear TypographyPinter14w400 "
+                  className="transition-colors duration-200 ease-linear TypographyPinter14w400 hover:text-redSTD  "
                   href="/rede-credenciada"
                 >
                   Rede credenciada
@@ -198,7 +198,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  className="transition-colors duration-200 ease-linear TypographyPinter14w400 "
+                  className="transition-colors duration-200 ease-linear TypographyPinter14w400 hover:text-redSTD  "
                   href="https://desbloqueio.dentaluni.com.br/"
                   target="_blank"
                 >
@@ -207,7 +207,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  className="transition-colors duration-200 ease-linear TypographyPinter14w400 "
+                  className="transition-colors duration-200 ease-linear TypographyPinter14w400 hover:text-redSTD  "
                   href="https://www.dentaluni.com.br/autoatendimento"
                   target="_blank"
                 >
@@ -216,16 +216,17 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  className="transition-colors duration-200 ease-linear TypographyPinter14w400 "
-                  href="/noticias"
+                  className="transition-colors duration-200 ease-linear TypographyPinter14w400 hover:text-redSTD  "
+                  href="https://site.dentaluni.com.br/noticias"
+                  target="_blank"
                 >
                   Blog & Notícias
                 </a>
               </li>
               <li>
                 <a
-                  className="transition-colors duration-200 ease-linear TypographyPinter14w400 "
-                  href="/ajuda"
+                  className="transition-colors duration-200 ease-linear TypographyPinter14w400 hover:text-redSTD  "
+                  href="#Section-questions"
                 >
                   Perguntas frequentes
                 </a>
@@ -275,25 +276,28 @@ export function Footer() {
         </div>
         <div className="flex justify-center @tablet:justify-between ">
           <ul className="flex flex-col gap-[8px] pt-[21px] hidden  @tablet:block">
-            <li className="flex gap-[8px]">
-              <a
-                className="flex gap-2 items-center TypographyPinter14w400 "
-                href="https://api.whatsapp.com/send/?phone=554133711901&text=Oi&type=phone_number&app_absent=0"
-                target="_blank"
-              >
-                WhatsApp
-              </a>
-              <Icon name="IconArrowdiag" className="w-6 h-6" />
-            </li>
-            <li className="flex gap-[8px]">
-              <a
-                className="flex gap-2 items-center TypographyPinter14w400 "
-                href="/ajuda/#contato"
-              >
-                Contatos
-              </a>
-              <Icon name="IconArrowdiag" className="w-6 h-6" />
-            </li>
+            <Link
+              href="https://api.whatsapp.com/send/?phone=554133711901&text=Oi&type=phone_number&app_absent=0"
+              target="_blank"
+            >
+              <li className="flex gap-[8px]">
+                <a className="flex gap-2 items-center TypographyPinter14w400 hover:text-redSTD  ">
+                  WhatsApp
+                </a>
+                <Icon name="IconArrowdiag" className="w-6 h-6 " />
+              </li>
+            </Link>
+            <Link
+              href="https://site.dentaluni.com.br/ajuda#contato"
+              target="_blank"
+            >
+              <li className="flex gap-[8px] cursor-pointer ">
+                <a className="flex gap-2 items-center TypographyPinter14w400 hover:text-redSTD ">
+                  Contatos
+                </a>
+                <Icon name="IconArrowdiag" className="w-6 h-6" />
+              </li>
+            </Link>
           </ul>
           <div className=" flex flex-col items-center @tablet:items-start">
             <h4 className=" TypographyPinter16w500g950 ">
@@ -334,7 +338,7 @@ export function Footer() {
           <p className="TypographyPinter14w400 pt-[8px] @tablet:pt-0">
             Feito por:
             <a
-              className="TypographyPinter14w500g95 "
+              className="TypographyPinter14w500g95 hover:text-gray700"
               target="_blank"
               href="https://auclandesign.com/"
             >
