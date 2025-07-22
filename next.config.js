@@ -1,5 +1,4 @@
-// next.config.js
-const path = require('path');
+const path = require("path");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,33 +6,34 @@ const nextConfig = {
     turbo: {},
   },
   images: {
-    domains: ['www.dentaluni.com.br'],
+    domains: ["www.dentaluni.com.br"],
   },
   // Configuração de rewrites para mapear as rotas da pasta page/
   async rewrites() {
     return [
       {
-        source: '/',
-        destination: '/page',
+        source: "/",
+        destination: "/page",
       },
       {
-        source: '/comparative',
-        destination: '/page/comparative',
+        source: "/comparative",
+        destination: "/page/comparative",
       },
       {
-        source: '/help',
-        destination: '/page/help',
+        source: "/help",
+        destination: "/page/help",
       },
       {
-        source: '/plans',
-        destination: '/page/plans',
+        source: "/plans",
+        destination: "/page/plans",
       },
     ];
   },
+  // Configuração do webpack para aliases
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.resolve(__dirname, 'src'), // Define o alias @ para src/
+      "@": path.resolve(__dirname, "src"),
     };
     return config;
   },

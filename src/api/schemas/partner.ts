@@ -1,3 +1,5 @@
+//src/api/schemas/partners.ts 
+
 import { z } from 'zod'
 import { PartnerFormData } from '../types/partner'
 

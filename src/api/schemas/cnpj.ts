@@ -1,3 +1,5 @@
+//src/api/schemas/cnpj.ts
+
 import { z } from 'zod'
 
 export const cnpjSchema = z.object({
