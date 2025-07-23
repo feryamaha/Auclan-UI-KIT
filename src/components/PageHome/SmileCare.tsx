@@ -7,15 +7,15 @@ export function SmileCare() {
   return (
     <>
       <section>
-        <Container className=" w-full ">
-          <div className="flex flex-col @laptop:flex-row gap-[24px] @tablet:my-[120px] ">
+        <Container className="w-full py-[120px]">
+          <div className="flex flex-col @laptop:flex-row gap-[24px] ">
             <div className="w-full flex flex-col  @tablet:flex-row justify-between">
               {/* DIV1 */}
               <div className="max-w-md flex flex-col items-start mb-8 @laptop:mb-0 md:max-w-full">
-                <p className="pb-2 pt-12 TypographyPinter14w500">
+                <p className="pb-[8px] TypographyPinter14w500">
                   SORRIA SEMPRE COM A DENTAL UNI
                 </p>
-                <h2 className="pb-4 @tablet:TypographyH1 text-[2rem]">
+                <h2 className="pb-[16px] TypographyH1mobile @tablet:TypographyH1 text-[2rem]">
                   Cuidar do seu sorriso é o nosso compromisso.
                 </h2>
                 <p className="max-w-[22.375rem] TypographyPinter16w400">
@@ -23,7 +23,7 @@ export function SmileCare() {
                   proporcionar acesso fácil e acessível a cuidados odontológicos
                   de alta qualidade.
                 </p>
-                <div className="flex w-full flex-col @mobile:flex-row gap-8 mt-8">
+                <div className="flex w-full flex-col @mobile:flex-row gap-8 mt-[32px]">
                   <Button
                     href="https://site.dentaluni.com.br/sobre-nos"
                     variant="btnSecondary"

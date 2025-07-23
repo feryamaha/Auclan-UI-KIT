@@ -84,6 +84,7 @@ export default {
         BGStepB0: "url(/assets/img/BGStepB0.webp)",
         BGCardStepB0: "url(/assets/img/BGCardStepB0.webp)",
         BGBlur: "url(/assets/img/BGBlur.webp)",
+        BGoverlayMobile: "url(/assets/img/bgOverlayMobile.webp)",
       },
       fontFamily: {
         openSans: ["Open Sans", "sans-serif"],
@@ -867,6 +868,11 @@ export default {
           fontWeight: "500",
           lineHeight: "140%",
           letterSpacing: "-0.32px",
+        },
+        ".bgOverlayMobile": {
+          background: "rgba(58, 58, 58, 0.58)",
+          "backdrop-filter": "blur(5px)", // Use kebab-case
+          "-webkit-backdrop-filter": "blur(5px)", // Adicione prefixo para compatibilidade com navegadores WebKit
         },
         ".scrollbar-hidden": {
           "-ms-overflow-style": "none" /* IE e Edge */,

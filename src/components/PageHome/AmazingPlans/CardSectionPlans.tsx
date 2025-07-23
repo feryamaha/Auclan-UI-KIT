@@ -71,12 +71,15 @@ export function CardSectionPlans({
             </Button>
           </Link>
           <div className="h-max relative flex flex-col ">
-            <div className="max-w-[280px] h-[32px] hidden @laptop:block">
+            <div className="w-full h-[32px] hidden @laptop:block">
+              <Icon name="IconBGCardPlans" className="w-full" />
+            </div>
+            {/*<div className="max-w-[280px] h-[32px] hidden @laptop:block">
               <Icon name="IconBGCardPlans" className="hidden" />
             </div>
             <div className="max-w-[280px] h-[32px] block @laptop:hidden ">
               <Icon name="IconBGCardPlansMobile" className="hidden " />
-            </div>
+            </div> */}
 
             <div className="flex flex-col gap-[8px]">
               {" "}

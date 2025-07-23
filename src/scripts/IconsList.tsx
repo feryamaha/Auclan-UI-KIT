@@ -3141,7 +3141,7 @@ const IconBGCardPlans = (props: React.SVGProps<SVGSVGElement>) => (
 
 const IconBGCardPlansMobile = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    width="300"
+    width="294"
     height="90"
     viewBox="0 0 300 90"
     fill="none"

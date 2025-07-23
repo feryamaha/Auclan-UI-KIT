@@ -100,7 +100,7 @@ const BannerHome: React.FC = () => {
 
       {/* Conteúdo do banner */}
       <Container className="relative h-full flex flex-col py-[32px] justify-between @tablet:flex-row ">
-        <div className="  px-4 max-w-[445px]  ">
+        <div className=" px-4 max-w-[445px]  ">
           <Icon name="IconDucol" className="w-5 h-5 " />
           <h1 className=" mb-4 mt-[32px] TypographyH1home">
             Docol e Dental Uni juntos pelo seu sorriso
@@ -112,7 +112,7 @@ const BannerHome: React.FC = () => {
           <Button
             href="/plans"
             variant="btnSecondary"
-            className="hover:bg-red700"
+            className="hover:bg-red700 w-full @mobile:w-auto"
           >
             Conhecer os planos
           </Button>

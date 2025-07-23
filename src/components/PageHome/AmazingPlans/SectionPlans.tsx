@@ -27,10 +27,10 @@ export function SectionPlans() {
   return (
     <section className="w-full h-auto" id="idSectionPlans">
       <Container>
-        <div className="flex flex-col  justify-between mb-[120px]">
-          <div className="w-full @tablet:h-[196px] flex flex-wrap @tablet:flex-row @tablet:gap-[152px] pb-[40px]">
-            <div className="max-w-[502px] flex flex-col justify-between">
-              <h1 className="TypographyH1">
+        <div className="flex flex-col justify-between gap-[40px] mb-[120px]">
+          <div className="w-full @tablet:h-[196px] flex flex-col @mobile:flex-row @mobile:gap-[32px] @tablet:gap-[152px]">
+            <div className="max-w-[502px] flex flex-col ">
+              <h1 className="@tablet:TypographyH1 TypographyH1mobile pb-[16px]">
                 Planos incríveis a partir de R$ 23,40 por mês
               </h1>
               <p className="max-w-[380px] TypographyPinter16w400">
@@ -38,6 +38,7 @@ export function SectionPlans() {
                 com preços incríveis.
               </p>
             </div>
+
             <div className="max-w-[300px] h-[114px] mt-[42px] flex flex-col justify-between items-start">
               <p className=" TypographyPinter16w500g950">Quer mais detalhes?</p>
               <p className="pt-[8px] pb-[12px] TypographyPinter16w400">
