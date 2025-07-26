@@ -27,15 +27,27 @@ export function Header({ children }: HeaderProps) {
               </a>
 
               <nav className="flex items-center gap-4 hidden @tablet:flex ">
-                {menuItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.link}
-                    className="flex items-center TypographyNavHeader subpixel-antialiased hover:TypographyNavHeaderHover"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+                {menuItems.map((item) =>
+                  item.name === "Rede Credenciada" ? (
+                    <a
+                      key={item.name}
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center TypographyNavHeader subpixel-antialiased hover:TypographyNavHeaderHover"
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.name}
+                      href={item.link}
+                      className="flex items-center TypographyNavHeader subpixel-antialiased hover:TypographyNavHeaderHover"
+                    >
+                      {item.name}
+                    </Link>
+                  )
+                )}
               </nav>
             </div>
 

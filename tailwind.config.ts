@@ -79,6 +79,10 @@ export default {
         BgContactMobile: "url(/assets/img/bg-contactMobile.webp)",
         BgContactTablet: "url(/assets/img/bg-contactTablet.webp)",
         BgBannerHomeOurPlans: "url(/assets/img/bg-BannerHomeOurPlans.webp)",
+        BgBannerHomeOurPlansMobile:
+          "url(/assets/img/bg-BannerHomeOurPlansMobile.webp)",
+        BgBannerHomeOurPlansTablet:
+          "url(/assets/img/bg-BannerHomeOurPlansTablet.webp)",
         bgFooter: "url(/assets/icons/footer/bgFooter.png)",
         BgCardModalComparePlans: "url(/assets/img/BgCardModalComparePlan.webp)",
         BGStepB0: "url(/assets/img/BGStepB0.webp)",

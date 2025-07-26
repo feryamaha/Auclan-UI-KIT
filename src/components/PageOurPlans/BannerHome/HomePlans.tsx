@@ -41,7 +41,7 @@ export function HomePlans() {
             <IntraMenu />
           </div> */}
 
-          <div className="max-w-[671px] flex flex-col justify-center mx-auto text-center mt-[56px] mb-[64px]">
+          <div className="max-w-[671px] flex flex-col justify-center mx-auto text-center @mobile:mt-[56px] my-[64px]">
             <div className="w-[153px] mx-auto">
               <Icon name="IconDucol" />
             </div>
@@ -54,7 +54,7 @@ export function HomePlans() {
             </p>
           </div>
           {/* Card plans */}
-          <div className="max-w-[1280px] h-max mx-auto flex flex-col overflow-x-auto @Desktop:overflow-hidden scrollbar-hidden @laptop:border rounded-[8px] ">
+          <div className="max-w-[1280px] h-max mx-auto flex flex-col overflow-x-auto @Desktop:overflow-hidden scrollbar-hidden @laptop:border rounded-[8px] bg-red25 ">
             <div className="w-max mx-auto bg-white  justify-center flex z-10 ">
               {typedPlansData.plans.map((plan, index, array) => (
                 <div key={`desktop-${plan.id}`}>

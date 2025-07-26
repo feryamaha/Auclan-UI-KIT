@@ -34,7 +34,7 @@ const FormHelp = () => {
     <form
       action="https://formsubmit.co/feryamaha@hotmail.com"
       method="POST"
-      className="w-[520px] @tablet:max-w-[520px] h-max bg-white rounded-[16px] border p-[32px]"
+      className="w-full @mobile:w-[520px] h-max bg-white rounded-[16px] border p-[32px]"
     >
       {/* Campos ocultos para controle do FormSubmit */}
       <input type="hidden" name="_next" value="https://seusite.com/obrigado" />

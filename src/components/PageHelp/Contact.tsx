@@ -21,7 +21,7 @@ export function Contact() {
       <section className="w-full h-max relative pt-[400px] @mobile:pt-[480px] @tablet:pt-0 @tablet:mb-[120px] @laptop:mb-0">
         <Container>
           <div className="py-[32px]">
-            <div className="max-w-[508px] h-[204px] flex flex-col gap-[24px]">
+            <div className="max-w-[508px] h-[204px] flex flex-col gap-[24px] ">
               <div className="flex items-center gap-[16px]">
                 <div>
                   <Icon name="IconTelefone" className="w-6 h-6" />
@@ -56,7 +56,7 @@ export function Contact() {
             </div>
           </div>
           {/* <div className="absolute -top-[310px]  right-[80px] "> */}
-          <div className="max-w-full absolute -top-[190px] @mobile:-top-[120px] @laptop:-top-[360px] right-0 @mobile:right-auto @tablet:right-[80px] ">
+          <div className="w-full @mobile:w-max absolute -top-[190px] @mobile:-top-[120px] @laptop:-top-[360px] right-0 @mobile:right-auto @tablet:right-[80px] px-[2px]">
             <FormHelp />
           </div>
         </Container>

@@ -20,13 +20,13 @@ export function SelectPlans({
   onPlanChange,
 }: SelectPlansProps) {
   return (
-    <div className="flex flex-col">
+    <div className="w-full flex flex-col">
       <h2 className="TypographyPlato20 pb-[16px]">Selecione o plano</h2>
-      <div className="w-full flex items-start justify-between gap-[12px] overflow-x-auto scrollbar-hidden">
+      <div className=" flex flex-row justify-between gap-[12px] overflow-x-auto scrollbar-none ">
         {plans.map((plan) => (
           <button
             key={plan.id}
-            className={`TypographyIntraMenuSlider cursor-pointer ${
+            className={`TypographyIntraMenuSlider cursor-pointer w-max ${
               selectedPlan === plan.name
                 ? "TypographyIntraMenuSliderHover font-bold"
                 : "hover:TypographyIntraMenuSliderHover"

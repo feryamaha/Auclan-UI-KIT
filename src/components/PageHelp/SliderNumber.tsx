@@ -106,7 +106,7 @@ export function SliderNumber({
   }, [isDragging]);
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full pt-[2px] flex flex-col items-start overflow-x-auto scrollbar-none">
       {/* Slider */}
       <div
         ref={sliderRef}
