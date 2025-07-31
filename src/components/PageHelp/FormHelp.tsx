@@ -1,33 +1,32 @@
-//src/components/PageHelp/FormHelp.tsx
+// src/components/PageHelp/FormHelp.tsx
 
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/Button";
 import { formHelpSchema, FormHelpData } from "@/api/schemas/formHelpSchema";
+import { FloatingLabelInput } from "@/components/ui/FloatingLabelInput";
 
 const FormHelp = () => {
   const {
     register,
     formState: { errors, isValid },
+    control,
+    handleSubmit,
   } = useForm<FormHelpData>({
     resolver: zodResolver(formHelpSchema),
     mode: "onChange",
   });
 
-  const getInputClass = (fieldName: keyof FormHelpData) => {
-    const baseClass =
-      "w-full py-[12px] px-[16px] border rounded-[8px]  text-red500 ";
-    if (errors[fieldName]) {
-      return `${baseClass} border-red300`;
-    }
-    return baseClass;
-  };
-
   const getButtonClass = () => {
     return isValid
-      ? "w-full btnFormHover cursor-pointer"
-      : "w-full btnForm cursor-pointer";
+      ? "w-full btnFormHover cursor-pointer focus:outline-none focus:ring-0"
+      : "w-full btnForm cursor-pointer focus:outline-none focus:ring-0";
+  };
+
+  // Função para lidar com a submissão - opcional, pois já estamos usando action
+  const onSubmit = (data: FormHelpData) => {
+    console.log("Form data:", data);
   };
 
   return (
@@ -35,6 +34,7 @@ const FormHelp = () => {
       action="https://formsubmit.co/feryamaha@hotmail.com"
       method="POST"
       className="w-full @mobile:w-[520px] h-max bg-white rounded-[16px] border p-[32px]"
+      onSubmit={handleSubmit(onSubmit)}
     >
       {/* Campos ocultos para controle do FormSubmit */}
       <input type="hidden" name="_next" value="https://seusite.com/obrigado" />
@@ -53,34 +53,54 @@ const FormHelp = () => {
             <label className="TypographyPlato20">Sobre você:</label>
           </div>
 
-          <input
-            {...register("userName")}
+          <FloatingLabelInput
+            label="Nome completo"
             name="name"
-            placeholder="Nome completo"
-            className={getInputClass("userName")}
+            register={register}
+            errors={errors}
+            control={control}
+            onlyLetters={true} // Permitir apenas letras
+            validation={{
+              required: "Nome completo é obrigatório",
+              pattern: {
+                value: /^[A-Za-zÀ-ÖØ-öø-ÿ\s]*$/,
+                message: "Nome deve conter apenas letras",
+              },
+            }}
           />
 
-          <input
-            {...register("email")}
+          <FloatingLabelInput
+            label="E-mail"
             name="email"
             type="email"
-            placeholder="E-mail"
-            className={getInputClass("email")}
+            register={register}
+            errors={errors}
+            control={control}
+            validation={{
+              required: "E-mail é obrigatório",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "E-mail inválido",
+              },
+            }}
           />
-          {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email.message}</p>
-          )}
 
-          <input
-            {...register("phone")}
+          <FloatingLabelInput
+            label="Telefone"
             name="phone"
             type="tel"
-            placeholder="Telefone"
-            className={getInputClass("phone")}
+            register={register}
+            errors={errors}
+            control={control}
+            onlyNumbers={true} // Permitir apenas números
+            validation={{
+              required: "Telefone é obrigatório",
+              pattern: {
+                value: /^\d+$/,
+                message: "Telefone deve conter apenas números",
+              },
+            }}
           />
-          {errors.phone && (
-            <p className="text-red-500 text-sm">{errors.phone.message}</p>
-          )}
         </div>
 
         <div className="flex flex-col gap-[16px]">
@@ -88,18 +108,31 @@ const FormHelp = () => {
             <label className="TypographyPlato20">Sua mensagem:</label>
           </div>
 
-          <textarea
-            {...register("message")}
-            name="message"
-            placeholder="Digite sua mensagem"
-            className={`${getInputClass("message")} h-[94px] `}
-          />
+          <div className="relative">
+            <textarea
+              {...register("message", {
+                required: "Mensagem é obrigatória",
+              })}
+              name="message"
+              placeholder="Digite sua mensagem"
+              className={`w-full h-[94px] border rounded-lg p-4 ${
+                errors.message
+                  ? "border-red-500 focus:outline-none focus:ring-2 focus:border-red-500"
+                  : "border-secondary-100 ring-gray950  focus:outline-none focus:ring-1 focus:border-gray-950"
+              } hover:border-gray-950`}
+            />
+            {errors.message && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.message.message}
+              </p>
+            )}
+          </div>
         </div>
 
         <div>
           <Button
             variant="btnForm"
-            className={getButtonClass()}
+            className={`${getButtonClass()} focus:outline-none focus:ring-0`}
             type="submit"
             disabled={!isValid}
           >

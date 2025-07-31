@@ -13,7 +13,9 @@ export function SectionQuestions() {
           <div className="w-full mx-auto flex flex-col gap-[32px] @tablet:flex-row justify-between py-[120px] ">
             <div className=" flex flex-col items-start max-w-[378px]  ">
               <div className="max-w-[378px] ">
-                <h1 className="pb-4 TypographyH1">Perguntas frequentes</h1>
+                <h1 className="pb-4 TypographyH1mobile @mobile:TypographyH1">
+                  Perguntas frequentes
+                </h1>
                 <p className="TypographyPinter16w400 w-full">
                   Confira ao lado as respostas às dúvidas mais comuns. Se tiver
                   outras perguntas, utilize a central de ajuda ou o
@@ -21,11 +23,11 @@ export function SectionQuestions() {
                 </p>
               </div>
 
-              <div className="flex flex-col @laptop:flex-row gap-8 mt-8">
+              <div className="w-full @mobile:max-w-max flex flex-col items-start @laptop:flex-row gap-8 mt-8">
                 <Button
                   href="https://site.dentaluni.com.br/ajuda"
                   variant="btnSecondary"
-                  className="hover:bg-red700"
+                  className="hover:bg-red700 w-full"
                 >
                   Central de ajuda
                 </Button>
@@ -34,7 +36,7 @@ export function SectionQuestions() {
                   href="https://dentaluni.com.br/autoatendimento"
                   target="_blank"
                   variant="btnLink"
-                  className="textbtnLink hover:text-red700"
+                  className="textbtnLink hover:text-red700 w-full"
                 >
                   Autoatendimento
                   <Icon name="IconArrowright" className="w-5 h-5" />

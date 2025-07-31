@@ -10,6 +10,7 @@ import CoveragePlans from "./CoveragePlans";
 import { BarComparePlans } from "@/components/PageHome/AmazingPlans/BarComparePlans";
 import BannerHomeOurPlans from "./BannerHomeOurPlans";
 import { SectionQuestions } from "@/components/PageHome/Questions/SectionQuestions";
+import { Button } from "@/components/ui/Button";
 
 const typedPlansData = plansData as PlansData;
 
@@ -24,10 +25,32 @@ export function HomePlans() {
     setCoverageVisible(!isCoverageVisible);
   };
 
-  // Efeito para rolar até o CoveragePlans quando ele for revelado
+  // Efeito para centralizar e rolar até o CoveragePlans quando ele for revelado
   useEffect(() => {
-    if (isCoverageVisible && coverageRef.current) {
-      coverageRef.current.scrollIntoView({ behavior: "smooth" });
+    if (isCoverageVisible) {
+      // Pequeno atraso para garantir que o componente está totalmente renderizado
+      // e suas dimensões estão disponíveis
+      setTimeout(() => {
+        // Verificação de segurança para garantir que coverageRef.current não é null
+        if (coverageRef.current) {
+          const elementRect = coverageRef.current.getBoundingClientRect();
+          const elementHeight = elementRect.height;
+          const windowHeight = window.innerHeight;
+
+          // Calcular a posição de scroll que centralizará o elemento na viewport
+          const targetPosition =
+            window.scrollY +
+            elementRect.top -
+            windowHeight / 2 +
+            elementHeight / 2;
+
+          // Executar o scroll suave para a posição calculada
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      }, 100); // Atraso de 100ms para garantir que o DOM foi atualizado
     }
   }, [isCoverageVisible]);
 
@@ -36,12 +59,12 @@ export function HomePlans() {
       {/* Section principal */}
       <section className="w-full " id="idPageOurPlans">
         <Container>
-          {/* Submenu ocultado por solicitaçao de alteracao no design. Ocultado em 21.07.2025 Fernando Moreira  */}
-          {/*           <div className="mt-[24px] ">
+          {/* Submenu ocultado por solicitaçao de alteracao no design. Ocultado em 21.07.2025 Fernando Moreira */}
+          {/* <div className="mt-[24px] ">
             <IntraMenu />
           </div> */}
 
-          <div className="max-w-[671px] flex flex-col justify-center mx-auto text-center @mobile:mt-[56px] my-[64px]">
+          <div className="max-w-[671px] flex flex-col justify-center mx-auto text-center @mobile:mt-[56px] mt-[64px] mb-[128px] @mobile:mt-[80px] @mobile:mb-[64px]">
             <div className="w-[153px] mx-auto">
               <Icon name="IconDucol" />
             </div>
@@ -54,8 +77,8 @@ export function HomePlans() {
             </p>
           </div>
           {/* Card plans */}
-          <div className="max-w-[1280px] h-max mx-auto flex flex-col overflow-x-auto @Desktop:overflow-hidden scrollbar-hidden @laptop:border rounded-[8px] bg-red25 ">
-            <div className="w-max mx-auto bg-white  justify-center flex z-10 ">
+          <div className="max-w-[1280px] h-max mx-auto flex flex-col overflow-x-auto @Desktop:overflow-hidden scrollbar-hidden @laptop:border rounded-[8px]">
+            <div className="w-max mx-auto bg-white justify-center flex z-10 ">
               {typedPlansData.plans.map((plan, index, array) => (
                 <div key={`desktop-${plan.id}`}>
                   <CardSectionPlans
@@ -79,7 +102,9 @@ export function HomePlans() {
           </div>
           {/* Bloco coverage */}
           <div
-            className={isCoverageVisible ? "block mt-[16px]" : "hidden"}
+            className={`${
+              isCoverageVisible ? "opacity-100" : "opacity-0 hidden"
+            } transition-opacity duration-300 mt-[16px]`}
             ref={coverageRef}
           >
             <CoveragePlans />
@@ -95,12 +120,16 @@ export function HomePlans() {
 
           {/* Botao ver mais / ver menos para fazer surgir o conteudo coverage que fica sempre ocutado abaixo dos card plans */}
           <div
-            className="max-w-[1116px] flex items-center justify-center mx-auto pt-[18px] pb-[26px] gap-[8px] cursor-pointer  z-40 "
+            className="max-w-max h-max flex items-center justify-center mx-auto mt-[18px] mb-[26px] gap-[8px] z-40 cursor-pointer py-[13px] px-[24px]"
             onClick={toggleCoverageVisibility}
           >
-            <a className="TypographyPinter16w600 hover:text-red700">
+            <Button
+              className="TypographyPinter16w600 hover:text-red700"
+              variant="btnLink"
+            >
+              {" "}
               {isCoverageVisible ? "Ver menos" : "Ver mais"}
-            </a>
+            </Button>
             <div
               className={`transition-transform duration-300 ${
                 isCoverageVisible ? "rotate-180" : ""
@@ -109,6 +138,7 @@ export function HomePlans() {
               <Icon name="IconArrowDowCoverage" />
             </div>
           </div>
+
           {/* Componente importado barra de comparacao de planos */}
           <div className="mt-2">
             <BarComparePlans />

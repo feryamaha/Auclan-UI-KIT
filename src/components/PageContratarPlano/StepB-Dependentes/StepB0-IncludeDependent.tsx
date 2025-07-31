@@ -1,92 +1,41 @@
 //src/components/PageContratarPlano/StepB-Dependentes/StepB0-IncludeDependent.tsx
-
 "use client";
+
 import React from "react";
-import { Icon } from "@/scripts/Icon";
 import { Button } from "@/components/ui/Button";
+import ContractPlansLayout from "@/app/page/contractPlans/layout";
+import { useFormContext } from "@/context/FormContext";
 
-export function StepB0IncludeDependent({
-  onIncludeNow,
-  onIncludeLater,
-  onBack,
-}: {
-  onIncludeNow: () => void;
-  onIncludeLater: () => void;
-  onBack: () => void;
-}) {
-  // Função handleClose (tipo: Function) para fechar o overlay e redirecionar à página inicial
-  const handleClose = () => {};
-  const mainContent = (
-    <>
-      <div className="w-screen h-screen absolute inset-0 flex items-center justify-center backdrop-filter backdrop-blur-sm">
-        <div className="w-[1062px] h-[662px] flex  items-start justify-center gap-[32px] z-50  rounded-2xl p-[24px] bg-BGStepB0 bg-cover relative">
-          {/* esse botao precisa fechar esse overlay e ter a mesma funcao do botao  */}
-          <button
-            className="w-[48px] h-auto p-[12px] bg-white border border-gray100 rounded-full flex justify-center absolute top-[40px] right-[40px] "
-            onClick={onIncludeLater}
-          >
-            <Icon name="IconClose" />
-          </button>
-          <div className="w-[50%]">
-            <h2 className="TypographyPlato20">
-              Pode sorrir. <br /> A gente garante.
-            </h2>
-          </div>
-          <div className="w-[50%] h-full bg-BGCardStepB0 bg-cover px-[48px] py-[40px] flex flex-col justify-between ">
-            <div className="w-full h-max flex flex-col gap-[32px] ">
-              <h2 className="max-w-[297px] TypographyPlato20 ">
-                Cuide da saúde bucal de quem você ama, aproveite e inclua os
-                dependentes agora.
-              </h2>
+export function StepB0IncludeDependent() {
+  const { handleIncludeNow, handleIncludeLater } = useFormContext();
 
-              <div className="flex justify-between">
-                <div className="w-[150px] text-start">
-                  <p className="TypographyPinter14w500g95">Período</p>
-                  <h2 className="TypographyPlato24 pt-[4px] pb-[8px]">
-                    12 meses
-                  </h2>
-                  <p className="TypographyPinter16w400">
-                    A partir da inscrição dos beneficiários
-                  </p>
-                </div>
-                <div className="w-[150px] text-start">
-                  <p className="TypographyPinter14w500g95">Imediato</p>
-                  <h2 className="TypographyPlato24 pt-[4px] pb-[8px]">
-                    12 meses
-                  </h2>
-                  <p className="TypographyPinter16w400">
-                    Ao ser desligado da empresa
-                  </p>
-                </div>
-              </div>
-              <p className="max-w-[280px] TypographyPinter16g950">
-                Garanta agora os benefícios Dental Uni aos seus entes queridos!
-              </p>
-            </div>
-            <div className="flex flex-col gap-[24px]">
-              <Button
-                variant="btnPrimary"
-                className="w-full"
-                onClick={onIncludeNow}
-              >
-                Incluir dependentes agora
-              </Button>
-              <Button
-                variant="btnLink"
-                className="w-full"
-                onClick={onIncludeLater}
-              >
-                Incluir dependentes depois
-              </Button>
-            </div>
+  return (
+    <div className="w-[40%] h-max mx-auto bg-white rounded-[16px] flex flex-col justify-between">
+      <div className="w-full flex items-center justify-between border-b">
+        <div className="w-full py-[16px] px-[32px] flex items-center justify-between">
+          <h2 className="TypographyPlato20"> Incluir dependentes </h2>
+        </div>
+      </div>
+      <div className="w-full h-full flex flex-col py-[16px] px-[32px] items-center gap-[24px]">
+        <div className="w-full">
+          <div className="flex flex-col gap-[8px]">
+            <h2 className="TypographyPlato20">Deseja incluir dependentes?</h2>
+            <p className="TypographyPinter14w400">
+              Você pode adicionar dependentes agora ou depois.
+            </p>
           </div>
         </div>
       </div>
-    </>
+      <div className="w-full py-[16px] px-[32px] flex items-center justify-between border-t">
+        <Button variant="btnPrimary" onClick={handleIncludeNow}>
+          Incluir agora
+        </Button>
+        <Button variant="btnLink" onClick={handleIncludeLater}>
+          Incluir depois
+        </Button>
+      </div>
+    </div>
   );
-
-  const sideContent = <div>Conteúdo lateral placeholder</div>;
-  return mainContent;
 }
 
 export default StepB0IncludeDependent;

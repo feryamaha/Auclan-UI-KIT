@@ -21,7 +21,9 @@ export function SelectPlans({
 }: SelectPlansProps) {
   return (
     <div className="w-full flex flex-col">
-      <h2 className="TypographyPlato20 pb-[16px]">Selecione o plano</h2>
+      <h2 className="TypographyPlato20 pb-[20px] @mobile:pb-[16px]">
+        Selecione o plano
+      </h2>
       <div className=" flex flex-row justify-between gap-[12px] overflow-x-auto scrollbar-none ">
         {plans.map((plan) => (
           <button

@@ -1,35 +1,77 @@
 // src/components/PageContratarPlano/StepB-Dependentes/StepB2-AddInitialData.tsx
-
 "use client";
-import React, { useState } from "react";
+
+import React, { useEffect } from "react";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "@/components/ui/Button";
+import { useFormContext } from "@/context/FormContext";
 
-export function StepB2InitialData({
-  onNext,
-  onBack,
-}: {
-  onNext: () => void;
-  onBack: () => void;
-}) {
-  const [cpf, setCpf] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+export function StepB2InitialData() {
+  const { form, handleNext, setStep } = useFormContext();
+  const {
+    register,
+    formState: { errors, dirtyFields },
+    trigger,
+    watch,
+    getValues,
+    setValue,
+  } = form;
 
-  const isFormValid = () => {
-    return (
-      cpf.trim() !== "" && fullName.trim() !== "" && birthDate.trim() !== ""
-    );
+  const dependents = getValues("dependents") || [];
+  const currentIndex = dependents.length;
+
+  const watchedFields = watch([
+    `dependents.${currentIndex}.cpf`,
+    `dependents.${currentIndex}.fullName`,
+    `dependents.${currentIndex}.birthDate`,
+  ]);
+
+  useEffect(() => {
+    trigger([
+      `dependents.${currentIndex}.cpf`,
+      `dependents.${currentIndex}.fullName`,
+      `dependents.${currentIndex}.birthDate`,
+    ]);
+  }, [watchedFields, trigger]);
+
+  const isStepValid =
+    !errors.dependents?.[currentIndex]?.cpf &&
+    !errors.dependents?.[currentIndex]?.fullName &&
+    !errors.dependents?.[currentIndex]?.birthDate;
+
+  const addDependent = async () => {
+    const isValid = await trigger([
+      `dependents.${currentIndex}.cpf`,
+      `dependents.${currentIndex}.fullName`,
+      `dependents.${currentIndex}.birthDate`,
+    ]);
+    if (isValid) {
+      setValue("dependents", [
+        ...dependents,
+        {
+          cpf: getValues(`dependents.${currentIndex}.cpf`) || "",
+          fullName: getValues(`dependents.${currentIndex}.fullName`) || "",
+          birthDate: getValues(`dependents.${currentIndex}.birthDate`) || "",
+          motherName: "",
+          sex: "",
+          parentesco: "",
+          rg: "",
+          orgaoEmissor: "",
+          cns: "",
+        },
+      ]);
+      handleNext();
+    }
   };
 
-  const mainContent = (
-    <div className="w-full h-full flex items-center backdrop-filter backdrop-blur-sm ">
-      <div className="w-[40%] h-[60%] mx-auto bg-white rounded-[16px] flex flex-col justify-between ">
+  return (
+    <div className="w-full h-full flex items-center backdrop-filter backdrop-blur-sm">
+      <div className="w-[40%] h-[60%] mx-auto bg-white rounded-[16px] flex flex-col justify-between">
         <div className="w-full flex items-center justify-between border-b">
           <div className="w-full py-[16px] px-[32px] flex items-center justify-between">
             <h2 className="TypographyPlato20"> Incluir dependente </h2>
-            <button className="w-[48px] h-auto p-[12px] bg-white flex justify-center  ">
-              <Icon name="IconClose" />
+            <button className="w-[48px] h-auto p-[12px] bg-white flex justify-center">
+              <Icon name="IconClose" onClick={() => setStep(31)} />
             </button>
           </div>
         </div>
@@ -37,71 +79,95 @@ export function StepB2InitialData({
           <div className="w-full">
             <div className="flex flex-col gap-[8px]">
               <p className="TypographyNavHeader">Etapa 1 de 2</p>
-
-              <h2 className="TypographyPlato20">Dados iniciais </h2>
+              <h2 className="TypographyPlato20">Dados iniciais</h2>
               <p className="TypographyPinter14w400">
                 Vamos começar pelo CPF, nome e data de nascimento.
               </p>
             </div>
           </div>
           <div className="w-full">
-            <form className="w-full flex flex-col gap-4">
+            <form
+              className="w-full flex flex-col gap-4"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <input
                 type="text"
-                id="cpf"
-                name="cpf"
-                required
-                placeholder="CPF*"
-                value={cpf}
-                onChange={(e) => setCpf(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                {...register(`dependents.${currentIndex}.cpf`)}
+                placeholder="Digite o CPF (ex: 123.456.789-01)"
+                className={`w-full p-2 border rounded-md ${
+                  errors.dependents?.[currentIndex]?.cpf
+                    ? "border-red-300"
+                    : dirtyFields.dependents?.[currentIndex]?.cpf &&
+                      !errors.dependents?.[currentIndex]?.cpf
+                    ? "border-green-500"
+                    : "border-gray-300"
+                }`}
               />
+              {errors.dependents?.[currentIndex]?.cpf && (
+                <p className="text-red-500">
+                  {errors.dependents[currentIndex].cpf?.message}
+                </p>
+              )}
               <input
                 type="text"
-                id="full-name"
-                name="full-name"
-                required
-                placeholder="Nome completo*"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                {...register(`dependents.${currentIndex}.fullName`)}
+                placeholder="Digite o nome completo"
+                className={`w-full p-2 border rounded-md ${
+                  errors.dependents?.[currentIndex]?.fullName
+                    ? "border-red-300"
+                    : dirtyFields.dependents?.[currentIndex]?.fullName &&
+                      !errors.dependents?.[currentIndex]?.fullName
+                    ? "border-green-500"
+                    : "border-gray-300"
+                }`}
               />
+              {errors.dependents?.[currentIndex]?.fullName && (
+                <p className="text-red-500">
+                  {errors.dependents[currentIndex].fullName?.message}
+                </p>
+              )}
               <input
                 type="date"
-                id="birth-date"
-                name="birth-date"
-                required
-                placeholder="Data de nascimento*"
-                value={birthDate}
-                onChange={(e) => setBirthDate(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                {...register(`dependents.${currentIndex}.birthDate`)}
+                placeholder="Selecione a data de nascimento (ex: 01/01/2000)"
+                className={`w-full p-2 border rounded-md ${
+                  errors.dependents?.[currentIndex]?.birthDate
+                    ? "border-red-300"
+                    : dirtyFields.dependents?.[currentIndex]?.birthDate &&
+                      !errors.dependents?.[currentIndex]?.birthDate
+                    ? "border-green-500"
+                    : "border-gray-300"
+                }`}
               />
+              {errors.dependents?.[currentIndex]?.birthDate && (
+                <p className="text-red-500">
+                  {errors.dependents[currentIndex].birthDate?.message}
+                </p>
+              )}
             </form>
           </div>
         </div>
         <div className="w-full py-[16px] px-[32px] flex items-center justify-between border-t">
-          <Button variant="btnLinkForm" className="w-max" onClick={onBack}>
+          <Button
+            variant="btnLinkForm"
+            className="w-max"
+            onClick={() => setStep(31)}
+          >
             Cancelar
           </Button>
-          {isFormValid() ? (
-            <Button
-              variant="btnFormHover"
-              className="w-max"
-              type="submit"
-              onClick={onNext}
-            >
-              Adicionar
-            </Button>
-          ) : (
-            <Button variant="btnForm" className="w-max" disabled>
-              Adicionar
-            </Button>
-          )}
+          <Button
+            variant="btnFormHover"
+            className="w-max"
+            type="button"
+            onClick={addDependent}
+            disabled={!isStepValid}
+          >
+            Avançar
+          </Button>
         </div>
       </div>
     </div>
   );
-  return mainContent;
 }
 
 export default StepB2InitialData;

@@ -817,6 +817,19 @@ export default {
           filter:
             "drop-shadow(0.5px 1px 1px rgba(0, 0, 0, 0.08)) drop-shadow(0px 0.3px 0.5px rgba(0, 0, 0, 0.08));",
         },
+
+        ".stepSliderClick": {
+          width: "48px",
+          height: "32px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+          position: "relative",
+          zIndex: 2, // Garante que a área clicável fique acima da barra
+          /* border: "1px solid #8A1724", */
+        },
+
         ".stepSliderHover": {
           width: "8px",
           height: "8px",

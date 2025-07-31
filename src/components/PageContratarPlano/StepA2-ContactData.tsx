@@ -1,6 +1,5 @@
 "use client";
 
-// Importações de dependências e componentes
 import React, { useState, useEffect } from "react";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "../ui/Button";
@@ -9,54 +8,143 @@ import MenuSidebar from "@/components/ui/MenuSidebar";
 import DocolMekal from "../ui/docolMekal";
 import IncludeBeneficiaryCard from "../ui/IncludeBeneficiaryCard";
 import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
+import { useFormContext } from "@/context/FormContext";
+import { Path } from "react-hook-form";
+import { FormData } from "@/lib/formSchema";
 
-export function StepA2ContactData({
-  onNext,
-  onBack,
-}: {
-  onNext: () => void;
-  onBack: () => void;
-}) {
-  const [email, setEmail] = useState("");
-  const [confirmEmail, setConfirmEmail] = useState("");
-  const [celular, setCelular] = useState("");
-  const [telefone, setTelefone] = useState("");
+export function StepA2ContactData() {
+  const { form, handleNext, handleBack, currentStep, completedSteps } =
+    useFormContext();
+  const {
+    register,
+    formState: { errors, dirtyFields },
+    trigger,
+    watch,
+    getValues,
+    setValue,
+  } = form;
 
-  const isFormValid = () => {
-    return (
-      email.trim() !== "" &&
-      confirmEmail.trim() !== "" &&
-      celular.trim() !== "" &&
-      telefone.trim() !== ""
-    );
-  };
+  // Estado para controlar o processamento
+  const [isProcessing, setIsProcessing] = useState(false);
 
-  const handleSubmit = () => {
-    if (isFormValid()) {
-      // Salva os dados no localStorage
-      const storedData = localStorage.getItem("mockDataStorage");
-      const initialData = [
-        { step: 0, data: {} },
-        { step: 1, data: {} },
-        { step: 2, data: {} },
-        { step: 3, data: {} },
-        { step: 4, data: {} },
-        { step: 5, data: {} },
-      ];
-      const updatedStorage = storedData ? JSON.parse(storedData) : initialData;
-      updatedStorage[2].data = { email, confirmEmail, celular, telefone };
-      localStorage.setItem("mockDataStorage", JSON.stringify(updatedStorage));
-      onNext();
+  const watchedFields = watch([
+    "contact.email",
+    "contact.confirmEmail",
+    "contact.celular",
+    "contact.telefone",
+  ]);
+
+  // Versão mais segura da função de efeito
+  useEffect(() => {
+    // Limitar a frequência de validação para evitar travamentos
+    const timer = setTimeout(() => {
+      trigger([
+        "contact.email",
+        "contact.confirmEmail",
+        "contact.celular",
+        "contact.telefone",
+      ]).catch((e) => console.error("Erro ao validar campos:", e));
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [watchedFields, trigger]);
+
+  const isStepValid =
+    !errors.contact?.email &&
+    !errors.contact?.confirmEmail &&
+    !errors.contact?.celular;
+
+  // Função para avançar com segurança contra múltiplos cliques
+  const handleAdvanceWithSafety = async () => {
+    if (isProcessing || !isStepValid) return;
+
+    try {
+      setIsProcessing(true);
+
+      // Salvar dados no localStorage como backup
+      const contactData = {
+        email: getValues("contact.email"),
+        confirmEmail: getValues("contact.confirmEmail"),
+        celular: getValues("contact.celular"),
+        telefone: getValues("contact.telefone"),
+      };
+      localStorage.setItem("contactData", JSON.stringify(contactData));
+
+      // Método alternativo de navegação para evitar loops
+      window.location.href = "?step=3";
+    } catch (error) {
+      console.error("Erro ao processar:", error);
+    } finally {
+      setIsProcessing(false);
     }
   };
+
+  // Formatação de telefones - CORRIGIDO
+  useEffect(() => {
+    // Formatação para celular
+    const celular = getValues("contact.celular");
+    if (celular && typeof celular === "string") {
+      const numericValue = celular.replace(/\D/g, "");
+      if (numericValue.length <= 11) {
+        let formattedPhone = "";
+
+        if (numericValue.length > 0) {
+          formattedPhone = "(" + numericValue.substring(0, 2);
+
+          if (numericValue.length > 2) {
+            formattedPhone +=
+              ") " +
+              numericValue.substring(2, numericValue.length <= 10 ? 6 : 7);
+
+            if (numericValue.length > (numericValue.length <= 10 ? 6 : 7)) {
+              formattedPhone +=
+                "-" + numericValue.substring(numericValue.length <= 10 ? 6 : 7);
+            }
+          }
+        }
+
+        if (formattedPhone !== celular && formattedPhone.length > 0) {
+          setValue("contact.celular" as Path<FormData>, formattedPhone);
+        }
+      }
+    }
+
+    // Formatação para telefone
+    const telefone = getValues("contact.telefone");
+    if (telefone && typeof telefone === "string") {
+      const numericValue = telefone.replace(/\D/g, "");
+      if (numericValue.length <= 11) {
+        let formattedPhone = "";
+
+        if (numericValue.length > 0) {
+          formattedPhone = "(" + numericValue.substring(0, 2);
+
+          if (numericValue.length > 2) {
+            formattedPhone +=
+              ") " +
+              numericValue.substring(2, numericValue.length <= 10 ? 6 : 7);
+
+            if (numericValue.length > (numericValue.length <= 10 ? 6 : 7)) {
+              formattedPhone +=
+                "-" + numericValue.substring(numericValue.length <= 10 ? 6 : 7);
+            }
+          }
+        }
+
+        if (formattedPhone !== telefone && formattedPhone.length > 0) {
+          setValue("contact.telefone" as Path<FormData>, formattedPhone);
+        }
+      }
+    }
+  }, [watchedFields, getValues, setValue]);
 
   const mainContent = (
     <div className="w-full h-full flex gap-[24px]">
       <div className="w-max">
         <MenuSidebar
           onMenuClick={() => {}}
-          currentStep={2}
-          completedSteps={[]}
+          currentStep={currentStep}
+          completedSteps={Array.from(completedSteps)}
         />
       </div>
       <div className="w-full flex flex-col gap-[32px]">
@@ -65,7 +153,7 @@ export function StepA2ContactData({
             <Button
               variant="btnLink"
               className="textbtnLink w-max"
-              onClick={onBack}
+              onClick={handleBack}
             >
               <Icon name="IconArrowright" className="w-5 h-5 rotate-180" />
               Voltar
@@ -84,66 +172,92 @@ export function StepA2ContactData({
         <div className="w-full justify-between flex">
           <p className="TypographyPlato20">Dados contato</p>
           <div className="max-w-[542px]">
-            <form className="w-full flex flex-col gap-4">
+            <form
+              className="w-full flex flex-col gap-4"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <input
-                type="text"
-                id="email"
-                name="email"
-                required
-                placeholder="E-mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                type="email"
+                {...register("contact.email")}
+                placeholder="Digite o e-mail (ex: exemplo@dominio.com)"
+                className={`w-full p-2 border rounded-md ${
+                  errors.contact?.email
+                    ? "border-red-300"
+                    : dirtyFields.contact?.email && !errors.contact?.email
+                    ? "border-green-500"
+                    : "border-gray-300"
+                }`}
               />
+              {errors.contact?.email && (
+                <p className="text-red-500">{errors.contact.email.message}</p>
+              )}
               <input
-                type="text"
-                id="confirme"
-                name="Confirme-mail"
-                required
-                placeholder="Confirme seu e-mail"
-                value={confirmEmail}
-                onChange={(e) => setConfirmEmail(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                type="email"
+                {...register("contact.confirmEmail")}
+                placeholder="Confirme o e-mail (ex: exemplo@dominio.com)"
+                className={`w-full p-2 border rounded-md ${
+                  errors.contact?.confirmEmail
+                    ? "border-red-300"
+                    : dirtyFields.contact?.confirmEmail &&
+                      !errors.contact?.confirmEmail
+                    ? "border-green-500"
+                    : "border-gray-300"
+                }`}
               />
-
+              {errors.contact?.confirmEmail && (
+                <p className="text-red-500">
+                  {errors.contact.confirmEmail.message}
+                </p>
+              )}
               <div className="flex gap-4">
                 <input
                   type="text"
-                  id="celular"
-                  name="celular"
-                  required
-                  placeholder="Celular"
-                  value={celular}
-                  onChange={(e) => setCelular(e.target.value)}
-                  className="w-1/2 p-2 border border-gray-300 rounded-md"
+                  {...register("contact.celular")}
+                  placeholder="Digite o celular (ex: (11) 99999-9999)"
+                  className={`w-1/2 p-2 border rounded-md ${
+                    errors.contact?.celular
+                      ? "border-red-300"
+                      : dirtyFields.contact?.celular && !errors.contact?.celular
+                      ? "border-green-500"
+                      : "border-gray-300"
+                  }`}
                 />
+                {errors.contact?.celular && (
+                  <p className="text-red-500">
+                    {errors.contact.celular.message}
+                  </p>
+                )}
                 <input
                   type="text"
-                  id="telefone"
-                  name="telefone"
-                  required
-                  placeholder="Telefone"
-                  value={telefone}
-                  onChange={(e) => setTelefone(e.target.value)}
-                  className="w-1/2 p-2 border border-gray-300 rounded-md"
+                  {...register("contact.telefone")}
+                  placeholder="Digite o telefone (ex: (11) 99999-9999) - opcional"
+                  className={`w-1/2 p-2 border rounded-md ${
+                    errors.contact?.telefone
+                      ? "border-red-300"
+                      : dirtyFields.contact?.telefone &&
+                        !errors.contact?.telefone
+                      ? "border-green-500"
+                      : "border-gray-300"
+                  }`}
                 />
+                {errors.contact?.telefone && (
+                  <p className="text-red-500">
+                    {errors.contact.telefone.message}
+                  </p>
+                )}
               </div>
-              {isFormValid() ? (
-                <Button
-                  variant="btnFormHover"
-                  className="w-full"
-                  type="button"
-                  onClick={handleSubmit}
-                >
-                  Avançar
+              <Button
+                variant="btnFormHover"
+                className="w-full"
+                type="button"
+                onClick={handleAdvanceWithSafety}
+                disabled={!isStepValid || isProcessing}
+              >
+                {isProcessing ? "Processando..." : "Avançar"}
+                {!isProcessing && (
                   <Icon name="IconArrowright" className="w-5 h-5" />
-                </Button>
-              ) : (
-                <Button variant="btnForm" className="w-full" disabled>
-                  Avançar
-                  <Icon name="IconArrowright" className="w-5 h-5" />
-                </Button>
-              )}
+                )}
+              </Button>
             </form>
           </div>
         </div>

@@ -21,11 +21,11 @@ export function CardSPlansMobile({
 }: CardSPlansMobileProps) {
   return (
     // Div externa com borda - replicando dimensões e flex-shrink do CardSectionPlans, adicionando borda
-    <div className="min-w-[328px] @mobile:max-w-[256px] max-h-[433px] flex items-center justify-center -flex-shrink-0 border rounded-[8px]  ">
+    <div className="min-w-[328px] @mobile:max-w-[256px] max-h-[433px] flex items-center justify-center -flex-shrink-0 border rounded-[8px]">
       {" "}
       {/* Replicando w, h, flex, items, justify, flex-shrink, adicionando border */}
       {/* Div interna - replicando as dimensões, padding e flex properties do CardSectionPlans */}
-      <div className="w-full @mobile:max-w-[256px] p-[24px] flex flex-col justify-between">
+      <div className="w-full @mobile:max-w-[328px] p-[24px] flex flex-col justify-between items-start ">
         {" "}
         {/* Replicando w, h, p, flex, flex-col, justify-between */}
         <div className="pb-[40px]">
@@ -33,10 +33,10 @@ export function CardSPlansMobile({
           <h1 className="pt-[48px] pb-[8px] TypographyH1">R${price}</h1>
           <p className="w-[162px] TypographyPinter14w400 ">{description}</p>
         </div>
-        <Link href="/page/contractPlans">
+        <Link href="/page/contractPlans" className="w-full">
           <Button
             variant="btnSecondary"
-            className="hover:bg-red700 w-full mb-[32px]"
+            className="hover:bg-red700 w-full mb-[32px] hidden"
           >
             Contratar agora
           </Button>
@@ -44,7 +44,7 @@ export function CardSPlansMobile({
         <div className="w-full h-[90px] relative">
           {" "}
           {/* Manter altura e relative para layout interno */}
-          <div className="w-full h-max absolute top-0">
+          <div className="max-w-full h-max absolute top-0 ">
             <Icon name="IconBGCardPlansMobile" />
           </div>
           {/* Manter icon de fundo, se aplicável */}

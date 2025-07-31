@@ -1,7 +1,6 @@
 "use client";
 
-// Importações de dependências e componentes
-import React, { useState, useEffect } from "react";
+import React, { useState, ChangeEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/scripts/Icon";
@@ -11,44 +10,78 @@ import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
 import IncludeItemsPlans from "@/components/ui/IncludeItemsPlans";
 import matriculasData from "@/data/mockContracPlans/matriculas.json";
 
-type HandleIniciar = (matricula: string) => void;
+// Interface para os dados de matrícula
+interface MatriculaData {
+  numero: string;
+  nome: string;
+}
 
-export function StepA0Welcome({ onIniciar }: { onIniciar: HandleIniciar }) {
-  const [matricula, setMatricula] = useState("");
-  const [error, setError] = useState("");
+export function StepA0Welcome() {
+  const [matricula, setMatricula] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [isValid, setIsValid] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // Validação em tempo real do input
-  const isValidMatricula = () => {
-    const isLengthValid = matricula.length === 8 && /^\d+$/.test(matricula);
-    const isInList = matriculasData.matriculas.some(
-      (m) => m.numero === matricula
+  // Validação da matrícula
+  const validateMatricula = (value: string): void => {
+    if (!value || value.length !== 8) {
+      setIsValid(false);
+      setError("");
+      return;
+    }
+
+    const matriculaValida = (matriculasData.matriculas as MatriculaData[]).find(
+      (m) => m.numero === value
     );
-    return isLengthValid && isInList;
-  };
 
-  const handleIniciarClick = () => {
-    if (onIniciar) {
-      if (!isValidMatricula()) {
-        setError("Número de matrícula inválido. Tente novamente.");
-        return;
-      }
-      // Salva os dados no localStorage
-      const storedData = localStorage.getItem("mockDataStorage");
-      const initialData = [
-        { step: 0, data: {} },
-        { step: 1, data: {} },
-        { step: 2, data: {} },
-        { step: 3, data: {} },
-        { step: 4, data: {} },
-        { step: 5, data: {} },
-      ];
-      const updatedStorage = storedData ? JSON.parse(storedData) : initialData;
-      updatedStorage[0].data = { matricula };
-      localStorage.setItem("mockDataStorage", JSON.stringify(updatedStorage));
-      onIniciar(matricula);
+    if (matriculaValida) {
+      setIsValid(true);
       setError("");
     } else {
-      setError("Erro ao processar a matrícula.");
+      setIsValid(false);
+      setError("Matrícula não encontrada");
+    }
+  };
+
+  // Manipulador de mudança de input
+  const handleMatriculaChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const value = e.target.value.replace(/\D/g, "").slice(0, 8);
+    setMatricula(value);
+    validateMatricula(value);
+  };
+
+  // Função para avançar diretamente
+  const handleAdvance = (): void => {
+    if (!isValid || isLoading) return;
+
+    try {
+      setIsLoading(true);
+
+      // Encontrar dados da matrícula
+      const matriculaData = (matriculasData.matriculas as MatriculaData[]).find(
+        (m) => m.numero === matricula
+      );
+
+      // Verificação de segurança
+      if (!matriculaData) {
+        setError("Matrícula não encontrada");
+        setIsLoading(false);
+        return;
+      }
+
+      // Salvar no localStorage
+      localStorage.setItem("matricula", matricula);
+      localStorage.setItem("nome", matriculaData.nome);
+
+      // SOLUÇÃO RADICAL: Recarregar a página com um parâmetro de URL para indicar o próximo passo
+      // Isso evita completamente qualquer problema no gerenciamento de estado do React
+      window.location.href = "?step=1";
+    } catch (error) {
+      console.error("Erro ao avançar:", error);
+      setError(
+        "Ocorreu um erro ao processar sua solicitação. Tente novamente."
+      );
+      setIsLoading(false);
     }
   };
 
@@ -62,32 +95,43 @@ export function StepA0Welcome({ onIniciar }: { onIniciar: HandleIniciar }) {
         Para iniciar o processo, insira abaixo o número da matrícula vinculado à
         empresa.
       </p>
-      <input
-        type="text"
-        placeholder="Número da matrícula"
-        className={`w-full p-2 border border-gray300 rounded-md mb-4 ${
-          matricula && !isValidMatricula() ? "border-redSTD" : "border-gray300"
-        }`}
-        value={matricula}
-        onChange={(e) => {
-          setMatricula(e.target.value);
-          if (error) setError("");
-        }}
-      />
-      {error && <p className="text-red-500 text-sm">{error}</p>}
-      <div className="flex w-full flex-col mt-[32px] gap-[24px]">
-        <Button variant="btnSecondary" onClick={handleIniciarClick}>
-          Iniciar
-        </Button>
-        <Button
-          href="https://www.planosdentaluni.com.br/"
-          target="_blank"
-          variant="btnLink"
-          className="textbtnLink"
-        >
-          Não sei o número da matrícula
-        </Button>
-      </div>
+      <form
+        onSubmit={(e: React.FormEvent) => e.preventDefault()}
+        className="w-full"
+      >
+        <input
+          type="text"
+          value={matricula}
+          onChange={handleMatriculaChange}
+          placeholder="Número da matrícula"
+          className={`w-full p-2 border rounded-md ${
+            error
+              ? "border-red-300"
+              : isValid
+              ? "border-green-500"
+              : "border-gray-300"
+          }`}
+          maxLength={8}
+        />
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+        <div className="flex w-full flex-col mt-[32px] gap-[24px]">
+          <Button
+            variant="btnSecondary"
+            onClick={handleAdvance}
+            disabled={!isValid || isLoading}
+          >
+            {isLoading ? "Processando..." : "Iniciar"}
+          </Button>
+          <Button
+            href="https://www.planosdentaluni.com.br/"
+            target="_blank"
+            variant="btnLink"
+            className="textbtnLink"
+          >
+            Não sei o número da matrícula
+          </Button>
+        </div>
+      </form>
     </div>
   );
 
