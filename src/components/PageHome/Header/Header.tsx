@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Icon } from "@/scripts/Icon";
 import Link from "next/link";
 import { useState, ReactNode } from "react";
@@ -26,7 +25,7 @@ export function Header({ children }: HeaderProps) {
                 <Icon name="IconLogoinstitucional" className="w-full h-full " />
               </a>
 
-              <nav className="flex items-center gap-4 hidden @tablet:flex ">
+              <nav className="max-w-[492px] flex items-center gap-2 hidden @tablet:flex">
                 {menuItems.map((item) =>
                   item.name === "Rede Credenciada" ? (
                     <a
@@ -34,7 +33,7 @@ export function Header({ children }: HeaderProps) {
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center TypographyNavHeader subpixel-antialiased hover:TypographyNavHeaderHover"
+                      className="w-auto flex items-center TypographyNavHeader hover:TypographyNavHeaderHover"
                     >
                       {item.name}
                     </a>
@@ -42,7 +41,7 @@ export function Header({ children }: HeaderProps) {
                     <Link
                       key={item.name}
                       href={item.link}
-                      className="flex items-center TypographyNavHeader subpixel-antialiased hover:TypographyNavHeaderHover"
+                      className="w-auto flex items-center TypographyNavHeader hover:TypographyNavHeaderHover"
                     >
                       {item.name}
                     </Link>

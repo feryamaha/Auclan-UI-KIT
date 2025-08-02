@@ -49,7 +49,7 @@ export function AccordionFAQ({
           className="py-[16px] "
         >
           {/* Trigger (cabeçalho) do item do accordion */}
-          <AccordionTrigger className="TypographyPlato20 @mobile:TypographyPlato24 pt-0 pb-[8px] hover:text-redSTD w-full flex gap-[12px] ">
+          <AccordionTrigger className="TypographyPlato20 pt-0 pb-[8px] hover:text-redSTD w-full flex gap-[12px] ">
             {item.question}
           </AccordionTrigger>
           {/* Conteúdo do item do accordion */}

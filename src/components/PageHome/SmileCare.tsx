@@ -15,7 +15,7 @@ export function SmileCare() {
                 <p className="pb-[8px] TypographyPinter14w500">
                   SORRIA SEMPRE COM A DENTAL UNI
                 </p>
-                <h2 className="pb-[16px] TypographyH1mobile @tablet:TypographyH1 text-[2rem]">
+                <h2 className="pb-[16px] TypographyH1mobile @tablet:TypographyH1 ">
                   Cuidar do seu sorriso é o nosso compromisso.
                 </h2>
                 <p className="max-w-[22.375rem] TypographyPinter16w400">
@@ -85,7 +85,7 @@ export function SmileCare() {
                 </p>
               </div>
 
-              <div className="border-l-2 border-redSTD pl-4 pr-6  TypographyPinter16w500g900">
+              <div className="border-l-2 border-redSTD pl-4 pr-4  TypographyPinter16w500g900">
                 <p className="">
                   <span className="text-redSTD ">
                     +70% dos nossos profissionais são especialistas

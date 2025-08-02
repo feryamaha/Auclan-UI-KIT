@@ -32,7 +32,7 @@ export default {
         red900: "#30070B",
         red950: "#1E0407",
         gray25: "#F6F6F6",
-        gray50: "#F6F6F6",
+        gray50: "#F6F6F6", 
         gray100: "#E7E7E7",
         gray200: "#D1D1D1",
         gray300: "#B0B0B0",
@@ -85,6 +85,8 @@ export default {
           "url(/assets/img/bg-BannerHomeOurPlansTablet.webp)",
         bgFooter: "url(/assets/icons/footer/bgFooter.png)",
         BgCardModalComparePlans: "url(/assets/img/BgCardModalComparePlan.webp)",
+        BgCardModalComparePlansMobile:
+          "url(/assets/img/BgCardModalComparePlansMobile.webp)",
         BGStepB0: "url(/assets/img/BGStepB0.webp)",
         BGCardStepB0: "url(/assets/img/BGCardStepB0.webp)",
         BGBlur: "url(/assets/img/BGBlur.webp)",
@@ -186,7 +188,7 @@ export default {
       const newUtilities = {
         ".TypographyPinter9": {
           color: theme("colors.white"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "9px",
           fontStyle: "normal",
           fontWeight: "400",
@@ -194,17 +196,17 @@ export default {
         },
         ".TypographyPinter10": {
           color: theme("colors.white"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "10px",
           fontStyle: "normal",
           fontWeight: "500",
           lineHeight: "140%",
         },
         ".TypographyNavHeader": {
-          color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.inter"),
-          fontSize: "14px",
-          fontStyle: "normal",
+          color: "var(--color-gray950) ",
+          fontFamily: "var(--font-inter) ",
+          fontSize: "14px !important",
+          fontStyle: "normal ",
           fontWeight: "500",
           lineHeight: "140%",
           letterSpacing: "-0.28px",
@@ -214,8 +216,8 @@ export default {
         },
         ".TypographyNavHeaderHover": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.inter"),
-          fontSize: "14px",
+          fontFamily: "var(--font-inter) ",
+          fontSize: "14px !important",
           fontStyle: "normal",
           fontWeight: "500",
           lineHeight: "140%",
@@ -226,7 +228,7 @@ export default {
         },
         ".TypographyMenuMobile": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.lato"),
+          fontFamily: "var(--font-lato) ",
           fontSize: "20px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -235,16 +237,16 @@ export default {
         },
         ".TypographyH1home": {
           color: theme("colors.blueScale"),
-          fontFamily: theme("fontFamily.lato"),
+          fontFamily: "var(--font-lato) ",
           fontSize: "40px",
           fontStyle: "normal",
-          fontWeight: "600",
+          fontWeight: "400",
           lineHeight: "120%",
         },
 
         ".TypographyH1homePlans": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.lato"),
+          fontFamily: "var(--font-lato) ",
           fontSize: "48px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -253,7 +255,7 @@ export default {
         },
         ".TypographyH1": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.lato"),
+          fontFamily: "var(--font-lato) ",
           fontSize: "40px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -262,7 +264,7 @@ export default {
 
         ".TypographyH1white": {
           color: theme("colors.white"),
-          fontFamily: theme("fontFamily.lato"),
+          fontFamily: "var(--font-lato) ",
           fontSize: "40px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -271,7 +273,7 @@ export default {
 
         ".TypographyH1mobile": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.lato"),
+          fontFamily: "var(--font-lato) ",
           fontSize: "32px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -280,7 +282,7 @@ export default {
 
         ".TypographyH2": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.lato"),
+          fontFamily: "var(--font-lato) ",
           fontSize: "32px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -289,7 +291,7 @@ export default {
         },
         ".TypographyPinter14w400": {
           color: theme("colors.gray900"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "14px",
           fontStyle: "normal",
           fontWeight: "400",
@@ -298,7 +300,7 @@ export default {
         },
         ".TypographyPinter14w400footer": {
           color: theme("colors.gray500"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "14px",
           fontStyle: "normal",
           fontWeight: "400",
@@ -309,7 +311,7 @@ export default {
 
         ".Typography14STDsidebar": {
           color: theme("colors.gray500"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "14px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -328,7 +330,7 @@ export default {
         },
         ".TypographyPinter14w500": {
           color: theme("colors.gray900"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "14px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -337,7 +339,7 @@ export default {
         },
         ".TypographyPinter14w500g95": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "14px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -355,7 +357,7 @@ export default {
         },
         ".TypographyPinterG400": {
           color: theme("colors.red500"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "400",
@@ -372,7 +374,7 @@ export default {
         },
         ".TypographyPinter16w500g900": {
           color: theme("colors.gray900"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -381,7 +383,7 @@ export default {
         },
         ".TypographyPinter16w500g950": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -390,7 +392,7 @@ export default {
         },
         ".TypographyPinter16g950": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -399,7 +401,7 @@ export default {
         },
         ".TypographyPinter16w500g": {
           color: theme("colors.gray500"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -408,7 +410,7 @@ export default {
         },
         ".TypographyPinter16w600g": {
           color: theme("colors.gray500"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -417,7 +419,7 @@ export default {
         },
         ".TypographyPinter16w500r": {
           color: theme("colors.redSTD"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -426,7 +428,7 @@ export default {
         },
         ".TypographyPinter16redSTD": {
           color: theme("colors.redSTD"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -435,7 +437,7 @@ export default {
         },
         ".TypographyPinter16w500light": {
           color: theme("colors.light"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -444,7 +446,7 @@ export default {
         },
         ".TypographyPinter16w600": {
           color: theme("colors.redSTD"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -452,7 +454,7 @@ export default {
         },
         ".TypographyPinter18home": {
           color: theme("colors.gray700"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "18px",
           fontStyle: "normal",
           fontWeight: "400",
@@ -461,7 +463,7 @@ export default {
         },
         ".TypographyPinter18w500": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "18px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -471,7 +473,7 @@ export default {
 
         ".btnYes": {
           color: theme("colors.greenCoverage"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "14px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -490,7 +492,7 @@ export default {
 
         ".btnNot": {
           color: theme("colors.gray300"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "14px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -509,7 +511,7 @@ export default {
 
         ".btnCoverage": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -526,7 +528,7 @@ export default {
 
         ".TypographyPinter16green": {
           color: theme("colors.greenCoverage"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -536,7 +538,7 @@ export default {
 
         ".TypographyPinter18w500g": {
           color: theme("colors.greenCoverage"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "18px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -546,7 +548,7 @@ export default {
 
         ".TypographyPinter18w400": {
           color: theme("colors.gray900"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "18px",
           fontStyle: "normal",
           fontWeight: "400",
@@ -556,7 +558,7 @@ export default {
 
         ".TypographyPlato20": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.lato"),
+          fontFamily: "var(--font-lato) ",
           fontSize: "20px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -565,7 +567,7 @@ export default {
         },
         ".TypographyPlato24": {
           color: theme("colors.gray950"),
-          fontFamily: theme("fontFamily.lato"),
+          fontFamily: "var(--font-lato) ",
           fontSize: "24px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -574,7 +576,7 @@ export default {
         },
         ".TypographyPlato24light": {
           color: theme("colors.light"),
-          fontFamily: theme("fontFamily.lato"),
+          fontFamily: "var(--font-lato) ",
           fontSize: "24px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -592,7 +594,7 @@ export default {
           background: theme("colors.redSTD"),
           boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)",
           color: theme("colors.white"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -608,7 +610,7 @@ export default {
           background: theme("colors.gray300"),
           boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)",
           color: theme("colors.gray500"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -624,7 +626,7 @@ export default {
           background: theme("colors.redSTD"),
           boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)",
           color: theme("colors.white"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -640,7 +642,7 @@ export default {
           borderRadius: "4px",
           background: theme("colors.redSTD"),
           boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)",
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -656,7 +658,7 @@ export default {
           background: theme("colors.redSTD"),
           boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)",
           color: theme("colors.white"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -672,7 +674,7 @@ export default {
           background: theme("colors.blueBTN"),
           boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.08)",
           color: theme("colors.white"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -683,7 +685,7 @@ export default {
           justifyContent: "center",
           alignItems: "center",
           gap: "8px",
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -704,14 +706,14 @@ export default {
         },
         ".textbtnLink": {
           color: theme("colors.redSTD"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
           lineHeight: "150%",
         },
         ".textBtn": {
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "600",
@@ -728,7 +730,7 @@ export default {
 
         ".TypographyIntraMenu": {
           color: theme("colors.gray700"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "14px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -740,7 +742,7 @@ export default {
         },
         ".TypographyIntraMenuSlider": {
           color: theme("colors.gray500"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -754,7 +756,7 @@ export default {
         },
         ".TypographyIntraMenuSliderHover": {
           color: theme("colors.white"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -769,7 +771,7 @@ export default {
         ".TypographyTabIntraMenu": {
           background: theme("colors.redSTD"),
           color: theme("colors.white"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "14px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -860,7 +862,7 @@ export default {
 
         ".fontScaleSlider": {
           color: theme("colors.gray500"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "500",
@@ -870,7 +872,7 @@ export default {
 
         ".fontScaleSelected": {
           color: theme("colors.redSTD"),
-          fontFamily: theme("fontFamily.inter"),
+          fontFamily: "var(--font-inter) ",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: "500",

@@ -71,7 +71,7 @@ export function HomePlans() {
             <h1 className="pt-[16px] pb-[16px] TypographyH2 @tablet:TypographyH1homePlans">
               Cuidado com a saúde bucal a partir de R$ 23,40 por mês.
             </h1>
-            <p className=" max-w-[519px] TypographyPinter16w400 @tablet:TypographyPinter18home mx-auto ">
+            <p className=" max-w-[519px] px-2 @mobile:px-0 TypographyPinter16w400 @tablet:TypographyPinter18home mx-auto ">
               Tenha acesso a uma das maiores redes credenciadas e cobertura com
               preços incríveis.
             </p>

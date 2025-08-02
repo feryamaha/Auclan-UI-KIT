@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import SliderControl from "./SliderControl";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "@/components/ui/Button";
+import { FontDebugger } from "@/components/debug/FontDebugger";
 
 // Imagens do banner - agora referenciando da pasta public
 const bannerImages = [
@@ -107,7 +108,7 @@ const BannerHome: React.FC = () => {
           </h1>
           <p className="mb-8 TypographyPinter18home ">
             Planos odontológicos com uma das maiores redes credenciadas e
-            cobertura com preços incríveis..
+            cobertura com preços incríveis.
           </p>
           <Button
             href="/plans"
@@ -125,6 +126,9 @@ const BannerHome: React.FC = () => {
           />
         </div>
       </Container>
+      {/* Adicione os FontDebuggers aqui */}
+      {/*      <FontDebugger selector=".TypographyH1home" />
+      <FontDebugger selector=".TypographyPinter18home" /> */}
     </div>
   );
 };

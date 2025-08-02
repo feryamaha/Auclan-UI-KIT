@@ -1,9 +1,8 @@
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/scripts/Icon";
 import { icons } from "@/scripts/IconsList";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import ModalProcedimentos from "../AmazingPlans/Modal/Procedimentos/ModalProcedimentos";
 
 interface IncludeItem {
   iconInclud: keyof typeof icons;
@@ -28,6 +27,7 @@ interface CardSectionPlansProps {
   includC?: IncludeItem[];
   includD?: IncludeItem[];
   includE?: IncludeItem[];
+  onOpenModal: () => void;
 }
 
 export function CardSectionPlans({
@@ -44,20 +44,15 @@ export function CardSectionPlans({
   includC,
   includD,
   includE,
+  onOpenModal,
 }: CardSectionPlansProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <>
       <div className="w-[310px] @laptop:w-[254px] h-max flex items-center justify-center mr-[12px] @laptop:mr-0">
         <div className="w-[310px] @laptop:w-[256px] border @laptop:border-none rounded-[8px] h-max p-[15px] @Desktop1440:p-[24px] flex flex-col justify-between mx-auto ">
           <div className="mb-[40px]">
             <p className="TypographyPlato24">{name}</p>
-            <h1 className="pt-[48px] pb-[8px] TypographyH1">R${price}</h1>
+            <h1 className="pt-[48px] pb-[8px] TypographyH1">R$ {price}</h1>
             <p className="max-w-[162px] TypographyPinter14w400 ">
               {description}
             </p>
@@ -141,7 +136,7 @@ export function CardSectionPlans({
                 <Button
                   className="TypographyPinter16w500r hover:text-red700"
                   variant="btnLink"
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={onOpenModal}
                 >
                   Ver procedimentos
                 </Button>
@@ -154,7 +149,7 @@ export function CardSectionPlans({
           {/* Render icon directly */}
         </div>
       </div>
-      {isModalOpen && <ModalProcedimentos onClose={handleCloseModal} />}
     </>
   );
 }
+

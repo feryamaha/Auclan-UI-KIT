@@ -2,13 +2,14 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/scripts/Icon";
 import Link from "next/link";
 
-// Interface de props (removida hideVector)
+// Interface de props (adicionada onOpenModal)
 interface CardSPlansMobileProps {
   id: string;
   name: string;
   price: string;
   description: string;
   procedures: string;
+  onOpenModal: () => void;
 }
 
 // Componente Card Mobile - versão com borda e sem vetor falso
@@ -18,6 +19,7 @@ export function CardSPlansMobile({
   price,
   description,
   procedures,
+  onOpenModal,
 }: CardSPlansMobileProps) {
   return (
     // Div externa com borda - replicando dimensões e flex-shrink do CardSectionPlans, adicionando borda
@@ -30,7 +32,7 @@ export function CardSPlansMobile({
         {/* Replicando w, h, p, flex, flex-col, justify-between */}
         <div className="pb-[40px]">
           <p className="TypographyPlato24">{name}</p>
-          <h1 className="pt-[48px] pb-[8px] TypographyH1">R${price}</h1>
+          <h1 className="pt-[48px] pb-[8px] TypographyH1">R$ {price}</h1>
           <p className="w-[162px] TypographyPinter14w400 ">{description}</p>
         </div>
         <Link href="/page/contractPlans" className="w-full">
@@ -53,8 +55,9 @@ export function CardSPlansMobile({
             {/* Manter posicionamento para texto/botão Ver Procedimentos */}
             <p className=" pb-[8px] TypographyPinter16g950">{procedures}</p>
             <Button
-              className="w-full TypographyPinter16w500r "
+              className="w-full TypographyPinter16w500r"
               variant="btnLink"
+              onClick={onOpenModal}
             >
               Ver procedimentos
             </Button>
