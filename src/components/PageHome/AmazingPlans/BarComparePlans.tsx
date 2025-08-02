@@ -6,6 +6,7 @@ import ModalComparePlans from "./Modal/Comparativo/ModalComparePlans";
 
 export function BarComparePlans() {
   const [isCompareOpen, setIsCompareOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleClose = () => {
     setIsCompareOpen(false);
@@ -13,10 +14,21 @@ export function BarComparePlans() {
 
   return (
     <>
-      <section className="w-full relative hidden @tablet:flex justify-between py-2 @Desktop:py-[24px] px-[88px] items-center cursor-pointer hover:bg-dark bg-redSTD rounded-[8.5px]">
-        {/* Div de fundo que muda de cor no hover */}
-        <div className="w-full absolute left-0 top-0 bg-redSTD hover:bg-dark rounded-[8.5px] object-contain border">
-          <Icon name="IconFrameBGBarComparePlans" />
+      <section
+        className="w-full relative hidden @tablet:flex justify-between py-2 @Desktop:py-[24px] px-[88px] items-center cursor-pointer 
+        bg-contain rounded-[8.5px] border-2 border-white"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Div de fundo que muda no hover */}
+        <div className="w-full absolute left-0 top-0 rounded-[8.2px] object-contain">
+          <Icon
+            name={
+              isHovered
+                ? "IconFrameBGBarComparePlansHover"
+                : "IconFrameBGBarComparePlansDefault"
+            }
+          />
         </div>
 
         {/* Elementos internos com pointer-events-none */}

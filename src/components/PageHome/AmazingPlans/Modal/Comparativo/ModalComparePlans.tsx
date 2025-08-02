@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import comparePlansData from "./ComparePlansData.json";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/scripts/Icon";
@@ -18,6 +18,38 @@ interface ModalComparePlansProps {
 
 const ModalComparePlans: React.FC<ModalComparePlansProps> = ({ onClose }) => {
   const procedures = Object.keys(comparePlansData.plans[0].comparisons); // Obtém as chaves das comparações
+
+  // Efeito para desabilitar o scroll do body quando o modal estiver aberto
+  useEffect(() => {
+    // Salvar a posição de scroll atual
+    const scrollY = window.scrollY;
+
+    // Salvar os estilos originais
+    const originalStyle = {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+    };
+
+    // Aplicar estilos para prevenir scroll
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+
+    // Função de limpeza ao fechar o modal
+    return () => {
+      // Restaurar estilos originais
+      document.body.style.overflow = originalStyle.overflow;
+      document.body.style.position = originalStyle.position;
+      document.body.style.top = originalStyle.top;
+      document.body.style.width = originalStyle.width;
+
+      // Rolar a página de volta para a posição original
+      window.scrollTo(0, scrollY);
+    };
+  }, []);
 
   return (
     <div className="fixed inset-0 bg-gray950 bg-opacity-70 flex items-center justify-center z-[9999]">
@@ -49,7 +81,9 @@ const ModalComparePlans: React.FC<ModalComparePlansProps> = ({ onClose }) => {
               </div>
               <div>
                 <Link href="/page/contractPlans">
-                  <Button variant="btnPrimary" className="hover:bg-red700">Contratar agora</Button>
+                  <Button variant="btnPrimary" className="hover:bg-red700">
+                    Contratar agora
+                  </Button>
                 </Link>
               </div>
               <div className="absolute pr-[16px] left-0">
