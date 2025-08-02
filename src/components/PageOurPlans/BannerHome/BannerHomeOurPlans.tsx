@@ -4,10 +4,7 @@ import { Container } from "@/components/ui/Container";
 export function BannerHomeOurPlans() {
   return (
     <>
-      <section
-        className="w-full h-max flex items-center @laptop:h-[428px] bg-BgBannerHomeOurPlansMobile @mobile:bg-BgBannerHomeOurPlansTablet bg-cover @laptop:bg-BgBannerHomeOurPlans
-       bg-[100%] @laptop:bg-contain bg-no-repeat mt-[120px] pt-[264px] pb-[280px] "
-      >
+      <section className="w-full h-[428px] flex items-center bg-BgBannerHomeOurPlans bg-cover bg-red200 mt-[120px] ">
         <Container className="flex content-center">
           <div className="max-w-[374px] h-[348px] flex flex-col mx-auto justify-between ">
             <div className="max-w-[374px] mx-auto flex flex-col items-center gap-[12px]">

@@ -24,17 +24,19 @@ export function HomeHelp() {
                 <h1 className="TypographyH2 @tablet:TypographyH1 pb-[16px]">
                   Ainda em dúvida? Simule os valores agora
                 </h1>
-                <p className="max-w-[380px] TypographyPinter16w400 @tablet:TypographyPinter18home">
+                <p className="max-w-[390px] TypographyPinter16w400 @tablet:TypographyPinter18home">
                   Simule agora os preços incríveis para cuidar da saúde bucal da
                   sua família com a Dental Uni.
                 </p>
               </div>
-              <SelectPlans
-                plans={plansData.plans}
-                selectedPlan={selectedPlan}
-                onPlanChange={setSelectedPlan}
-              />
-              <div className="w-full flex flex-col items-start">
+              <div>
+                <SelectPlans
+                  plans={plansData.plans}
+                  selectedPlan={selectedPlan}
+                  onPlanChange={setSelectedPlan}
+                />
+              </div>
+              <div className="w-full flex flex-col items-start ">
                 <h2 className="TypographyPlato20 pb-[20px] @mobile:pb-[16px]">
                   Quantidade beneficiários
                 </h2>

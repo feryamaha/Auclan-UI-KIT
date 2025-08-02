@@ -19,6 +19,7 @@ export function BarComparePlans() {
         bg-contain rounded-[8.5px] border-2 border-white"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onClick={() => setIsCompareOpen(true)}
       >
         {/* Div de fundo que muda no hover */}
         <div className="w-full absolute left-0 top-0 rounded-[8.2px] object-contain">

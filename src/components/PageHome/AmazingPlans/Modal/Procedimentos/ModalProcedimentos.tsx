@@ -102,7 +102,7 @@ export default function ModalProcedimentos({
       {/* Modal centralizado com fundo escuro */}
       <div className="w-auto fixed inset-0 bg-gray950 bg-opacity-95 flex items-center justify-center z-[9999]">
         {/* header */}
-        <div className="w-[98%] @tablet:w-[764px] h-[98%] @mobile:h-max bg-white rounded-[16px] flex flex-col items-center justify-between text-center relative border border-red500">
+        <div className="w-[98%] @tablet:w-[764px] h-[98%] @mobile:h-max bg-white rounded-[16px] flex flex-col items-center justify-between text-center relative">
           <div className="w-full flex justify-between items-center py-[16px] px-[16px] @mobile:px-[32px] border-b ">
             <h2 className="TypographyMenuMobile">Cobertura plano</h2>
             <button
