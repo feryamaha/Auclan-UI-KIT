@@ -1,5 +1,5 @@
 "use client";
-
+export const dynamic = "force-dynamic";
 import { ReactNode } from "react";
 import { Icon } from "@/scripts/Icon";
 import { useRouter, useSearchParams } from "next/navigation";
