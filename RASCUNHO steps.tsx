@@ -2,7 +2,7 @@
 
 // Importações de dependências e componentes
 import React from "react";
-import ContractPlansLayout from "@/app/page/contractPlans/layout";
+import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout";
 
 export function StepA5Sucessfully() {
   const mainContent = (

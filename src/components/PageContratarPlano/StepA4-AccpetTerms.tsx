@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
-import ContractPlansLayout from "@/app/page/contractPlans/layout";
+import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout";
 import { useFormContext } from "@/context/FormContext";
 
 export function StepA4AcceptTerms() {

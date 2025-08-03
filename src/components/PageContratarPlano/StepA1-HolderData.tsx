@@ -3,7 +3,7 @@
 import React, { useState, ChangeEvent } from "react";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "../ui/Button";
-import ContractPlansLayout from "@/app/page/contractPlans/layout";
+import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout";
 import MenuSidebar from "@/components/ui/MenuSidebar";
 import DocolMekal from "../ui/docolMekal";
 import IncludeBeneficiaryCard from "../ui/IncludeBeneficiaryCard";
@@ -13,16 +13,16 @@ import { useFormContext } from "@/context/FormContext";
 export function StepA1HolderData() {
   const { form, handleBack, currentStep, completedSteps } = useFormContext();
   const { setValue } = form;
-  
+
   // Estado local para gerenciar os campos do formulário
   const [formData, setFormData] = useState({
     cpf: "",
     beneficiaryName: "",
     motherName: "",
     sex: "",
-    civilStatus: ""
+    civilStatus: "",
   });
-  
+
   const [isProcessing, setIsProcessing] = useState(false);
 
   // Função para validar CPF
@@ -31,77 +31,76 @@ export function StepA1HolderData() {
     const cpfPattern = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
     return cpfPattern.test(cpf);
   };
-  
+
   // Função para validar campos não vazios
   const validateField = (value: string) => {
     return value.trim().length > 0;
   };
-  
+
   // Validar formulário completo
   const isFormValid = () => {
     return (
-      validateCpf(formData.cpf) && 
-      validateField(formData.beneficiaryName) && 
-      validateField(formData.motherName) && 
-      validateField(formData.sex) && 
+      validateCpf(formData.cpf) &&
+      validateField(formData.beneficiaryName) &&
+      validateField(formData.motherName) &&
+      validateField(formData.sex) &&
       validateField(formData.civilStatus)
     );
   };
-  
+
   // Função para lidar com mudanças nos campos
   const handleChange = (field: string, value: string) => {
     // Formatação especial para CPF
-    if (field === 'cpf') {
+    if (field === "cpf") {
       // Remover caracteres não numéricos
-      let numericValue = value.replace(/\D/g, '');
-      
+      let numericValue = value.replace(/\D/g, "");
+
       // Aplicar máscara de CPF: xxx.xxx.xxx-xx
       if (numericValue.length <= 11) {
-        let formattedCPF = '';
-        
+        let formattedCPF = "";
+
         if (numericValue.length > 0) {
           formattedCPF = numericValue.substring(0, 3);
-          
+
           if (numericValue.length > 3) {
-            formattedCPF += '.' + numericValue.substring(3, 6);
-            
+            formattedCPF += "." + numericValue.substring(3, 6);
+
             if (numericValue.length > 6) {
-              formattedCPF += '.' + numericValue.substring(6, 9);
-              
+              formattedCPF += "." + numericValue.substring(6, 9);
+
               if (numericValue.length > 9) {
-                formattedCPF += '-' + numericValue.substring(9, 11);
+                formattedCPF += "-" + numericValue.substring(9, 11);
               }
             }
           }
         }
-        
-        setFormData(prev => ({ ...prev, [field]: formattedCPF }));
+
+        setFormData((prev) => ({ ...prev, [field]: formattedCPF }));
       }
     } else {
-      setFormData(prev => ({ ...prev, [field]: value }));
+      setFormData((prev) => ({ ...prev, [field]: value }));
     }
   };
-  
+
   // Função para avançar para o próximo passo usando o reload com parâmetro URL
   const handleSubmit = () => {
     if (!isFormValid() || isProcessing) return;
-    
+
     try {
       setIsProcessing(true);
-      
+
       // Salvar dados no localStorage
       localStorage.setItem("holderData", JSON.stringify(formData));
-      
+
       // Atualizar o formulário principal
       setValue("holder.cpf", formData.cpf);
       setValue("holder.beneficiaryName", formData.beneficiaryName);
       setValue("holder.motherName", formData.motherName);
       setValue("holder.sex", formData.sex);
       setValue("holder.civilStatus", formData.civilStatus);
-      
+
       // Navegar para o próximo passo usando o mesmo método do StepA0
       window.location.href = "?step=2";
-      
     } catch (error) {
       console.error("Erro ao processar formulário:", error);
     }
@@ -148,67 +147,77 @@ export function StepA1HolderData() {
               <input
                 type="text"
                 value={formData.cpf}
-                onChange={(e) => handleChange('cpf', e.target.value)}
+                onChange={(e) => handleChange("cpf", e.target.value)}
                 placeholder="Digite o CPF (ex: 123.456.789-01)"
                 className={`w-full p-2 border rounded-md ${
                   !validateCpf(formData.cpf) && formData.cpf.length > 0
-                    ? "border-red-300" 
-                    : validateCpf(formData.cpf) 
-                    ? "border-green-500" 
+                    ? "border-red-300"
+                    : validateCpf(formData.cpf)
+                    ? "border-green-500"
                     : "border-gray-300"
                 }`}
                 maxLength={14}
               />
               {!validateCpf(formData.cpf) && formData.cpf.length > 0 && (
-                <p className="text-red-500">CPF deve ter o formato 123.456.789-01</p>
+                <p className="text-red-500">
+                  CPF deve ter o formato 123.456.789-01
+                </p>
               )}
-              
+
               <input
                 type="text"
                 value={formData.beneficiaryName}
-                onChange={(e) => handleChange('beneficiaryName', e.target.value)}
+                onChange={(e) =>
+                  handleChange("beneficiaryName", e.target.value)
+                }
                 placeholder="Digite o nome do beneficiário"
                 className={`w-full p-2 border rounded-md ${
-                  !validateField(formData.beneficiaryName) && formData.beneficiaryName.length > 0
-                    ? "border-red-300" 
-                    : validateField(formData.beneficiaryName) 
-                    ? "border-green-500" 
+                  !validateField(formData.beneficiaryName) &&
+                  formData.beneficiaryName.length > 0
+                    ? "border-red-300"
+                    : validateField(formData.beneficiaryName)
+                    ? "border-green-500"
                     : "border-gray-300"
                 }`}
               />
-              {!validateField(formData.beneficiaryName) && formData.beneficiaryName.length > 0 && (
-                <p className="text-red-500">Nome do beneficiário é obrigatório</p>
-              )}
-              
+              {!validateField(formData.beneficiaryName) &&
+                formData.beneficiaryName.length > 0 && (
+                  <p className="text-red-500">
+                    Nome do beneficiário é obrigatório
+                  </p>
+                )}
+
               <input
                 type="text"
                 value={formData.motherName}
-                onChange={(e) => handleChange('motherName', e.target.value)}
+                onChange={(e) => handleChange("motherName", e.target.value)}
                 placeholder="Digite o nome da mãe"
                 className={`w-full p-2 border rounded-md ${
-                  !validateField(formData.motherName) && formData.motherName.length > 0
-                    ? "border-red-300" 
-                    : validateField(formData.motherName) 
-                    ? "border-green-500" 
+                  !validateField(formData.motherName) &&
+                  formData.motherName.length > 0
+                    ? "border-red-300"
+                    : validateField(formData.motherName)
+                    ? "border-green-500"
                     : "border-gray-300"
                 }`}
               />
-              {!validateField(formData.motherName) && formData.motherName.length > 0 && (
-                <p className="text-red-500">Nome da mãe é obrigatório</p>
-              )}
-              
+              {!validateField(formData.motherName) &&
+                formData.motherName.length > 0 && (
+                  <p className="text-red-500">Nome da mãe é obrigatório</p>
+                )}
+
               <div className="flex gap-4">
                 <div className="w-1/2">
                   <input
                     type="text"
                     value={formData.sex}
-                    onChange={(e) => handleChange('sex', e.target.value)}
+                    onChange={(e) => handleChange("sex", e.target.value)}
                     placeholder="Digite o sexo (ex: Masculino)"
                     className={`w-full p-2 border rounded-md ${
                       !validateField(formData.sex) && formData.sex.length > 0
-                        ? "border-red-300" 
-                        : validateField(formData.sex) 
-                        ? "border-green-500" 
+                        ? "border-red-300"
+                        : validateField(formData.sex)
+                        ? "border-green-500"
                         : "border-gray-300"
                     }`}
                   />
@@ -220,22 +229,26 @@ export function StepA1HolderData() {
                   <input
                     type="text"
                     value={formData.civilStatus}
-                    onChange={(e) => handleChange('civilStatus', e.target.value)}
+                    onChange={(e) =>
+                      handleChange("civilStatus", e.target.value)
+                    }
                     placeholder="Digite o estado civil (ex: Solteiro)"
                     className={`w-full p-2 border rounded-md ${
-                      !validateField(formData.civilStatus) && formData.civilStatus.length > 0
-                        ? "border-red-300" 
-                        : validateField(formData.civilStatus) 
-                        ? "border-green-500" 
+                      !validateField(formData.civilStatus) &&
+                      formData.civilStatus.length > 0
+                        ? "border-red-300"
+                        : validateField(formData.civilStatus)
+                        ? "border-green-500"
                         : "border-gray-300"
                     }`}
                   />
-                  {!validateField(formData.civilStatus) && formData.civilStatus.length > 0 && (
-                    <p className="text-red-500">Estado civil é obrigatório</p>
-                  )}
+                  {!validateField(formData.civilStatus) &&
+                    formData.civilStatus.length > 0 && (
+                      <p className="text-red-500">Estado civil é obrigatório</p>
+                    )}
                 </div>
               </div>
-              
+
               {/* Usando a estilização condicional conforme o código original */}
               {isFormValid() ? (
                 <Button
@@ -246,14 +259,12 @@ export function StepA1HolderData() {
                   disabled={isProcessing}
                 >
                   {isProcessing ? "Processando..." : "Avançar"}
-                  {!isProcessing && <Icon name="IconArrowright" className="w-5 h-5" />}
+                  {!isProcessing && (
+                    <Icon name="IconArrowright" className="w-5 h-5" />
+                  )}
                 </Button>
               ) : (
-                <Button 
-                  variant="btnForm" 
-                  className="w-full" 
-                  disabled
-                >
+                <Button variant="btnForm" className="w-full" disabled>
                   Avançar
                   <Icon name="IconArrowright" className="w-5 h-5" />
                 </Button>
@@ -280,4 +291,3 @@ export function StepA1HolderData() {
 }
 
 export default StepA1HolderData;
-

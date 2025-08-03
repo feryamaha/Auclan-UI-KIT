@@ -16,58 +16,59 @@ export function Header({ children }: HeaderProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <header className="relative w-full h-[72px] flex items-center bg-white z-40 border-b  ">
+    <header className="relative w-full h-[72px] flex items-center bg-white z-40 border-b ">
       <Container>
-        <div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-10">
-              <a href="/" className="w-[154px] h-[24px]">
-                <Icon name="IconLogoinstitucional" className="w-full h-full " />
-              </a>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
+            <a href="/" className="w-[154px] h-[24px]">
+              <Icon name="IconLogoinstitucional" className="w-full h-full" />
+            </a>
 
-              <nav className="max-w-[492px] flex items-center gap-2 hidden @tablet:flex">
-                {menuItems.map((item) =>
-                  item.name === "Rede Credenciada" ? (
-                    <a
-                      key={item.name}
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-auto flex items-center TypographyNavHeader hover:TypographyNavHeaderHover"
-                    >
-                      {item.name}
-                    </a>
-                  ) : (
-                    <Link
-                      key={item.name}
-                      href={item.link}
-                      className="w-auto flex items-center TypographyNavHeader hover:TypographyNavHeaderHover"
-                    >
-                      {item.name}
-                    </Link>
-                  )
-                )}
-              </nav>
-            </div>
+            <nav className="max-w-[492px] flex items-center gap-2 hidden @tablet:flex">
+              {menuItems.map((item) =>
+                item.name === "Rede Credenciada" ? (
+                  <a
+                    key={item.name}
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-auto flex items-center TypographyNavHeader hover:TypographyNavHeaderHover"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.link}
+                    className="w-auto flex items-center TypographyNavHeader hover:TypographyNavHeaderHover"
+                  >
+                    {item.name}
+                  </Link>
+                )
+              )}
+            </nav>
+          </div>
 
-            <button
-              className="block @tablet:hidden "
-              onClick={() => setIsSidebarOpen(true)}
-            >
-              <span className="text-2xl text-gray950">☰</span>
-            </button>
+          <button
+            className="block @tablet:hidden"
+            onClick={() => setIsSidebarOpen(true)}
+          >
+            <span className="text-2xl text-gray950">☰</span>
+          </button>
 
-            <div className="hidden @tablet:flex">
-              <a href="/page/contractPlans">
-                <Button variant="btnPrimary" className="hover:bg-red700">
-                  Contratar agora
-                </Button>
-              </a>
-            </div>
+          <div className="hidden @tablet:flex">
+            {/* Link permanece /page/contractPlans */}
+            <a href="/page/contractPlans">
+              <Button variant="btnPrimary" className="hover:bg-red700">
+                Contratar agora
+              </Button>
+            </a>
           </div>
         </div>
+
         {isSidebarOpen && <MobileMenu setIsSidebarOpen={setIsSidebarOpen} />}
       </Container>
+
       {children}
     </header>
   );

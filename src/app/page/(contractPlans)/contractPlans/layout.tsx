@@ -58,10 +58,3 @@ export default function ContractPlansLayout({
     </div>
   );
 }
-
-// Adicionada esta função para compatibilidade com Next.js
-export function generateMetadata() {
-  return {
-    title: "Contratação de Planos - Dental Uni",
-  };
-}
