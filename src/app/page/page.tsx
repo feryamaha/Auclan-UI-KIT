@@ -1,5 +1,3 @@
-// Arquivo: src/app/page.tsx
-// Propósito: Define a página inicial da aplicação com o banner principal.
 
 import BannerHome from "@/components/PageHome/BannerHome/BannerHome";
 import { SmileCare } from "@/components/PageHome/SmileCare";
@@ -20,3 +18,6 @@ export default function Home() {
     </main>
   );
 }
+
+// Arquivo: src/app/page.tsx
+// Propósito: Define a página inicial da aplicação com o banner principal.
