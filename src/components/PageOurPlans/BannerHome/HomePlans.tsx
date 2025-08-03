@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useRef, useEffect } from "react";
 import { Container } from "@/components/ui/Container";
 import { CardSectionPlans } from "@/components/PageHome/AmazingPlans/CardSectionPlans";
@@ -12,32 +11,24 @@ import { BarComparePlans } from "@/components/PageHome/AmazingPlans/BarComparePl
 import BannerHomeOurPlans from "./BannerHomeOurPlans";
 import { SectionQuestions } from "@/components/PageHome/Questions/SectionQuestions";
 import { Button } from "@/components/ui/Button";
+import ModalProcedimentos from "@/components/PageHome/AmazingPlans/Modal/Procedimentos/ModalProcedimentos"; // Adicionada importação
 
 const typedPlansData = plansData as PlansData;
 
 export function HomePlans() {
-  // Estado para controlar a visibilidade do CoveragePlans
   const [isCoverageVisible, setCoverageVisible] = useState(false);
-  // Referência para rolar até o CoveragePlans
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentPlanId, setCurrentPlanId] = useState("");
   const coverageRef = useRef<HTMLDivElement>(null);
-    const [isDesktop, setIsDesktop] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [currentPlanId, setCurrentPlanId] = useState("");
 
-  /*   // Handler de modal (ajuste conforme sua implementação)
-  const handleOpenModal = (planId: string) => {
-    console.log("Abrir modal para o plano:", planId);
-    // aqui você pode abrir um modal real, setar estado, etc.
-  }; */
-
-  // Função para abrir o modal com o ID do plano
   const handleOpenModal = (planId: string) => {
     setCurrentPlanId(planId);
     setIsModalOpen(true);
   };
 
-  const toggleCoverageVisibility = () => {
-    setCoverageVisible(!isCoverageVisible);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setCurrentPlanId(""); // Opcional: limpa o planId ao fechar
   };
 
   useEffect(() => {
@@ -112,7 +103,7 @@ export function HomePlans() {
 
           <div
             className="max-w-max h-max flex items-center justify-center mx-auto mt-[18px] mb-[26px] gap-[8px] z-40 cursor-pointer py-[13px] px-[24px]"
-            onClick={toggleCoverageVisibility}
+            onClick={() => setCoverageVisible(!isCoverageVisible)}
           >
             <Button
               className="TypographyPinter16w600 hover:text-red700"
@@ -134,6 +125,10 @@ export function HomePlans() {
           </div>
         </Container>
       </section>
+
+      {isModalOpen && (
+        <ModalProcedimentos onClose={handleCloseModal} planId={currentPlanId} />
+      )}
 
       <BannerHomeOurPlans />
       <SectionQuestions />

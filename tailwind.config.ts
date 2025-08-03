@@ -32,7 +32,7 @@ export default {
         red900: "#30070B",
         red950: "#1E0407",
         gray25: "#F6F6F6",
-        gray50: "#F6F6F6", 
+        gray50: "#F6F6F6",
         gray100: "#E7E7E7",
         gray200: "#D1D1D1",
         gray300: "#B0B0B0",
@@ -900,6 +900,7 @@ export default {
         ".scrollbar-hide::-webkit-scrollbar": {
           display: "none" /* Chrome, Safari e Opera */,
         },
+        safelist: ["snap-x", "snap-mandatory", "snap-center"],
       };
       addUtilities(newUtilities);
     },

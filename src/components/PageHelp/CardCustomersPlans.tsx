@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/scripts/Icon";
@@ -23,7 +22,13 @@ export function CardCustomersPlans({
   plans,
 }: CardCustomersPlansProps) {
   const plan = plans.find((p) => p.name === selectedPlan);
-  const totalPrice = plan ? (plan.price * beneficiaries).toFixed(2) : "0,00";
+  const totalPrice = plan
+    ? new Intl.NumberFormat("pt-BR", {
+        style: "decimal",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(plan.price * beneficiaries)
+    : "0,00";
 
   return (
     <div className="w-full @tablet:w-[519px] h-[432px] mt-[48px] @tablet:mt-0 p-[32px] border rounded-[16px] @laptop:bg-none bg-BgHomeHelPlans bg-cover @tablet:bg-contain bg-no-repeat">
@@ -39,7 +44,7 @@ export function CardCustomersPlans({
         </p>
       </div>
       <div className="mb-[48px] flex flex-col gap-[8px]">
-        <p className="TypographyPinter16w400 ">por apenas</p>
+        <p className="TypographyPinter16w400">por apenas</p>
         <h1 className="TypographyH1">R$ {totalPrice}</h1>
         <p className="max-w-[162px] TypographyPinter14w400">
           por mês por beneficiário no cartão de crédito.

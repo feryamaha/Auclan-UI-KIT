@@ -19,7 +19,7 @@ export function HomeHelp() {
       <Container>
         <div className="w-full bg-BgHomeHelp bg-cover">
           <div className="flex flex-col @tablet:flex-row justify-between pt-[48px] @mobile:pt-[56px] pb-[80px] gap-[5%]">
-            <div className="max-w-[471px] h-max flex items-start flex-col gap-[40px] overflow-x-hidden">
+            <div className="max-w-[471px] h-max flex items-start flex-col gap-[40px]">
               <div className="max-w-[420px]">
                 <h1 className="TypographyH2 @tablet:TypographyH1 pb-[16px]">
                   Ainda em dúvida? Simule os valores agora
@@ -29,13 +29,13 @@ export function HomeHelp() {
                   sua família com a Dental Uni.
                 </p>
               </div>
-              <div>
-                <SelectPlans
-                  plans={plansData.plans}
-                  selectedPlan={selectedPlan}
-                  onPlanChange={setSelectedPlan}
-                />
-              </div>
+
+              <SelectPlans
+                plans={plansData.plans}
+                selectedPlan={selectedPlan}
+                onPlanChange={setSelectedPlan}
+              />
+
               <div className="w-full flex flex-col items-start ">
                 <h2 className="TypographyPlato20 pb-[20px] @mobile:pb-[16px]">
                   Quantidade beneficiários
