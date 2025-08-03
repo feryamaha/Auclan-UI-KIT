@@ -1,6 +1,5 @@
 "use client";
-export const dynamic = "force-dynamic";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { Icon } from "@/scripts/Icon";
 import { useRouter, useSearchParams } from "next/navigation";
 import SideContent from "@/components/PageContratarPlano/Layout/sideContent";
@@ -9,7 +8,8 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-export default function Layout({ children }: LayoutProps) {
+// Componente que usa useSearchParams
+function LayoutContent({ children }: LayoutProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const step = searchParams.get("step") || "0";
@@ -53,4 +53,16 @@ export default function Layout({ children }: LayoutProps) {
   );
 }
 
-//src/app/page/(contractPlans)/contractPlans/layout.tsx
+export default function Layout({ children }: LayoutProps) {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full h-screen flex items-center justify-center">
+          Carregando...
+        </div>
+      }
+    >
+      <LayoutContent children={children} />
+    </Suspense>
+  );
+}
