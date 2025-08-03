@@ -10,6 +10,7 @@ interface FormContextType {
   handleBack: () => void;
   handleIncludeNow: () => void;
   handleIncludeLater: () => void;
+  handleSubmit: () => Promise<void>; // ← adicione aqui
   currentStep: number;
   completedSteps: Set<number>;
   setStep: (step: number) => void;
@@ -23,4 +24,3 @@ export const useFormContext = () => {
     throw new Error("useFormContext must be used within a FormProvider");
   return context;
 };
-
