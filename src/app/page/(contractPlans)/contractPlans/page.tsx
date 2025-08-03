@@ -1,10 +1,11 @@
 "use client";
 export const dynamic = "force-dynamic";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { FormProvider, useForm, Path } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema, FormData } from "@/lib/formSchema";
 import { FormContext } from "@/context/FormContext";
+import { useSearchParams } from "next/navigation";
 
 import StepA0Welcome from "@/components/PageContratarPlano/StepA0-Welcome";
 import StepA1HolderData from "@/components/PageContratarPlano/StepA1-HolderData";
@@ -23,10 +24,12 @@ import MenuSidebar from "@/components/ui/MenuSidebar";
 import matriculasData from "@/data/mockContracPlans/matriculas.json";
 import { UseFormReturn } from "react-hook-form";
 
-export default function ContractPlansPage() {
+// Componente separado para usar useSearchParams
+function ContractPlansContent() {
   const [step, setStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState(new Set<number>());
   const [isProcessing, setIsProcessing] = useState(false);
+  const searchParams = useSearchParams();
 
   const form: UseFormReturn<FormData> = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -56,9 +59,7 @@ export default function ContractPlansPage() {
 
   // Recupera step da URL e localStorage
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const params = new URLSearchParams(window.location.search);
-    const stepParam = params.get("step");
+    const stepParam = searchParams.get("step");
     if (!stepParam) return;
 
     const newStep = parseInt(stepParam, 10);
@@ -104,7 +105,7 @@ export default function ContractPlansPage() {
     setCompletedSteps(prev);
 
     window.history.replaceState({}, document.title, window.location.pathname);
-  }, [form]);
+  }, [searchParams, form]);
 
   // Próximo passo
   const handleNext = async () => {
@@ -319,5 +320,14 @@ export default function ContractPlansPage() {
         </div>
       </FormContext.Provider>
     </FormProvider>
+  );
+}
+
+// Componente principal que envolve o conteúdo com Suspense
+export default function ContractPlansPage() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <ContractPlansContent />
+    </Suspense>
   );
 }
