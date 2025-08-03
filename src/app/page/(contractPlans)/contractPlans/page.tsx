@@ -1,6 +1,6 @@
 "use client";
 export const dynamic = "force-dynamic";
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import { FormProvider, useForm, Path } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema, FormData } from "@/lib/formSchema";
@@ -24,13 +24,12 @@ import MenuSidebar from "@/components/ui/MenuSidebar";
 import matriculasData from "@/data/mockContracPlans/matriculas.json";
 import { UseFormReturn } from "react-hook-form";
 
-// Componente separado para usar useSearchParams
+// Componente que usa useSearchParams
 function ContractPlansContent() {
   const [step, setStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState(new Set<number>());
   const [isProcessing, setIsProcessing] = useState(false);
   const searchParams = useSearchParams();
-
   const form: UseFormReturn<FormData> = useForm<FormData>({
     resolver: zodResolver(formSchema),
     mode: "onChange",
@@ -58,7 +57,7 @@ function ContractPlansContent() {
   });
 
   // Recupera step da URL e localStorage
-  useEffect(() => {
+  React.useEffect(() => {
     const stepParam = searchParams.get("step");
     if (!stepParam) return;
 
@@ -323,10 +322,16 @@ function ContractPlansContent() {
   );
 }
 
-// Componente principal que envolve o conteúdo com Suspense
+// Componente principal com Suspense
 export default function ContractPlansPage() {
   return (
-    <Suspense fallback={<div>Carregando...</div>}>
+    <Suspense
+      fallback={
+        <div className="w-full h-screen flex items-center justify-center p-4 border border-blueBTN text-blueBTN">
+          Carregando...
+        </div>
+      }
+    >
       <ContractPlansContent />
     </Suspense>
   );
