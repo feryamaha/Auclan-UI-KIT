@@ -27,7 +27,7 @@ export function CardSPlansMobile({
       {" "}
       {/* Replicando w, h, flex, items, justify, flex-shrink, adicionando border */}
       {/* Div interna - replicando as dimensões, padding e flex properties do CardSectionPlans */}
-      <div className="w-full @mobile:max-w-[328px] p-[24px] flex flex-col justify-between items-start ">
+      <div className="w-full @mobile:max-w-[328px] px-[32px] py-[24px] @mobile:p-[24px] flex flex-col justify-between items-start ">
         {" "}
         {/* Replicando w, h, p, flex, flex-col, justify-between */}
         <div className="pb-[40px]">

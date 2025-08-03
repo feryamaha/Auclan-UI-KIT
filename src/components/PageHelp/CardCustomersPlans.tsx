@@ -23,7 +23,7 @@ export function CardCustomersPlans({
   plans,
 }: CardCustomersPlansProps) {
   const plan = plans.find((p) => p.name === selectedPlan);
-  const totalPrice = plan ? (plan.price * beneficiaries).toFixed(2) : "0.00";
+  const totalPrice = plan ? (plan.price * beneficiaries).toFixed(2) : "0,00";
 
   return (
     <div className="w-full @tablet:w-[519px] h-[432px] mt-[48px] @tablet:mt-0 p-[32px] border rounded-[16px] @laptop:bg-none bg-BgHomeHelPlans bg-cover @tablet:bg-contain bg-no-repeat">

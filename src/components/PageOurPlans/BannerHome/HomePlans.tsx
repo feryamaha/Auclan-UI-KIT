@@ -20,11 +20,20 @@ export function HomePlans() {
   const [isCoverageVisible, setCoverageVisible] = useState(false);
   // Referência para rolar até o CoveragePlans
   const coverageRef = useRef<HTMLDivElement>(null);
+    const [isDesktop, setIsDesktop] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [currentPlanId, setCurrentPlanId] = useState("");
 
-  // Handler de modal (ajuste conforme sua implementação)
+  /*   // Handler de modal (ajuste conforme sua implementação)
   const handleOpenModal = (planId: string) => {
     console.log("Abrir modal para o plano:", planId);
     // aqui você pode abrir um modal real, setar estado, etc.
+  }; */
+
+  // Função para abrir o modal com o ID do plano
+  const handleOpenModal = (planId: string) => {
+    setCurrentPlanId(planId);
+    setIsModalOpen(true);
   };
 
   const toggleCoverageVisibility = () => {
