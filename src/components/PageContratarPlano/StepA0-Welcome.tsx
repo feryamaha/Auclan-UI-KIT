@@ -1,13 +1,8 @@
 "use client";
 
 import React, { useState, ChangeEvent } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "../ui/Button";
-// import antigo:
-// import ContractPlansLayout from "@/app/page/(contractPlans)/layout";
-// import corrigido:
 import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout";
 import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
 import IncludeItemsPlans from "@/components/ui/IncludeItemsPlans";
@@ -128,7 +123,10 @@ export function StepA0Welcome() {
   );
 
   return (
-    <ContractPlansLayout children={mainContent} sideContent={sideContent} />
+    <ContractPlansLayout>
+      {mainContent}
+      {/* {sideContent} */}
+    </ContractPlansLayout>
   );
 }
 

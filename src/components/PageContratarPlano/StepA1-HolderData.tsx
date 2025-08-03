@@ -286,7 +286,10 @@ export function StepA1HolderData() {
   );
 
   return (
-    <ContractPlansLayout children={mainContent} sideContent={sideContent} />
+    <ContractPlansLayout>
+      {mainContent}
+      {/* {sideContent} */}
+    </ContractPlansLayout>
   );
 }
 

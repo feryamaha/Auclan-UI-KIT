@@ -61,7 +61,10 @@ export function StepA5Sucessfully() {
   const sideContent = <div>Conteúdo lateral placeholder</div>;
 
   return (
-    <ContractPlansLayout children={mainContent} sideContent={sideContent} />
+    <ContractPlansLayout>
+      {mainContent}
+      {/* {sideContent} */}
+    </ContractPlansLayout>
   );
 }
 

@@ -275,7 +275,10 @@ export function StepA2ContactData() {
   );
 
   return (
-    <ContractPlansLayout children={mainContent} sideContent={sideContent} />
+    <ContractPlansLayout>
+      {mainContent}
+      {/* {sideContent} */}
+    </ContractPlansLayout>
   );
 }
 
