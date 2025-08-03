@@ -1,4 +1,4 @@
-import { ControllerData } from '@/components/registration/corretores/Controllers'
+/* import { ControllerData } from '@/components/registration/corretores/Controllers'
 
 export interface ControllerType {
   id: string
@@ -109,4 +109,4 @@ export const defaultPartnerFormValues: PartnerFormData = {
     logo: null,
     unionFee: null
   }
-} 
+}  */
