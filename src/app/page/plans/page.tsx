@@ -1,5 +1,3 @@
-// Arquivo: src/app/page.tsx
-// Propósito: Define a página inicial da aplicação com o banner principal.
 import HomePlans from "@/components/PageOurPlans/BannerHome/HomePlans";
 import Image from "next/image";
 

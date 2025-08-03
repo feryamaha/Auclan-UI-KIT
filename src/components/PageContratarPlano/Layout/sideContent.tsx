@@ -16,3 +16,5 @@ export default function SideContent() {
     </div>
   );
 }
+
+//src/components/PageContratarPlano/Layout/sideContent.tsx

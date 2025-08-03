@@ -52,3 +52,5 @@ export default function Layout({ children }: LayoutProps) {
     </div>
   );
 }
+
+//src/app/page/(contractPlans)/contractPlans/layout.tsx
