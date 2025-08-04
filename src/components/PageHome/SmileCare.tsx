@@ -97,16 +97,16 @@ export function SmileCare() {
 
             {/* DIV3 - MOBILE */}
             {/* Visível (como flex-col) abaixo de desktop, escondido em desktop+ */}
-            <div className="flex flex-col  w-full @laptop:hidden overflow-x-auto">
+            <div className="flex flex-col  w-full @laptop:hidden overflow-x-auto scrollbar-none">
               <div className="pl-4">
                 <Icon name="IconGroupstar" className=" w-6 h-6 " />
               </div>
 
-              <div className="flex w-[1056px] items-center h-[67px] gap-[24px]  ">
+              <div className="flex w-[1056px] items-center h-max gap-[24px]">
                 <div className="relative h-full  ">
                   <p className=" pl-4 w-[200px] border-l-2 border-redSTD TypographyPinter16w500g900 ">
-                    <span className="text-redSTD ">Nota máxima</span> no Índice
-                    de Desempenho da Saúde Suplementar{" "}
+                    <span className="text-redSTD ">Excelente nota</span> no
+                    Índice de Desempenho da Saúde Suplementar{" "}
                     <span className="text-redSTD">(IDSS)</span>
                   </p>
                 </div>
