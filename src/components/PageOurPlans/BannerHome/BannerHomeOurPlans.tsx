@@ -4,9 +4,13 @@ import { Container } from "@/components/ui/Container";
 export function BannerHomeOurPlans() {
   return (
     <>
-      <section className="w-full h-[428px] flex items-center bg-BgBannerHomeOurPlans bg-cover bg-red200 mt-[120px] ">
+      <section
+        className="w-full h-[887px] @mobile:h-[1366px] @laptop:h-[428px] flex items-center 
+      bg-BgBannerHomeOurPlansMobile @laptop:bg-BgBannerHomeOurPlans
+      bg-repeat-round @mobile:bg-repat-space @laptop:bg-no-repeat @laptop:bg-cover mt-[120px]"
+      >
         <Container className="flex content-center">
-          <div className="max-w-[374px] h-[348px] flex flex-col mx-auto justify-between ">
+          <div className="max-w-[374px] h-[348px] @mobile:h-[448px] @tablet:h-[348px]  flex flex-col mx-auto justify-between">
             <div className="max-w-[374px] mx-auto flex flex-col items-center gap-[12px]">
               <h2 className="TypographyPlato24 text-center  ">
                 Garanta agora os benefícios Dental Uni aos seus entes queridos!
