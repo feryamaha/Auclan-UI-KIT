@@ -2,14 +2,14 @@
 import { ReactNode, Suspense } from "react";
 import { Icon } from "@/scripts/Icon";
 import { useRouter, useSearchParams } from "next/navigation";
-import SideContent from "@/components/PageContratarPlano/Layout/sideContent";
 
 interface LayoutProps {
   children: ReactNode;
+  sideContent: ReactNode; // Obrigatório, não opcional
 }
 
 // Componente que usa useSearchParams
-function LayoutContent({ children }: LayoutProps) {
+function LayoutContent({ children, sideContent }: LayoutProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const step = searchParams.get("step") || "0";
@@ -20,7 +20,7 @@ function LayoutContent({ children }: LayoutProps) {
   };
 
   return (
-    <div className="w-screen h-screen fixed inset-0 flex items-center justify-center bg-red25 bg-opacity-50 z-50">
+    <div className="w-screen h-screen fixed inset-0 flex flex-col items-center justify-center bg-gray950 bg-opacity-50 z-50">
       {/* Header fixo */}
       <div className="fixed top-0 w-full h-[80px] py-[16px] px-[32px] flex items-center justify-between bg-transparent">
         <a href="/" className="w-[154px] h-[24px]">
@@ -37,23 +37,23 @@ function LayoutContent({ children }: LayoutProps) {
         </button>
       </div>
 
-      {/* Conteúdo principal + lateral */}
+      {/* Conteúdo principal mainContent lateral esquerda 68% da viewport*/}
       <div className="w-full h-full flex">
         <div className="w-[68%] bg-white">
           <div className="w-full mx-auto px-[32px] pt-[112px] flex justify-center">
-            {children}
+            {children} {/* Renderiza prop children para a célula de 68% */}
           </div>
         </div>
-
+        {/* Conteúdo secundario sideContent lateral direta 32% da viewport*/}
         <div className="w-[32%] h-full px-[32px] pt-[112px] bg-gray50 overflow-y-auto">
-          <SideContent />
+          {sideContent} {/* Renderiza prop sideContent para a célula de 32% */}
         </div>
       </div>
     </div>
   );
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, sideContent }: LayoutProps) {
   return (
     <Suspense
       fallback={
@@ -62,7 +62,7 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       }
     >
-      <LayoutContent children={children} />
+      <LayoutContent children={children} sideContent={sideContent} />
     </Suspense>
   );
 }

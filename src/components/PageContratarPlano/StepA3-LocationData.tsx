@@ -277,9 +277,8 @@ export function StepA3LocationData() {
   );
 
   return (
-    <ContractPlansLayout>
+    <ContractPlansLayout sideContent={sideContent}>
       {mainContent}
-      {/* {sideContent} */}
     </ContractPlansLayout>
   );
 }

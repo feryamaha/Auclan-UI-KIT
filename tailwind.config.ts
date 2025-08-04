@@ -900,7 +900,13 @@ export default {
         ".scrollbar-hide::-webkit-scrollbar": {
           display: "none" /* Chrome, Safari e Opera */,
         },
-        safelist: ["snap-x", "snap-mandatory", "snap-center"],
+        safelist: [
+          "snap-x",
+          "snap-mandatory",
+          "snap-center",
+          "bg-BgCardModalComparePlans",
+          "bg-BgCardModalComparePlansMobile",
+        ],
       };
       addUtilities(newUtilities);
     },

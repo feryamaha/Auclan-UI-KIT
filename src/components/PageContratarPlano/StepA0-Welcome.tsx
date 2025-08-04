@@ -123,9 +123,8 @@ export function StepA0Welcome() {
   );
 
   return (
-    <ContractPlansLayout>
+    <ContractPlansLayout sideContent={sideContent}>
       {mainContent}
-      {/* {sideContent} */}
     </ContractPlansLayout>
   );
 }

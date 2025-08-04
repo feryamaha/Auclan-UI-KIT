@@ -104,9 +104,8 @@ export function StepB1AddDependent() {
   );
 
   return (
-    <ContractPlansLayout>
+    <ContractPlansLayout sideContent={sideContent}>
       {mainContent}
-      {/* {sideContent} */}
     </ContractPlansLayout>
   );
 }

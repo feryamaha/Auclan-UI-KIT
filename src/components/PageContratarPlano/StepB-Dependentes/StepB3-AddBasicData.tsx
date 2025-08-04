@@ -1,25 +1,52 @@
 // src/components/PageContratarPlano/StepB-Dependentes/StepB3-AddBasicData.tsx
 "use client";
 
-import React, { useEffect, ReactNode } from "react";  // Adicionado ReactNode para tipagem segura
+import React, { useEffect, ReactNode } from "react"; // Adicionado ReactNode para tipagem segura
 import { Icon } from "@/scripts/Icon";
 import { Button } from "@/components/ui/Button";
 import { useFormContext } from "@/context/FormContext";
 
-export function StepB3BasicData(): ReactNode {  // Alterado para ReactNode em vez de JSX.Element
+export function StepB3BasicData(): ReactNode {
+  // Alterado para ReactNode em vez de JSX.Element
   const { form, handleNext, setStep } = useFormContext();
-  const { register, formState: { errors, dirtyFields }, trigger, watch, getValues } = form;
+  const {
+    register,
+    formState: { errors, dirtyFields },
+    trigger,
+    watch,
+    getValues,
+  } = form;
 
   const dependents = getValues("dependents") || [];
   const currentIndex = dependents.length - 1;
 
-  const watchedFields = watch([`dependents.${currentIndex}.motherName`, `dependents.${currentIndex}.sex`, `dependents.${currentIndex}.parentesco`, `dependents.${currentIndex}.rg`, `dependents.${currentIndex}.orgaoEmissor`, `dependents.${currentIndex}.cns`]);
+  const watchedFields = watch([
+    `dependents.${currentIndex}.motherName`,
+    `dependents.${currentIndex}.sex`,
+    `dependents.${currentIndex}.parentesco`,
+    `dependents.${currentIndex}.rg`,
+    `dependents.${currentIndex}.orgaoEmissor`,
+    `dependents.${currentIndex}.cns`,
+  ]);
 
   useEffect(() => {
-    trigger([`dependents.${currentIndex}.motherName`, `dependents.${currentIndex}.sex`, `dependents.${currentIndex}.parentesco`, `dependents.${currentIndex}.rg`, `dependents.${currentIndex}.orgaoEmissor`, `dependents.${currentIndex}.cns`]);
+    trigger([
+      `dependents.${currentIndex}.motherName`,
+      `dependents.${currentIndex}.sex`,
+      `dependents.${currentIndex}.parentesco`,
+      `dependents.${currentIndex}.rg`,
+      `dependents.${currentIndex}.orgaoEmissor`,
+      `dependents.${currentIndex}.cns`,
+    ]);
   }, [watchedFields, trigger]);
 
-  const isStepValid = !errors.dependents?.[currentIndex]?.motherName && !errors.dependents?.[currentIndex]?.sex && !errors.dependents?.[currentIndex]?.parentesco && !errors.dependents?.[currentIndex]?.rg && !errors.dependents?.[currentIndex]?.orgaoEmissor && !errors.dependents?.[currentIndex]?.cns;
+  const isStepValid =
+    !errors.dependents?.[currentIndex]?.motherName &&
+    !errors.dependents?.[currentIndex]?.sex &&
+    !errors.dependents?.[currentIndex]?.parentesco &&
+    !errors.dependents?.[currentIndex]?.rg &&
+    !errors.dependents?.[currentIndex]?.orgaoEmissor &&
+    !errors.dependents?.[currentIndex]?.cns;
 
   const mainContent = (
     <div className="w-full h-full flex items-center backdrop-filter backdrop-blur-sm">
@@ -52,29 +79,56 @@ export function StepB3BasicData(): ReactNode {  // Alterado para ReactNode em ve
                 {...register(`dependents.${currentIndex}.motherName`)}
                 placeholder="Digite o nome da mãe"
                 className={`w-full p-2 border rounded-md ${
-                  errors.dependents?.[currentIndex]?.motherName ? "border-red-300" : (dirtyFields.dependents?.[currentIndex]?.motherName && !errors.dependents?.[currentIndex]?.motherName ? "border-green-500" : "border-gray-300")
+                  errors.dependents?.[currentIndex]?.motherName
+                    ? "border-red-300"
+                    : dirtyFields.dependents?.[currentIndex]?.motherName &&
+                      !errors.dependents?.[currentIndex]?.motherName
+                    ? "border-green-500"
+                    : "border-gray-300"
                 }`}
               />
-              {errors.dependents?.[currentIndex]?.motherName && <p className="text-red-500">{errors.dependents[currentIndex].motherName?.message}</p>}
+              {errors.dependents?.[currentIndex]?.motherName && (
+                <p className="text-red-500">
+                  {errors.dependents[currentIndex].motherName?.message}
+                </p>
+              )}
               <div className="flex gap-[24px]">
                 <input
                   type="text"
                   {...register(`dependents.${currentIndex}.sex`)}
                   placeholder="Digite o sexo (ex: Masculino)"
                   className={`w-full p-2 border rounded-md ${
-                    errors.dependents?.[currentIndex]?.sex ? "border-red-300" : (dirtyFields.dependents?.[currentIndex]?.sex && !errors.dependents?.[currentIndex]?.sex ? "border-green-500" : "border-gray-300")
+                    errors.dependents?.[currentIndex]?.sex
+                      ? "border-red-300"
+                      : dirtyFields.dependents?.[currentIndex]?.sex &&
+                        !errors.dependents?.[currentIndex]?.sex
+                      ? "border-green-500"
+                      : "border-gray-300"
                   }`}
                 />
-                {errors.dependents?.[currentIndex]?.sex && <p className="text-red-500">{errors.dependents[currentIndex].sex?.message}</p>}
+                {errors.dependents?.[currentIndex]?.sex && (
+                  <p className="text-red-500">
+                    {errors.dependents[currentIndex].sex?.message}
+                  </p>
+                )}
                 <input
                   type="text"
                   {...register(`dependents.${currentIndex}.parentesco`)}
                   placeholder="Digite o parentesco (ex: Filho)"
                   className={`w-full p-2 border rounded-md ${
-                    errors.dependents?.[currentIndex]?.parentesco ? "border-red-300" : (dirtyFields.dependents?.[currentIndex]?.parentesco && !errors.dependents?.[currentIndex]?.parentesco ? "border-green-500" : "border-gray-300")
+                    errors.dependents?.[currentIndex]?.parentesco
+                      ? "border-red-300"
+                      : dirtyFields.dependents?.[currentIndex]?.parentesco &&
+                        !errors.dependents?.[currentIndex]?.parentesco
+                      ? "border-green-500"
+                      : "border-gray-300"
                   }`}
                 />
-                {errors.dependents?.[currentIndex]?.parentesco && <p className="text-red-500">{errors.dependents[currentIndex].parentesco?.message}</p>}
+                {errors.dependents?.[currentIndex]?.parentesco && (
+                  <p className="text-red-500">
+                    {errors.dependents[currentIndex].parentesco?.message}
+                  </p>
+                )}
               </div>
               <div className="flex gap-[24px]">
                 <input
@@ -82,29 +136,56 @@ export function StepB3BasicData(): ReactNode {  // Alterado para ReactNode em ve
                   {...register(`dependents.${currentIndex}.rg`)}
                   placeholder="Digite o RG (ex: 123456789)"
                   className={`w-full p-2 border rounded-md ${
-                    errors.dependents?.[currentIndex]?.rg ? "border-red-300" : (dirtyFields.dependents?.[currentIndex]?.rg && !errors.dependents?.[currentIndex]?.rg ? "border-green-500" : "border-gray-300")
+                    errors.dependents?.[currentIndex]?.rg
+                      ? "border-red-300"
+                      : dirtyFields.dependents?.[currentIndex]?.rg &&
+                        !errors.dependents?.[currentIndex]?.rg
+                      ? "border-green-500"
+                      : "border-gray-300"
                   }`}
                 />
-                {errors.dependents?.[currentIndex]?.rg && <p className="text-red-500">{errors.dependents[currentIndex].rg?.message}</p>}
+                {errors.dependents?.[currentIndex]?.rg && (
+                  <p className="text-red-500">
+                    {errors.dependents[currentIndex].rg?.message}
+                  </p>
+                )}
                 <input
                   type="text"
                   {...register(`dependents.${currentIndex}.orgaoEmissor`)}
                   placeholder="Digite o órgão emissor (ex: SSP-SP)"
                   className={`w-full p-2 border rounded-md ${
-                    errors.dependents?.[currentIndex]?.orgaoEmissor ? "border-red-300" : (dirtyFields.dependents?.[currentIndex]?.orgaoEmissor && !errors.dependents?.[currentIndex]?.orgaoEmissor ? "border-green-500" : "border-gray-300")
+                    errors.dependents?.[currentIndex]?.orgaoEmissor
+                      ? "border-red-300"
+                      : dirtyFields.dependents?.[currentIndex]?.orgaoEmissor &&
+                        !errors.dependents?.[currentIndex]?.orgaoEmissor
+                      ? "border-green-500"
+                      : "border-gray-300"
                   }`}
                 />
-                {errors.dependents?.[currentIndex]?.orgaoEmissor && <p className="text-red-500">{errors.dependents[currentIndex].orgaoEmissor?.message}</p>}
+                {errors.dependents?.[currentIndex]?.orgaoEmissor && (
+                  <p className="text-red-500">
+                    {errors.dependents[currentIndex].orgaoEmissor?.message}
+                  </p>
+                )}
               </div>
               <input
                 type="text"
                 {...register(`dependents.${currentIndex}.cns`)}
                 placeholder="Digite o CNS (ex: 123456789012345)"
                 className={`w-full p-2 border rounded-md ${
-                  errors.dependents?.[currentIndex]?.cns ? "border-red-300" : (dirtyFields.dependents?.[currentIndex]?.cns && !errors.dependents?.[currentIndex]?.cns ? "border-green-500" : "border-gray-300")
+                  errors.dependents?.[currentIndex]?.cns
+                    ? "border-red-300"
+                    : dirtyFields.dependents?.[currentIndex]?.cns &&
+                      !errors.dependents?.[currentIndex]?.cns
+                    ? "border-green-500"
+                    : "border-gray-300"
                 }`}
               />
-              {errors.dependents?.[currentIndex]?.cns && <p className="text-red-500">{errors.dependents[currentIndex].cns?.message}</p>}
+              {errors.dependents?.[currentIndex]?.cns && (
+                <p className="text-red-500">
+                  {errors.dependents[currentIndex].cns?.message}
+                </p>
+              )}
             </form>
           </div>
         </div>
@@ -134,4 +215,3 @@ export function StepB3BasicData(): ReactNode {  // Alterado para ReactNode em ve
 }
 
 export default StepB3BasicData;
-

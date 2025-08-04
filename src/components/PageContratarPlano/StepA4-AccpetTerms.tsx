@@ -100,9 +100,8 @@ export function StepA4AcceptTerms() {
   const sideContent = <div>Conteúdo lateral placeholder</div>;
 
   return (
-    <ContractPlansLayout>
+    <ContractPlansLayout sideContent={sideContent}>
       {mainContent}
-      {/* {sideContent} */}
     </ContractPlansLayout>
   );
 }

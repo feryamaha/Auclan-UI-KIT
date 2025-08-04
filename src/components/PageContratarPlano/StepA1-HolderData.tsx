@@ -286,9 +286,8 @@ export function StepA1HolderData() {
   );
 
   return (
-    <ContractPlansLayout>
+    <ContractPlansLayout sideContent={sideContent}>
       {mainContent}
-      {/* {sideContent} */}
     </ContractPlansLayout>
   );
 }

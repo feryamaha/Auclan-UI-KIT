@@ -41,6 +41,18 @@ export default function ModalProcedimentos({
   // Aba ativa: Procedimentos ou Atos
   const [activeTab, setActiveTab] = useState("Procedimentos");
 
+  // Função para formatar valores monetários no padrão brasileiro
+  const formatCurrency = (value: string): string => {
+    // Converte string para número, tratando valores com ponto ou vírgula
+    const numericValue = parseFloat(value.replace(",", "."));
+
+    return new Intl.NumberFormat("pt-BR", {
+      style: "decimal",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(numericValue);
+  };
+
   // Efeito para desabilitar o scroll do body quando o modal estiver aberto
   useEffect(() => {
     // Salvar a posição de scroll atual
@@ -71,6 +83,19 @@ export default function ModalProcedimentos({
       // Rolar a página de volta para a posição original
       window.scrollTo(0, scrollY);
     };
+  }, []);
+
+  // Efeito para verificar o carregamento das imagens
+  useEffect(() => {
+    const imgMobile = new window.Image();
+    imgMobile.src = "/assets/img/BgCardModalComparePlansMobile.webp";
+    imgMobile.onload = () => console.log("Imagem mobile carregada com sucesso");
+    imgMobile.onerror = () => console.error("Erro ao carregar imagem mobile");
+
+    const imgDesktop = new window.Image();
+    imgDesktop.src = "/assets/img/BgCardModalComparePlan.webp";
+    imgDesktop.onload = () => console.log("Imagem desktop carregada com sucesso");
+    imgDesktop.onerror = () => console.error("Erro ao carregar imagem desktop");
   }, []);
 
   // Troca o filtro e fecha o dropdown
@@ -113,12 +138,12 @@ export default function ModalProcedimentos({
             </button>
           </div>
           {/* Informações do plano e navegação entre abas */}
-          <div className="w-full h-full flex flex-col justify-center p-[16px] @mobile:p-[32px] overflow-hidden">
+          <div className="w-full h-full flex flex-col justify-center px-[16px] pt-[16px] @mobile:px-[32px] @mobile:pt-[32px] overflow-hidden">
             <div className="w-full flex flex-col items-center mb-[8px]">
               {/* Nome e preço do plano */}
               <div
                 className="w-full h-max flex flex-col @mobile:flex-row justify-between items-start @mobile:items-center pb-[16px] @mobile:pb-[60px] px-[16px] @mobile:px-[24px] py-[16px] mb-[24px] @mobile:mb-0 
-              bg-BgCardModalComparePlansMobile @mobile:bg-BgCardModalComparePlans bg-cover @mobile:bg-cover bg-no-repeat border @mobile:border-none rounded-[8px]"
+                bg-BgCardModalComparePlansMobile @mobile:bg-BgCardModalComparePlans bg-cover @mobile:bg-cover bg-no-repeat border @mobile:border-none rounded-[8px]"
               >
                 <div className="h-max flex flex-col items-start">
                   <p className="TypographyPinter16w500g900">
@@ -126,7 +151,9 @@ export default function ModalProcedimentos({
                   </p>
 
                   <div className="w-max flex flex-col @mobile:flex-row items-start @mobile:items-end gap-[8px] pb-[24px] ">
-                    <p className="TypographyH1">R$ {currentData.plan.price}</p>
+                    <p className="TypographyH1">
+                      R$ {formatCurrency(currentData.plan.price)}
+                    </p>
                     <p className="TypographyPinter14w400">
                       {currentData.plan.priceUnit}
                     </p>
@@ -170,7 +197,7 @@ export default function ModalProcedimentos({
                   </button>
                 </div>
                 {/* Mostra quantos itens têm cobertura */}
-                <div className="w-full flex flex-col @mobile:flex-row items-start @mobile:items-center justify-between gap-[12px] @mobile:gap-[24px] mt-[16px] mt-[16px] mb-[12px]">
+                <div className="w-full flex flex-col @mobile:flex-row items-start @mobile:items-center justify-between gap-[12px] @mobile:gap-[24px] mt-[16px] mb-[12px]">
                   <p className="TypographyPinter16w400">
                     {coveredProceduresCount} {activeTab.toLowerCase()} cobertos
                   </p>
@@ -236,7 +263,7 @@ export default function ModalProcedimentos({
               </div>
             </div>
             {/* Lista dos itens filtrados, com rolagem */}
-            <div className="w-full h-[300px] overflow-y-auto scrollbar-hidden pt-[12px]">
+            <div className="w-full h-[300px] overflow-y-auto scrollbar-hidden pt-[12px] pb-[80px]">
               {filteredProcedures.map((item, index) => (
                 <div
                   key={index}
@@ -265,6 +292,9 @@ export default function ModalProcedimentos({
                   </div>
                 </div>
               ))}
+              <div className="absolute bottom-0 left-0">
+                <Icon name="IconOverlayMOdal" />
+              </div>
             </div>
           </div>
         </div>
