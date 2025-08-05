@@ -172,6 +172,9 @@ export default {
       ".HmaxContent": {
         height: "max-content",
       },
+      transitionDuration: {
+        1500: "1500ms",
+      },
     },
     screens: {
       "@mobile": "639px",
