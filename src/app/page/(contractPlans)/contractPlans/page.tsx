@@ -1,5 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 import React, { useState, Suspense } from "react";
 import { FormProvider, useForm, Path } from "react-hook-form";
@@ -23,7 +22,7 @@ import StepB4AddCompletionData from "@/components/PageContratarPlano/StepB-Depen
 
 import { UseFormReturn } from "react-hook-form";
 
-function ContractPlansContent() {
+function ContractPlansInner() {
   const searchParams = useSearchParams();
   const [step, setStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState(new Set<number>());
@@ -304,6 +303,14 @@ function ContractPlansContent() {
   );
 }
 
+function ContractPlansContent() {
+  return (
+    <Suspense fallback={<div>Carregando conteúdo...</div>}>
+      <ContractPlansInner />
+    </Suspense>
+  );
+}
+
 // Componente principal com Suspense
 export default function ContractPlansPage() {
   return (
@@ -314,10 +321,7 @@ export default function ContractPlansPage() {
         </div>
       }
     >
-      {/* Adiciona Suspense adicional para ContractPlansContent */}
-      <Suspense fallback={<div>Carregando conteúdo...</div>}>
-        <ContractPlansContent />
-      </Suspense>
+      <ContractPlansContent />
     </Suspense>
   );
 }
