@@ -8,17 +8,28 @@ import {
   SetStateAction,
 } from "react";
 import { Icon } from "@/scripts/Icon";
-import { FormContext, FormContextType } from "@/context/FormContext"; // Import corrigido com FormContextType
+import { FormContext, FormContextType } from "@/context/FormContext";
 
-type LayoutProps = {
-  children: ReactNode; // Obrigatório para layouts no Next.js
-  sideContent?: ReactNode; // Opcional, como no seu código
+// Tipo base que o Next.js espera (para passar no build)
+type BaseLayoutProps = {
+  children?: ReactNode;
 };
 
-export default function ContractPlansLayout({
-  children,
-  sideContent,
-}: LayoutProps) {
+// Tipo extendido com a prop extra (sideContent)
+type ExtendedLayoutProps = {
+  children?: ReactNode;
+  sideContent?: ReactNode;
+};
+
+export default function ContractPlansLayout(
+  props: BaseLayoutProps | ExtendedLayoutProps
+) {
+  // Desestrutura com defaults para evitar erros de TS e compatibilizar com o union type
+  const { children, sideContent } = {
+    ...props,
+    sideContent: undefined, // Default para prop extra
+  };
+
   const [step, setStep] = useState<number>(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(
     new Set<number>()
@@ -42,7 +53,6 @@ export default function ContractPlansLayout({
   };
 
   const handleNext = () => {
-    // Adicionado para match com FormContextType
     setCompletedSteps((prev) => new Set(prev).add(step));
     let newStep = step;
     if (step === 3) newStep = 30;
@@ -56,7 +66,6 @@ export default function ContractPlansLayout({
   };
 
   const handleNextStep = (matricula: string) => {
-    // Adicionado com parâmetro matricula para match exato
     // Lógica específica para next step com matricula (ajuste conforme necessário)
     console.log(`Avançando com matrícula: ${matricula}`);
     handleNext(); // Chama o handleNext genérico, ou adicione lógica custom
@@ -102,8 +111,8 @@ export default function ContractPlansLayout({
   // Valor do contexto com TODOS os campos requeridos pelo FormContextType
   const contextValue: FormContextType = {
     form: undefined,
-    handleNext, // Agora incluído
-    handleNextStep, // Agora incluído com parâmetro
+    handleNext,
+    handleNextStep,
     handleBack,
     handleIncludeNow,
     handleIncludeLater,
