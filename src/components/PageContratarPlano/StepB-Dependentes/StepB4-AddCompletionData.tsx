@@ -1,17 +1,35 @@
-// src/components/PageContratarPlano/StepB-Dependentes/StepB4-AddCompletionData.tsx
-
 "use client";
 
 import React from "react";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "@/components/ui/Button";
 import { useFormContext } from "@/context/FormContext";
+import { UseFormReturn } from "react-hook-form"; // Import necessário para tipar form
+import { FormData } from "@/lib/formSchema"; // Assuma que isso existe e define FormData com dependents
+
+// Interface para dependent (baseada no seu código; ajuste conforme o schema real)
+interface Dependent {
+  fullName: string;
+  cpf: string;
+  birthDate: string;
+  motherName: string;
+  sex: string;
+  parentesco: string;
+  rg: string;
+  orgaoEmissor: string;
+  cns: string;
+}
 
 export function StepB4AddCompletionData() {
   const { form, handleNext, handleBack, setStep } = useFormContext();
-  const { getValues, setValue } = form;
 
-  const dependents = getValues("dependents") || [];
+  // Checagem para form não ser undefined (non-null assertion para TS)
+  if (!form) {
+    throw new Error("Form is not available in context");
+  }
+  const { getValues, setValue } = form as UseFormReturn<FormData>;
+
+  const dependents = getValues("dependents") || [] as Dependent[];
 
   const handleRemoveDependent = (index: number) => {
     const updatedDependents = dependents.filter((_, i) => i !== index);
@@ -35,7 +53,7 @@ export function StepB4AddCompletionData() {
           </p>
         ) : (
           <ul className="flex flex-col gap-4">
-            {dependents.map((dep, index) => (
+            {dependents.map((dep: Dependent, index: number) => (
               <li
                 key={index}
                 className="border p-4 rounded-md flex justify-between items-center"
@@ -106,3 +124,4 @@ export function StepB4AddCompletionData() {
 }
 
 export default StepB4AddCompletionData;
+
