@@ -52,7 +52,7 @@ const BannerHome: React.FC = () => {
             alt={bannerImages[currentImage].alt}
             fill
             priority // Pré-carregar todas as imagens
-            className={`object-cover object-center transition-opacity duration-[1500ms] ease-in-out ${
+            className={`object-cover object-center transition-opacity ease-in-out ${
               isTransitioning ? "opacity-0" : "opacity-100"
             }`}
             style={{
@@ -71,7 +71,7 @@ const BannerHome: React.FC = () => {
               alt={bannerImages[nextImage].alt}
               fill
               priority // Pré-carregar todas as imagens
-              className="object-cover object-center transition-opacity duration-[1500ms] ease-in-out opacity-100"
+              className="object-cover object-center transition-opacity ease-in-out opacity-100"
               style={{
                 animation: "fadeIn 1500ms ease-in-out forwards",
               }}
