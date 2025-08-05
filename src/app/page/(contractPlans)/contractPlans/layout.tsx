@@ -1,17 +1,19 @@
 "use client";
 
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Icon } from "@/scripts/Icon";
 
-// Definir as props do layout conforme esperado pelo Next.js
+// Definir as props do layout para rotas paralelas
 interface LayoutProps {
   children: ReactNode;
   sideContent: ReactNode;
 }
 
-// Componente cliente que contém a lógica com hooks
-function ContractPlansContent({ children, sideContent }: LayoutProps) {
+export default function ContractPlansLayout({
+  children,
+  sideContent,
+}: LayoutProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const step = searchParams.get("step") || "0";
@@ -22,9 +24,9 @@ function ContractPlansContent({ children, sideContent }: LayoutProps) {
   };
 
   return (
-    <div className="w-screen h-screen fixed inset-0 flex flex-col items-center justify-center bg-gray950 bg-opacity-50 z-50">
+    <div className="w-full h-fulll fixed inset-0 flex flex-col items-center bg-gray50 justify-center z-50">
       {/* Header fixo */}
-      <div className="fixed top-0 w-full h-[80px] py-[16px] px-[32px] flex items-center justify-between bg-transparent">
+      <div className="fixed top-0 w-full h-[80px] py-[16px] px-[32px] flex items-center justify-between bg-transparent z-50">
         <a href="/" className="w-[154px] h-[24px]">
           <Icon
             name={isFirstPage ? "IconLogoinstitucional" : "IconLogoDocolMekal"}
@@ -40,34 +42,16 @@ function ContractPlansContent({ children, sideContent }: LayoutProps) {
       </div>
 
       {/* Conteúdo principal e secundário */}
-      <div className="w-full h-full flex">
-        <div className="w-[68%] bg-white">
-          <div className="w-full mx-auto px-[32px] pt-[112px] flex justify-center">
+      <div className="w-full h-full flex pt-[80px]">
+        <div className="w-[68%] h-full bg-white">
+          <div className="w-full h-full mx-auto px-[32px] pt-[32px] flex justify-center">
             {children}
           </div>
         </div>
-        <div className="w-[32%] h-full px-[32px] pt-[112px] bg-gray50 overflow-y-auto">
+        <div className="w-[32%] h-full px-[32px] pt-[32px] bg-gray50 overflow-y-auto">
           {sideContent}
         </div>
       </div>
     </div>
-  );
-}
-
-// Layout principal
-export default function ContractPlansLayout({
-  children,
-  sideContent,
-}: LayoutProps) {
-  return (
-    <Suspense
-      fallback={
-        <div className="w-full h-screen flex items-center justify-center">
-          Carregando...
-        </div>
-      }
-    >
-      <ContractPlansContent children={children} sideContent={sideContent} />
-    </Suspense>
   );
 }

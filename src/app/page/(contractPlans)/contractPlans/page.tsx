@@ -1,5 +1,6 @@
 "use client";
 export const dynamic = "force-dynamic";
+
 import React, { useState, Suspense } from "react";
 import { FormProvider, useForm, Path } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,16 +21,14 @@ import StepB2InitialData from "@/components/PageContratarPlano/StepB-Dependentes
 import StepB3BasicData from "@/components/PageContratarPlano/StepB-Dependentes/StepB3-AddBasicData";
 import StepB4AddCompletionData from "@/components/PageContratarPlano/StepB-Dependentes/StepB4-AddCompletionData";
 
-import MenuSidebar from "@/components/ui/MenuSidebar";
-import matriculasData from "@/data/mockContracPlans/matriculas.json";
 import { UseFormReturn } from "react-hook-form";
 
-// Componente que usa useSearchParams
 function ContractPlansContent() {
+  const searchParams = useSearchParams();
   const [step, setStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState(new Set<number>());
   const [isProcessing, setIsProcessing] = useState(false);
-  const searchParams = useSearchParams();
+
   const form: UseFormReturn<FormData> = useForm<FormData>({
     resolver: zodResolver(formSchema),
     mode: "onChange",
@@ -226,13 +225,6 @@ function ContractPlansContent() {
     setCompletedSteps((prev) => new Set(prev).add(30));
   };
 
-  // Clique no menu lateral
-  const handleMenuClick = (newStep: number) => {
-    if (completedSteps.has(newStep) || newStep === step) {
-      setStep(newStep);
-    }
-  };
-
   // Enviar formulário final
   const handleSubmit = async () => {
     if (isProcessing) return;
@@ -256,8 +248,6 @@ function ContractPlansContent() {
     }
   };
 
-  const shouldShowSidebar = step >= 1 && step <= 5;
-
   return (
     <FormProvider {...form}>
       <FormContext.Provider
@@ -273,15 +263,7 @@ function ContractPlansContent() {
           setStep,
         }}
       >
-        <div className="w-full h-full flex flex-col items-center justify-center relative">
-          {shouldShowSidebar && (
-            <MenuSidebar
-              currentStep={step}
-              completedSteps={Array.from(completedSteps)}
-              onMenuClick={handleMenuClick}
-            />
-          )}
-
+        <div className="w-full h-full flex flex-col items-center justify-center">
           {step === 0 && <StepA0Welcome />}
           {step === 1 && <StepA1HolderData />}
           {step === 2 && <StepA2ContactData />}
