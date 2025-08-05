@@ -1,12 +1,11 @@
 "use client";
 export const dynamic = "force-dynamic";
 
-import React, { useState, Suspense } from "react";
+import React, { useEffect } from "react";
 import { FormProvider, useForm, Path } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema, FormData } from "@/lib/formSchema";
-import { FormContext } from "@/context/FormContext";
-import { useSearchParams } from "next/navigation";
+import { FormContext, useFormContext } from "@/context/FormContext";
 
 import StepA0Welcome from "@/components/PageContratarPlano/StepA0-Welcome";
 import StepA1HolderData from "@/components/PageContratarPlano/StepA1-HolderData";
@@ -23,11 +22,19 @@ import StepB4AddCompletionData from "@/components/PageContratarPlano/StepB-Depen
 
 import { UseFormReturn } from "react-hook-form";
 
-function ContractPlansInner() {
-  const searchParams = useSearchParams();
-  const [step, setStep] = useState(0);
-  const [completedSteps, setCompletedSteps] = useState(new Set<number>());
-  const [isProcessing, setIsProcessing] = useState(false);
+export default function ContractPlansPage() {
+  const {
+    currentStep: step,
+    completedSteps,
+    handleNext,
+    handleBack,
+    handleIncludeNow,
+    handleIncludeLater,
+    handleSubmit: handleFormSubmission, // ← Mantém o nome do contexto
+    setStep,
+  } = useFormContext();
+
+  const [isProcessing, setIsProcessing] = React.useState(false);
 
   const form: UseFormReturn<FormData> = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -55,18 +62,16 @@ function ContractPlansInner() {
     },
   });
 
-  // Recupera step da URL e localStorage
-  React.useEffect(() => {
-    const stepParam = searchParams.get("step");
-    if (!stepParam) return;
-
-    const newStep = parseInt(stepParam, 10);
+  // Recupera dados do localStorage
+  useEffect(() => {
     const matricula = localStorage.getItem("matricula") || "";
     form.setValue("matricula", matricula);
 
-    if (newStep >= 2) {
+    if (step >= 2) {
       try {
-        const holderData = JSON.parse(localStorage.getItem("holderData") || "{}");
+        const holderData = JSON.parse(
+          localStorage.getItem("holderData") || "{}"
+        );
         if (holderData.cpf) {
           form.setValue("holder.cpf", holderData.cpf);
           form.setValue("holder.beneficiaryName", holderData.beneficiaryName);
@@ -79,9 +84,11 @@ function ContractPlansInner() {
       }
     }
 
-    if (newStep >= 3) {
+    if (step >= 3) {
       try {
-        const contactData = JSON.parse(localStorage.getItem("contactData") || "{}");
+        const contactData = JSON.parse(
+          localStorage.getItem("contactData") || "{}"
+        );
         if (contactData.email) {
           form.setValue("contact.email", contactData.email);
           form.setValue("contact.confirmEmail", contactData.confirmEmail);
@@ -92,28 +99,16 @@ function ContractPlansInner() {
         console.error("Erro ao carregar dados de contato:", e);
       }
     }
+  }, [step, form]);
 
-    setStep(newStep);
-    const prev = new Set<number>();
-    for (let i = 0; i < newStep; i++) prev.add(i);
-    setCompletedSteps(prev);
-
-    window.history.replaceState({}, document.title, window.location.pathname);
-  }, [searchParams, form]);
-
-  // Próximo passo
-  const handleNext = async () => {
+  // Validação do formulário
+  const onSubmit = () => {
     if (isProcessing) return;
     setIsProcessing(true);
 
     let fieldsToValidate: Path<FormData>[] = [];
 
     switch (step) {
-      case 0:
-        setCompletedSteps((prev) => new Set(prev).add(step));
-        setStep(1);
-        setIsProcessing(false);
-        return;
       case 1:
         fieldsToValidate = [
           "holder.cpf",
@@ -191,38 +186,15 @@ function ContractPlansInner() {
     }
 
     if (isValid) {
-      setCompletedSteps((prev) => new Set(prev).add(step));
-      if (step === 3) setStep(30);
-      else if (step >= 30 && step < 34) setStep(step + 1);
-      else if (step === 34) setStep(4);
-      else setStep(step + 1);
+      handleNext();
     }
 
     setIsProcessing(false);
   };
 
-  // Voltar passo
-  const handleBack = () => {
-    if (step === 4 && completedSteps.has(34)) setStep(34);
-    else if (step > 30 && step <= 34) setStep(step - 1);
-    else if (step === 30) setStep(3);
-    else if (step > 0) setStep(step - 1);
-  };
-
-  // Adicionar dependente agora
-  const handleIncludeNow = () => {
-    setStep(31);
-    setCompletedSteps((prev) => new Set(prev).add(30));
-  };
-
-  // Adicionar dependente depois
-  const handleIncludeLater = () => {
-    setStep(4);
-    setCompletedSteps((prev) => new Set(prev).add(30));
-  };
-
   // Enviar formulário final
-  const handleSubmit = async () => {
+  const onFormSubmit = async () => {
+    // ← Renomeado de handleFormSubmission para evitar conflito
     if (isProcessing) return;
     setIsProcessing(true);
     try {
@@ -234,6 +206,9 @@ function ContractPlansInner() {
       });
       if (!res.ok) throw new Error("Erro na API");
       setStep(5);
+      const params = new URLSearchParams(window.location.search);
+      params.set("step", "5");
+      window.history.pushState(null, "", `?${params.toString()}`);
     } catch (e) {
       console.error("Erro ao enviar:", e);
       form.setError("root", {
@@ -249,11 +224,11 @@ function ContractPlansInner() {
       <FormContext.Provider
         value={{
           form,
-          handleNext,
+          handleNext: onSubmit,
           handleBack,
           handleIncludeNow,
           handleIncludeLater,
-          handleSubmit,
+          handleSubmit: onFormSubmit, // ← Usar a função local renomeada
           currentStep: step,
           completedSteps,
           setStep,
@@ -298,8 +273,4 @@ function ContractPlansInner() {
       </FormContext.Provider>
     </FormProvider>
   );
-}
-
-export default function ContractPlansPage() {
-  return <ContractPlansInner />;
 }

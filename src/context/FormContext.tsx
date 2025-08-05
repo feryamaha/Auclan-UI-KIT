@@ -5,15 +5,16 @@ import { UseFormReturn } from "react-hook-form";
 import { FormData } from "../lib/formSchema";
 
 interface FormContextType {
-  form: UseFormReturn<FormData>;
-  handleNext: () => Promise<void>;
+  form?: UseFormReturn<FormData>; // ← Tornar opcional
+  handleNext: () => void; // ← Alterar para void
   handleBack: () => void;
   handleIncludeNow: () => void;
   handleIncludeLater: () => void;
-  handleSubmit: () => Promise<void>; // ← adicione aqui
+  handleSubmit: () => void; // ← Alterar para void
   currentStep: number;
   completedSteps: Set<number>;
   setStep: (step: number) => void;
+  onMenuClick?: (step: number) => void;
 }
 
 export const FormContext = createContext<FormContextType | null>(null);
