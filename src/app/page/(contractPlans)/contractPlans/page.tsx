@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import React, { useState, Suspense } from "react";
 import { FormProvider, useForm, Path } from "react-hook-form";
@@ -65,9 +66,7 @@ function ContractPlansInner() {
 
     if (newStep >= 2) {
       try {
-        const holderData = JSON.parse(
-          localStorage.getItem("holderData") || "{}"
-        );
+        const holderData = JSON.parse(localStorage.getItem("holderData") || "{}");
         if (holderData.cpf) {
           form.setValue("holder.cpf", holderData.cpf);
           form.setValue("holder.beneficiaryName", holderData.beneficiaryName);
@@ -82,9 +81,7 @@ function ContractPlansInner() {
 
     if (newStep >= 3) {
       try {
-        const contactData = JSON.parse(
-          localStorage.getItem("contactData") || "{}"
-        );
+        const contactData = JSON.parse(localStorage.getItem("contactData") || "{}");
         if (contactData.email) {
           form.setValue("contact.email", contactData.email);
           form.setValue("contact.confirmEmail", contactData.confirmEmail);
@@ -303,25 +300,6 @@ function ContractPlansInner() {
   );
 }
 
-function ContractPlansContent() {
-  return (
-    <Suspense fallback={<div>Carregando conteúdo...</div>}>
-      <ContractPlansInner />
-    </Suspense>
-  );
-}
-
-// Componente principal com Suspense
 export default function ContractPlansPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="w-full h-screen flex items-center justify-center p-4 border border-blueBTN text-blueBTN">
-          Carregando...
-        </div>
-      }
-    >
-      <ContractPlansContent />
-    </Suspense>
-  );
+  return <ContractPlansInner />;
 }
