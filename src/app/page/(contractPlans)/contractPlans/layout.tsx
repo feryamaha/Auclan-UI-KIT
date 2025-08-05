@@ -1,17 +1,28 @@
 "use client";
 
-import { ReactNode, useState, useEffect } from "react";
+import {
+  ReactNode,
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { Icon } from "@/scripts/Icon";
-import { FormContext } from "@/context/FormContext";
+import { FormContext, FormContextType } from "@/context/FormContext"; // Import corrigido com FormContextType
 
 type LayoutProps = {
-  children?: ReactNode;
-  sideContent?: ReactNode; // ← Adicionada a prop sideContent
+  children: ReactNode; // Obrigatório para layouts no Next.js
+  sideContent?: ReactNode; // Opcional, como no seu código
 };
 
-export default function ContractPlansLayout({ children, sideContent }: LayoutProps) {
-  const [step, setStep] = useState(0);
-  const [completedSteps, setCompletedSteps] = useState(new Set<number>());
+export default function ContractPlansLayout({
+  children,
+  sideContent,
+}: LayoutProps) {
+  const [step, setStep] = useState<number>(0);
+  const [completedSteps, setCompletedSteps] = useState<Set<number>>(
+    new Set<number>()
+  );
 
   // Ler o parâmetro step da URL
   useEffect(() => {
@@ -31,6 +42,7 @@ export default function ContractPlansLayout({ children, sideContent }: LayoutPro
   };
 
   const handleNext = () => {
+    // Adicionado para match com FormContextType
     setCompletedSteps((prev) => new Set(prev).add(step));
     let newStep = step;
     if (step === 3) newStep = 30;
@@ -41,6 +53,13 @@ export default function ContractPlansLayout({ children, sideContent }: LayoutPro
     const params = new URLSearchParams(window.location.search);
     params.set("step", newStep.toString());
     window.history.pushState(null, "", `?${params.toString()}`);
+  };
+
+  const handleNextStep = (matricula: string) => {
+    // Adicionado com parâmetro matricula para match exato
+    // Lógica específica para next step com matricula (ajuste conforme necessário)
+    console.log(`Avançando com matrícula: ${matricula}`);
+    handleNext(); // Chama o handleNext genérico, ou adicione lógica custom
   };
 
   const handleBack = () => {
@@ -80,26 +99,30 @@ export default function ContractPlansLayout({ children, sideContent }: LayoutPro
 
   const isFirstPage = step === 0;
 
+  // Valor do contexto com TODOS os campos requeridos pelo FormContextType
+  const contextValue: FormContextType = {
+    form: undefined,
+    handleNext, // Agora incluído
+    handleNextStep, // Agora incluído com parâmetro
+    handleBack,
+    handleIncludeNow,
+    handleIncludeLater,
+    handleSubmit: () => {}, // Stub, ajuste se necessário
+    currentStep: step,
+    completedSteps,
+    setStep: setStep as Dispatch<SetStateAction<number>>, // Tipo explícito para setStep
+    onMenuClick,
+  };
+
   return (
-    <FormContext.Provider
-      value={{
-        form: undefined,
-        handleNext,
-        handleBack,
-        handleIncludeNow,
-        handleIncludeLater,
-        handleSubmit: () => {},
-        currentStep: step,
-        completedSteps,
-        setStep,
-        onMenuClick,
-      }}
-    >
+    <FormContext.Provider value={contextValue}>
       <div className="w-screen h-screen fixed inset-0 flex flex-col items-center justify-center bg-gray950 bg-opacity-50 z-50">
         <div className="fixed top-0 w-full h-[80px] py-[16px] px-[32px] flex items-center justify-between bg-transparent z-50">
           <a href="/" className="w-[154px] h-[24px]">
             <Icon
-              name={isFirstPage ? "IconLogoinstitucional" : "IconLogoDocolMekal"}
+              name={
+                isFirstPage ? "IconLogoinstitucional" : "IconLogoDocolMekal"
+              }
               className="w-full h-full"
             />
           </a>

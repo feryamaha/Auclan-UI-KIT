@@ -4,14 +4,15 @@ import { createContext, useContext } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { FormData } from "../lib/formSchema"; // Assuma que isso existe
 
-interface FormContextType {
+// Exportada para ser importável em outros arquivos
+export interface FormContextType {
   form?: UseFormReturn<FormData>;
   handleNext: () => void;
   handleBack: () => void;
   handleIncludeNow: () => void;
   handleIncludeLater: () => void;
   handleSubmit: () => void;
-  handleNextStep: (matricula: string) => void;
+  handleNextStep: (matricula: string) => void; // Mantido com parâmetro matricula
   currentStep: number;
   completedSteps: Set<number>;
   setStep: (step: number) => void;
