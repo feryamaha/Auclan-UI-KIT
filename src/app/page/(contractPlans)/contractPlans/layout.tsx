@@ -15,9 +15,7 @@ type LayoutPropsExtended = {
   sideContent?: ReactNode;
 };
 
-export default function ContractPlansLayout(
-  props: LayoutProps | LayoutPropsExtended
-) {
+export default function ContractPlansLayout(props: LayoutProps | LayoutPropsExtended) {
   const { children, sideContent } = {
     ...props,
     sideContent: undefined, // Define valor padrão para evitar erros de tipo

@@ -314,7 +314,10 @@ export default function ContractPlansPage() {
         </div>
       }
     >
-      <ContractPlansContent />
+      {/* Adiciona Suspense adicional para ContractPlansContent */}
+      <Suspense fallback={<div>Carregando conteúdo...</div>}>
+        <ContractPlansContent />
+      </Suspense>
     </Suspense>
   );
 }
