@@ -4,16 +4,25 @@ import { ReactNode } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Icon } from "@/scripts/Icon";
 
-// Definir as props do layout para rotas paralelas
-interface LayoutProps {
-  children: ReactNode;
-  sideContent: ReactNode;
-}
+// Tipo mínimo esperado pelo Next.js
+type LayoutProps = {
+  children?: ReactNode;
+};
 
-export default function ContractPlansLayout({
-  children,
-  sideContent,
-}: LayoutProps) {
+// Tipo estendido com props adicionais (rotas paralelas)
+type LayoutPropsExtended = {
+  children?: ReactNode;
+  sideContent?: ReactNode;
+};
+
+export default function ContractPlansLayout(
+  props: LayoutProps | LayoutPropsExtended
+) {
+  const { children, sideContent } = {
+    ...props,
+    sideContent: undefined, // Define valor padrão para evitar erros de tipo
+  };
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const step = searchParams.get("step") || "0";
@@ -24,7 +33,7 @@ export default function ContractPlansLayout({
   };
 
   return (
-    <div className="w-full h-fulll fixed inset-0 flex flex-col items-center bg-gray50 justify-center z-50">
+    <div className="w-screen h-screen fixed inset-0 flex flex-col items-center justify-center bg-gray950 bg-opacity-50 z-50">
       {/* Header fixo */}
       <div className="fixed top-0 w-full h-[80px] py-[16px] px-[32px] flex items-center justify-between bg-transparent z-50">
         <a href="/" className="w-[154px] h-[24px]">
@@ -43,8 +52,8 @@ export default function ContractPlansLayout({
 
       {/* Conteúdo principal e secundário */}
       <div className="w-full h-full flex pt-[80px]">
-        <div className="w-[68%] h-full bg-white">
-          <div className="w-full h-full mx-auto px-[32px] pt-[32px] flex justify-center">
+        <div className="w-[68%] bg-white">
+          <div className="w-full mx-auto px-[32px] pt-[32px] flex justify-center">
             {children}
           </div>
         </div>
