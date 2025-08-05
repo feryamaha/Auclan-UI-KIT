@@ -1,10 +1,10 @@
-"use client"; // Adiciona a diretiva para marcar como componente cliente
+"use client";
 
 import { ReactNode, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Icon } from "@/scripts/Icon";
 
-// Definir as props do layout
+// Definir as props do layout conforme esperado pelo Next.js
 interface LayoutProps {
   children: ReactNode;
   sideContent: ReactNode;
@@ -55,7 +55,10 @@ function ContractPlansContent({ children, sideContent }: LayoutProps) {
 }
 
 // Layout principal
-export default function Layout({ children, sideContent }: LayoutProps) {
+export default function ContractPlansLayout({
+  children,
+  sideContent,
+}: LayoutProps) {
   return (
     <Suspense
       fallback={
