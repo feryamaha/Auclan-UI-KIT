@@ -11,8 +11,8 @@ import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
 import { useFormContext } from "@/context/FormContext";
 
 export function StepA1HolderData() {
-  const { form, handleBack, currentStep, completedSteps } = useFormContext();
-  const { setValue } = form;
+  const { form, handleBack, currentStep, completedSteps, onMenuClick } =
+    useFormContext();
 
   // Estado local para gerenciar os campos do formulário
   const [formData, setFormData] = useState({
@@ -92,17 +92,21 @@ export function StepA1HolderData() {
       // Salvar dados no localStorage
       localStorage.setItem("holderData", JSON.stringify(formData));
 
-      // Atualizar o formulário principal
-      setValue("holder.cpf", formData.cpf);
-      setValue("holder.beneficiaryName", formData.beneficiaryName);
-      setValue("holder.motherName", formData.motherName);
-      setValue("holder.sex", formData.sex);
-      setValue("holder.civilStatus", formData.civilStatus);
+      // Atualizar o formulário principal apenas se form existir
+      if (form) {
+        form.setValue("holder.cpf", formData.cpf);
+        form.setValue("holder.beneficiaryName", formData.beneficiaryName);
+        form.setValue("holder.motherName", formData.motherName);
+        form.setValue("holder.sex", formData.sex);
+        form.setValue("holder.civilStatus", formData.civilStatus);
+      }
 
       // Navegar para o próximo passo usando o mesmo método do StepA0
       window.location.href = "?step=2";
     } catch (error) {
       console.error("Erro ao processar formulário:", error);
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -110,7 +114,7 @@ export function StepA1HolderData() {
     <div className="w-full h-full flex gap-[24px]">
       <div className="w-max">
         <MenuSidebar
-          onMenuClick={() => {}}
+          onMenuClick={onMenuClick || (() => {})}
           currentStep={currentStep}
           completedSteps={Array.from(completedSteps)}
         />

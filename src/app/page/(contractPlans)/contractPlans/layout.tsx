@@ -2,17 +2,14 @@
 
 import { ReactNode, useState, useEffect } from "react";
 import { Icon } from "@/scripts/Icon";
-import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
-import IncludeItemsPlans from "@/components/ui/IncludeItemsPlans";
-import IncludeBeneficiaryCard from "@/components/ui/IncludeBeneficiaryCard";
-import MenuSidebar from "@/components/ui/MenuSidebar";
 import { FormContext } from "@/context/FormContext";
 
 type LayoutProps = {
   children?: ReactNode;
+  sideContent?: ReactNode; // ← Adicionada a prop sideContent
 };
 
-export default function ContractPlansLayout({ children }: LayoutProps) {
+export default function ContractPlansLayout({ children, sideContent }: LayoutProps) {
   const [step, setStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState(new Set<number>());
 
@@ -82,17 +79,16 @@ export default function ContractPlansLayout({ children }: LayoutProps) {
   };
 
   const isFirstPage = step === 0;
-  const shouldShowSidebar = step >= 1 && step <= 5;
 
   return (
     <FormContext.Provider
       value={{
-        form: undefined, // ← Alterado de null para undefined
+        form: undefined,
         handleNext,
         handleBack,
         handleIncludeNow,
         handleIncludeLater,
-        handleSubmit: () => {}, // Placeholder, substituído no page.tsx
+        handleSubmit: () => {},
         currentStep: step,
         completedSteps,
         setStep,
@@ -122,17 +118,7 @@ export default function ContractPlansLayout({ children }: LayoutProps) {
             </div>
           </div>
           <div className="w-[32%] h-full px-[32px] pt-[32px] bg-gray50 overflow-y-auto">
-            <div className="space-y-6">
-              {shouldShowSidebar && (
-                <MenuSidebar
-                  currentStep={step}
-                  completedSteps={Array.from(completedSteps)}
-                  onMenuClick={onMenuClick}
-                />
-              )}
-              <PlanDetailsCard />
-              {step === 0 ? <IncludeItemsPlans /> : <IncludeBeneficiaryCard />}
-            </div>
+            {sideContent}
           </div>
         </div>
       </div>

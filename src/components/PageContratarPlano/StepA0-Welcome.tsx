@@ -1,62 +1,55 @@
 "use client";
 
-import React, { useState, ChangeEvent } from "react";
+// Importações de dependências e componentes
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "../ui/Button";
-import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout";
+import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout"; // Ajustado: Adicionei o grupo "(contractPlans)" baseado no trace de erro
 import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
 import IncludeItemsPlans from "@/components/ui/IncludeItemsPlans";
 import matriculasData from "@/data/mockContracPlans/matriculas.json";
 
-interface MatriculaData {
-  numero: string;
-  nome: string;
-}
+type HandleIniciar = (matricula: string) => void;
 
-export function StepA0Welcome() {
+export function StepA0Welcome({ onIniciar }: { onIniciar: HandleIniciar }) {
   const [matricula, setMatricula] = useState("");
   const [error, setError] = useState("");
-  const [isValid, setIsValid] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const validateMatricula = (value: string) => {
-    if (!value || value.length !== 8) {
-      setIsValid(false);
-      setError("");
-      return;
-    }
-    const encontrada = (matriculasData.matriculas as MatriculaData[]).find(
-      (m) => m.numero === value
-    );
-    if (encontrada) {
-      setIsValid(true);
-      setError("");
-    } else {
-      setIsValid(false);
-      setError("Matrícula não encontrada");
-    }
-  };
-
-  const handleMatriculaChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const v = e.target.value.replace(/\D/g, "").slice(0, 8);
-    setMatricula(v);
-    validateMatricula(v);
-  };
-
-  const handleAdvance = () => {
-    if (!isValid || isLoading) return;
-    setIsLoading(true);
-    const dados = (matriculasData.matriculas as MatriculaData[]).find(
+  // Validação em tempo real do input
+  const isValidMatricula = () => {
+    const isLengthValid = matricula.length === 8 && /^\d+$/.test(matricula);
+    const isInList = matriculasData.matriculas.some(
       (m) => m.numero === matricula
     );
-    if (!dados) {
-      setError("Matrícula não encontrada");
-      setIsLoading(false);
-      return;
+    return isLengthValid && isInList;
+  };
+
+  const handleIniciarClick = () => {
+    if (onIniciar) {
+      if (!isValidMatricula()) {
+        setError("Número de matrícula inválido. Tente novamente.");
+        return;
+      }
+      // Salva os dados no localStorage
+      const storedData = localStorage.getItem("mockDataStorage");
+      const initialData = [
+        { step: 0, data: {} },
+        { step: 1, data: {} },
+        { step: 2, data: {} },
+        { step: 3, data: {} },
+        { step: 4, data: {} },
+        { step: 5, data: {} },
+      ];
+      const updatedStorage = storedData ? JSON.parse(storedData) : initialData;
+      updatedStorage[0].data = { matricula };
+      localStorage.setItem("mockDataStorage", JSON.stringify(updatedStorage));
+      onIniciar(matricula);
+      setError("");
+    } else {
+      setError("Erro ao processar a matrícula.");
     }
-    localStorage.setItem("matricula", matricula);
-    localStorage.setItem("nome", dados.nome);
-    window.location.href = "?step=1";
   };
 
   const mainContent = (
@@ -69,40 +62,32 @@ export function StepA0Welcome() {
         Para iniciar o processo, insira abaixo o número da matrícula vinculado à
         empresa.
       </p>
-      <form onSubmit={(e) => e.preventDefault()} className="w-full">
-        <input
-          type="text"
-          value={matricula}
-          onChange={handleMatriculaChange}
-          placeholder="Número da matrícula"
-          className={`w-full p-2 border rounded-md ${
-            error
-              ? "border-red-300"
-              : isValid
-              ? "border-green-500"
-              : "border-gray-300"
-          }`}
-          maxLength={8}
-        />
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-        <div className="flex w-full flex-col mt-[32px] gap-[24px]">
-          <Button
-            variant="btnSecondary"
-            onClick={handleAdvance}
-            disabled={!isValid || isLoading}
-          >
-            {isLoading ? "Processando..." : "Iniciar"}
-          </Button>
-          <Button
-            href="https://www.planosdentaluni.com.br/"
-            target="_blank"
-            variant="btnLink"
-            className="textbtnLink"
-          >
-            Não sei o número da matrícula
-          </Button>
-        </div>
-      </form>
+      <input
+        type="text"
+        placeholder="Número da matrícula"
+        className={`w-full p-2 border border-gray300 rounded-md mb-4 ${
+          matricula && !isValidMatricula() ? "border-redSTD" : "border-gray300"
+        }`}
+        value={matricula}
+        onChange={(e) => {
+          setMatricula(e.target.value);
+          if (error) setError("");
+        }}
+      />
+      {error && <p className="text-red-500 text-sm">{error}</p>}
+      <div className="flex w-full flex-col mt-[32px] gap-[24px]">
+        <Button variant="btnSecondary" onClick={handleIniciarClick}>
+          Iniciar
+        </Button>
+        <Button
+          href="https://www.planosdentaluni.com.br/"
+          target="_blank"
+          variant="btnLink"
+          className="textbtnLink"
+        >
+          Não sei o número da matrícula
+        </Button>
+      </div>
     </div>
   );
 
@@ -119,13 +104,64 @@ export function StepA0Welcome() {
         <PlanDetailsCard />
         <IncludeItemsPlans />
       </div>
+      <div className="max-w-[359px] h-max justify-between flex items-center mx-auto gap-[26px]">
+        <div className="w-full grid grid-cols-2 @mobile:grid-cols-3 @Desktop:flex @mobile:gap-x-[74px] gap-[32px] @Desktop:gap-[32px] @mobile:justify-center items-center py-[30px] @Desktop:mx-auto">
+          <Link
+            href="https://www.paranacooperativo.coop.br/ppc/"
+            target="_blank"
+            className="w-full flex justify-center"
+          >
+            <Image
+              src="/assets/icons/footer/IconCoperativaFooter.svg"
+              alt="Cooperativas"
+              width={110}
+              height={110}
+              className="w-12 h-12 object-cover"
+            />
+          </Link>
+          <Link
+            href="https://www.paranacooperativo.coop.br/ppc/"
+            target="_blank"
+            className="w-full flex justify-center"
+          >
+            <Image
+              src="/assets/icons/footer/IconIGRFooter.svg"
+              alt="IGR"
+              width={79}
+              height={33}
+            />
+          </Link>
+          <Link
+            href="https://www.ans.gov.br/prestadores/tiss-troca-de-informacao-de-saude-suplementar"
+            target="_blank"
+            className="w-full"
+          >
+            <Image
+              src="/assets/icons/footer/IconTISSFooter.svg"
+              alt="TISS"
+              width={110}
+              height={110}
+            />
+          </Link>
+          <Link
+            href="https://www.dentaluni.com.br/pagina/ans"
+            target="_blank"
+            className="w-full"
+          >
+            <Image
+              src="/assets/icons/footer/IconANSFooter.svg"
+              alt="ANS"
+              width={110}
+              height={110}
+            />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 
   return (
-    <ContractPlansLayout sideContent={sideContent}>
-      {mainContent}
-    </ContractPlansLayout>
+    <ContractPlansLayout children={mainContent} sideContent={sideContent} />
   );
 }
 

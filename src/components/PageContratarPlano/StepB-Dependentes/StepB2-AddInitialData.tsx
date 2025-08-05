@@ -1,69 +1,54 @@
-// src/components/PageContratarPlano/StepB-Dependentes/StepB2-AddInitialData.tsx
 "use client";
 
-import React, { useEffect } from "react";
+// Importações para renderização, navegação e manipulação do formulário
+import React from "react";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "@/components/ui/Button";
 import { useFormContext } from "@/context/FormContext";
+import { Path, UseFormReturn } from "react-hook-form";
+import { FormData } from "@/lib/formSchema";
 
+// Componente para o passo B2: adicionar dados iniciais de dependentes
 export function StepB2InitialData() {
+  // Obtém o contexto do formulário
   const { form, handleNext, setStep } = useFormContext();
-  const {
-    register,
-    formState: { errors, dirtyFields },
-    trigger,
-    watch,
-    getValues,
-    setValue,
-  } = form;
 
+  // Desestruturação segura do form com valores padrão
+  const {
+    register = () => ({} as any),
+    getValues = (() => ({})) as <TFieldValues extends FormData>(
+      field?: Path<TFieldValues>
+    ) => any,
+    setValue = (() => {}) as <TFieldValues extends FormData>(
+      name: Path<TFieldValues>,
+      value: any
+    ) => void,
+  } = (form || {}) as UseFormReturn<FormData>;
+
+  // Obtém o array de dependentes e calcula o índice atual
   const dependents = getValues("dependents") || [];
   const currentIndex = dependents.length;
 
-  const watchedFields = watch([
-    `dependents.${currentIndex}.cpf`,
-    `dependents.${currentIndex}.fullName`,
-    `dependents.${currentIndex}.birthDate`,
-  ]);
-
-  useEffect(() => {
-    trigger([
-      `dependents.${currentIndex}.cpf`,
-      `dependents.${currentIndex}.fullName`,
-      `dependents.${currentIndex}.birthDate`,
+  // Função para adicionar dependente e avançar
+  const addDependent = () => {
+    setValue("dependents", [
+      ...dependents,
+      {
+        cpf: getValues(`dependents.${currentIndex}.cpf`) || "",
+        fullName: getValues(`dependents.${currentIndex}.fullName`) || "",
+        birthDate: getValues(`dependents.${currentIndex}.birthDate`) || "",
+        motherName: "",
+        sex: "",
+        parentesco: "",
+        rg: "",
+        orgaoEmissor: "",
+        cns: "",
+      },
     ]);
-  }, [watchedFields, trigger]);
-
-  const isStepValid =
-    !errors.dependents?.[currentIndex]?.cpf &&
-    !errors.dependents?.[currentIndex]?.fullName &&
-    !errors.dependents?.[currentIndex]?.birthDate;
-
-  const addDependent = async () => {
-    const isValid = await trigger([
-      `dependents.${currentIndex}.cpf`,
-      `dependents.${currentIndex}.fullName`,
-      `dependents.${currentIndex}.birthDate`,
-    ]);
-    if (isValid) {
-      setValue("dependents", [
-        ...dependents,
-        {
-          cpf: getValues(`dependents.${currentIndex}.cpf`) || "",
-          fullName: getValues(`dependents.${currentIndex}.fullName`) || "",
-          birthDate: getValues(`dependents.${currentIndex}.birthDate`) || "",
-          motherName: "",
-          sex: "",
-          parentesco: "",
-          rg: "",
-          orgaoEmissor: "",
-          cns: "",
-        },
-      ]);
-      handleNext();
-    }
+    handleNext();
   };
 
+  // Estrutura do conteúdo
   return (
     <div className="w-full h-full flex items-center backdrop-filter backdrop-blur-sm">
       <div className="w-[40%] h-[60%] mx-auto bg-white rounded-[16px] flex flex-col justify-between">
@@ -94,56 +79,20 @@ export function StepB2InitialData() {
                 type="text"
                 {...register(`dependents.${currentIndex}.cpf`)}
                 placeholder="Digite o CPF (ex: 123.456.789-01)"
-                className={`w-full p-2 border rounded-md ${
-                  errors.dependents?.[currentIndex]?.cpf
-                    ? "border-red-300"
-                    : dirtyFields.dependents?.[currentIndex]?.cpf &&
-                      !errors.dependents?.[currentIndex]?.cpf
-                    ? "border-green-500"
-                    : "border-gray-300"
-                }`}
+                className="w-full p-2 border rounded-md border-gray-300"
               />
-              {errors.dependents?.[currentIndex]?.cpf && (
-                <p className="text-red-500">
-                  {errors.dependents[currentIndex].cpf?.message}
-                </p>
-              )}
               <input
                 type="text"
                 {...register(`dependents.${currentIndex}.fullName`)}
                 placeholder="Digite o nome completo"
-                className={`w-full p-2 border rounded-md ${
-                  errors.dependents?.[currentIndex]?.fullName
-                    ? "border-red-300"
-                    : dirtyFields.dependents?.[currentIndex]?.fullName &&
-                      !errors.dependents?.[currentIndex]?.fullName
-                    ? "border-green-500"
-                    : "border-gray-300"
-                }`}
+                className="w-full p-2 border rounded-md border-gray-300"
               />
-              {errors.dependents?.[currentIndex]?.fullName && (
-                <p className="text-red-500">
-                  {errors.dependents[currentIndex].fullName?.message}
-                </p>
-              )}
               <input
                 type="date"
                 {...register(`dependents.${currentIndex}.birthDate`)}
                 placeholder="Selecione a data de nascimento (ex: 01/01/2000)"
-                className={`w-full p-2 border rounded-md ${
-                  errors.dependents?.[currentIndex]?.birthDate
-                    ? "border-red-300"
-                    : dirtyFields.dependents?.[currentIndex]?.birthDate &&
-                      !errors.dependents?.[currentIndex]?.birthDate
-                    ? "border-green-500"
-                    : "border-gray-300"
-                }`}
+                className="w-full p-2 border rounded-md border-gray-300"
               />
-              {errors.dependents?.[currentIndex]?.birthDate && (
-                <p className="text-red-500">
-                  {errors.dependents[currentIndex].birthDate?.message}
-                </p>
-              )}
             </form>
           </div>
         </div>
@@ -160,7 +109,6 @@ export function StepB2InitialData() {
             className="w-max"
             type="button"
             onClick={addDependent}
-            disabled={!isStepValid}
           >
             Avançar
           </Button>

@@ -909,6 +909,8 @@ export default {
           "snap-center",
           "bg-BgCardModalComparePlans",
           "bg-BgCardModalComparePlansMobile",
+          "BGStepB0",
+          "BGCardStepB0",
         ],
       };
       addUtilities(newUtilities);

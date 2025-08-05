@@ -94,7 +94,8 @@ export default function ModalProcedimentos({
 
     const imgDesktop = new window.Image();
     imgDesktop.src = "/assets/img/BgCardModalComparePlan.webp";
-    imgDesktop.onload = () => console.log("Imagem desktop carregada com sucesso");
+    imgDesktop.onload = () =>
+      console.log("Imagem desktop carregada com sucesso");
     imgDesktop.onerror = () => console.error("Erro ao carregar imagem desktop");
   }, []);
 

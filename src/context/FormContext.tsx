@@ -2,19 +2,20 @@
 
 import { createContext, useContext } from "react";
 import { UseFormReturn } from "react-hook-form";
-import { FormData } from "../lib/formSchema";
+import { FormData } from "../lib/formSchema"; // Assuma que isso existe
 
 interface FormContextType {
-  form?: UseFormReturn<FormData>; // ← Tornar opcional
-  handleNext: () => void; // ← Alterar para void
+  form?: UseFormReturn<FormData>;
+  handleNext: () => void;
   handleBack: () => void;
   handleIncludeNow: () => void;
   handleIncludeLater: () => void;
-  handleSubmit: () => void; // ← Alterar para void
+  handleSubmit: () => void;
+  handleNextStep: (matricula: string) => void;
   currentStep: number;
   completedSteps: Set<number>;
   setStep: (step: number) => void;
-  onMenuClick?: (step: number) => void;
+  onMenuClick?: (step: number) => void; // Adicionado para suportar sidebar
 }
 
 export const FormContext = createContext<FormContextType | null>(null);

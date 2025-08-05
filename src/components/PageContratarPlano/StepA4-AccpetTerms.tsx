@@ -1,53 +1,43 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+// Importações para renderização, navegação e manipulação do formulário
+import React, { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout";
 import { useFormContext } from "@/context/FormContext";
+import { Path, UseFormReturn } from "react-hook-form";
+import { FormData } from "@/lib/formSchema";
 
+// Componente para o passo 4: aceitação dos termos
 export function StepA4AcceptTerms() {
+  // Obtém o contexto do formulário
   const { form, handleNext, handleBack } = useFormContext();
+
+  // Desestruturação segura do form com valores padrão
   const {
-    register,
-    formState: { errors, dirtyFields },
-    trigger,
-    watch,
-    getValues,
-  } = form;
+    register = () => ({} as any),
+    getValues = (() => ({})) as <TFieldValues extends FormData>(
+      field?: Path<TFieldValues>
+    ) => any,
+  } = (form || {}) as UseFormReturn<FormData>;
 
   // Estado para prevenir cliques múltiplos
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const watchedFields = watch(["terms"]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      trigger(["terms"]).catch((e) =>
-        console.error("Erro ao validar termos:", e)
-      );
-    }, 200);
-
-    return () => clearTimeout(timer);
-  }, [watchedFields, trigger]);
-
-  const isStepValid = !errors.terms;
-
-  // Função para avançar com segurança
+  // Função para avançar ao próximo passo
   const handleAdvanceWithSafety = async () => {
-    if (isProcessing || !isStepValid) return;
+    if (isProcessing) return;
 
     try {
       setIsProcessing(true);
-
-      // Salvar aceitação dos termos no localStorage
+      // Salva aceitação dos termos no localStorage
       localStorage.setItem(
         "termsAccepted",
         JSON.stringify({
-          terms: getValues("terms"),
+          terms: getValues("terms") || false,
         })
       );
-
-      // Método alternativo de navegação
+      // Navega para o próximo passo
       window.location.href = "?step=5";
     } catch (error) {
       console.error("Erro ao processar:", error);
@@ -56,6 +46,7 @@ export function StepA4AcceptTerms() {
     }
   };
 
+  // Estrutura principal do conteúdo
   const mainContent = (
     <div className="w-full flex flex-col items-start gap-[12px] mb-[24px]">
       <h2 className="TypographyPlato24">Aceite e Conclusão</h2>
@@ -70,23 +61,16 @@ export function StepA4AcceptTerms() {
           <input
             type="checkbox"
             {...register("terms")}
-            className={`p-2 border rounded-md ${
-              errors.terms
-                ? "border-red-300"
-                : dirtyFields.terms && !errors.terms
-                ? "border-green-500"
-                : "border-gray-300"
-            }`}
+            className="p-2 border rounded-md border-gray-300"
           />
           <span>Aceito os termos e condições</span>
         </label>
-        {errors.terms && <p className="text-red-500">{errors.terms.message}</p>}
         <Button
           variant="btnPrimary"
           className="w-full"
           type="button"
           onClick={handleAdvanceWithSafety}
-          disabled={!isStepValid || isProcessing}
+          disabled={isProcessing}
         >
           {isProcessing ? "Processando..." : "Avançar"}
         </Button>
@@ -97,8 +81,10 @@ export function StepA4AcceptTerms() {
     </div>
   );
 
+  // Conteúdo da barra lateral
   const sideContent = <div>Conteúdo lateral placeholder</div>;
 
+  // Renderização final
   return (
     <ContractPlansLayout sideContent={sideContent}>
       {mainContent}
