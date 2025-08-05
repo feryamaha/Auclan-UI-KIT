@@ -1,4 +1,8 @@
+"use client"; // Adiciona a diretiva para marcar como componente cliente
+
 import { ReactNode, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Icon } from "@/scripts/Icon";
 
 // Definir as props do layout
 interface LayoutProps {
@@ -7,9 +11,6 @@ interface LayoutProps {
 }
 
 // Componente cliente que contém a lógica com hooks
-import { useRouter, useSearchParams } from "next/navigation";
-import { Icon } from "@/scripts/Icon";
-
 function ContractPlansContent({ children, sideContent }: LayoutProps) {
   const router = useRouter();
   const searchParams = useSearchParams();

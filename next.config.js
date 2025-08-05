@@ -3,7 +3,9 @@ const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    turbo: true,
+    turbo: {
+      rules: {},
+    },
   },
   images: {
     domains: ['www.dentaluni.com.br'],
