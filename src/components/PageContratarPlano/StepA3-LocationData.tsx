@@ -8,7 +8,7 @@ import { contractPlansSchema } from "@/schemas/contractPlansSchema";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "../ui/Button";
 import { FloatingLabelInput } from "@/components/ui/FloatingLabelInput";
-import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout";
+import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layoutMain";
 import MenuSidebar from "@/components/ui/MenuSidebar";
 import DocolMekal from "../ui/docolMekal";
 import IncludeBeneficiaryCard from "../ui/IncludeBeneficiaryCard";

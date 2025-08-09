@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "@/components/ui/Button";
-import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout";
+import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layoutMain";
 import MenuSidebar from "@/components/ui/MenuSidebar";
 import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
 import IncludeBeneficiaryCard from "@/components/ui/IncludeBeneficiaryCard";

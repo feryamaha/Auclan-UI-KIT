@@ -10,7 +10,7 @@ import { matriculaSchema } from "@/schemas/contractPlansSchema";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "../ui/Button";
 import { FloatingLabelInput } from "@/components/ui/FloatingLabelInput";
-import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout";
+import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layoutMain";
 import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
 import IncludeItemsPlans from "@/components/ui/IncludeItemsPlans";
 import { useFormContext } from "@/context/FormContext";
