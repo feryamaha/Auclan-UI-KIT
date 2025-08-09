@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -27,7 +27,7 @@ export function StepA1HolderData({ onNext, onBack }: StepA1HolderDataProps) {
 
   const {
     register,
-    formState: { errors, isValid },
+    formState: { errors },
     handleSubmit,
     control,
   } = useForm<HolderFormData>({
@@ -45,19 +45,12 @@ export function StepA1HolderData({ onNext, onBack }: StepA1HolderDataProps) {
     },
   });
 
-  // Log temporário para depurar o control
-  console.log("Control in StepA1:", control);
-
-  // Log temporário para depurar isValid e erros
-  console.log("Form state:", { isValid, errors });
-
   const sex = useWatch({ control, name: "holder.sex" });
   const civilStatus = useWatch({ control, name: "holder.civilStatus" });
   const cpf = useWatch({ control, name: "holder.cpf" });
   const beneficiaryName = useWatch({ control, name: "holder.beneficiaryName" });
   const motherName = useWatch({ control, name: "holder.motherName" });
 
-  // Lógica para verificar se todos os campos obrigatórios estão preenchidos e validados
   const isFormValid = React.useMemo(() => {
     const isCpfValid = cpf && /^\d{11}$/.test(cpf);
     const isBeneficiaryNameValid =
@@ -69,49 +62,41 @@ export function StepA1HolderData({ onNext, onBack }: StepA1HolderDataProps) {
     const isSexValid = sex && sex.length >= 1;
     const isCivilStatusValid = civilStatus && civilStatus.length >= 1;
 
-    const isValid =
+    return (
       isCpfValid &&
       isBeneficiaryNameValid &&
       isMotherNameValid &&
       isSexValid &&
-      isCivilStatusValid;
-
-    console.log("isFormValid:", {
-      isValid,
-      isCpfValid,
-      isBeneficiaryNameValid,
-      isMotherNameValid,
-      isSexValid,
-      isCivilStatusValid,
-    }); // Log temporário para depuração
-
-    return isValid;
+      isCivilStatusValid
+    );
   }, [cpf, beneficiaryName, motherName, sex, civilStatus]);
-
-  // Log temporário para depurar valores dos campos
-  console.log("Form values:", {
-    cpf,
-    beneficiaryName,
-    motherName,
-    sex,
-    civilStatus,
-    nomeConjuge: useWatch({ control, name: "holder.nomeConjuge" }),
-  });
 
   const onSubmit = (data: HolderFormData) => {
     console.log("Dados do titular:", data);
     onNext();
   };
 
+  // 🔹 Detectar se é Mobile
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const mainContent = (
     <div className="w-full h-full flex gap-[24px]">
-      <div className="w-max">
-        <MenuSidebar
-          onMenuClick={onMenuClick || (() => {})}
-          currentStep={currentStep}
-          completedSteps={Array.from(completedSteps)}
-        />
-      </div>
+      {/* Só mostra MenuSidebar no desktop */}
+      {!isMobile && (
+        <div className="w-max">
+          <MenuSidebar
+            onMenuClick={onMenuClick || (() => {})}
+            currentStep={currentStep}
+            completedSteps={Array.from(completedSteps)}
+          />
+        </div>
+      )}
       <div className="w-full flex flex-col gap-[32px]">
         <div className="w-full h-max pb-[32px] border-b flex justify-between">
           <div className="w-max flex flex-col">
@@ -130,12 +115,14 @@ export function StepA1HolderData({ onNext, onBack }: StepA1HolderDataProps) {
               </p>
             </div>
           </div>
-          <div className="w-max flex">
+          <div className="w-max flex hidden @tablet:block">
             <DocolMekal />
           </div>
         </div>
-        <div className="w-full justify-between flex">
-          <p className="TypographyPlato20">Dados iniciais</p>
+        <div className="w-full justify-between flex flex-col @tablet:flex-row">
+          <p className="TypographyPlato20 mb-[16px] @tablet:mb-0">
+            Dados iniciais
+          </p>
           <div className="max-w-[542px]">
             <form
               className="w-full flex flex-col gap-4"
@@ -146,7 +133,7 @@ export function StepA1HolderData({ onNext, onBack }: StepA1HolderDataProps) {
                 name="holder.cpf"
                 type="text"
                 placeholder="CPF*"
-                onlyNumbers={true}
+                onlyNumbers
                 register={register}
                 errors={errors}
                 control={control}
@@ -164,7 +151,7 @@ export function StepA1HolderData({ onNext, onBack }: StepA1HolderDataProps) {
                 name="holder.beneficiaryName"
                 type="text"
                 placeholder="Nome do beneficiário*"
-                allowAllCharacters={true}
+                allowAllCharacters
                 register={register}
                 errors={errors}
                 control={control}
@@ -185,7 +172,7 @@ export function StepA1HolderData({ onNext, onBack }: StepA1HolderDataProps) {
                 name="holder.motherName"
                 type="text"
                 placeholder="Nome da mãe*"
-                allowAllCharacters={true}
+                allowAllCharacters
                 register={register}
                 errors={errors}
                 control={control}
@@ -208,16 +195,12 @@ export function StepA1HolderData({ onNext, onBack }: StepA1HolderDataProps) {
                     name="holder.sex"
                     type="text"
                     placeholder="Sexo*"
-                    allowAllCharacters={true}
+                    allowAllCharacters
                     register={register}
                     errors={errors}
                     control={control}
                     validation={{
                       required: "Sexo é obrigatório",
-                      minLength: {
-                        value: 1,
-                        message: "Sexo é obrigatório",
-                      },
                     }}
                   />
                 </div>
@@ -227,16 +210,12 @@ export function StepA1HolderData({ onNext, onBack }: StepA1HolderDataProps) {
                     name="holder.civilStatus"
                     type="text"
                     placeholder="Estado civil*"
-                    allowAllCharacters={true}
+                    allowAllCharacters
                     register={register}
                     errors={errors}
                     control={control}
                     validation={{
                       required: "Estado civil é obrigatório",
-                      minLength: {
-                        value: 1,
-                        message: "Estado civil é obrigatório",
-                      },
                     }}
                   />
                 </div>
@@ -274,7 +253,14 @@ export function StepA1HolderData({ onNext, onBack }: StepA1HolderDataProps) {
   );
 
   return (
-    <ContractPlansLayout sideContent={sideContent}>
+    <ContractPlansLayout
+      sideContent={sideContent}
+      currentStep={currentStep}
+      totalSteps={6}
+      stepTitle="Titular do plano"
+      completedSteps={Array.from(completedSteps)}
+      onMenuClick={onMenuClick}
+    >
       {mainContent}
     </ContractPlansLayout>
   );

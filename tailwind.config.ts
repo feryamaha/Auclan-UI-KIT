@@ -205,6 +205,18 @@ export default {
           fontWeight: "500",
           lineHeight: "140%",
         },
+        ".TypographyPinter12R": {
+          color: theme("colors.redSTD"),
+          fontFamily: "var(--font-inter) ",
+          fontSize: "12px",
+          fontStyle: "normal",
+          fontWeight: "500",
+          lineHeight: "120%",
+          padding: "4px 8px",
+          border: "1px solid #F9D6D7",
+          borderRadius: "18px",
+          background: theme("colors.red25"),
+        },
         ".TypographyNavHeader": {
           color: "var(--color-gray950) ",
           fontFamily: "var(--font-inter) ",

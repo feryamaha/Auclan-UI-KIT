@@ -3,16 +3,13 @@
 import React, { useState, useEffect } from "react";
 import { Icon } from "@/scripts/Icon";
 
-
-
-// Definindo a interface de props para o MenuSidebar
 export interface MenuSidebarProps {
-  onMenuClick: (step: number) => void; // Função para lidar com o clique no menu
-  currentStep: number; // Passo atual do processo
-  completedSteps: number[]; // Etapas já concluídas
+  onMenuClick: (step: number) => void;
+  currentStep: number;
+  completedSteps: number[];
+  isMobile?: boolean; // 🔹 Nova prop opcional
 }
 
-// Definindo os itens do menu com os estados da propriedade 'pageStep' para controle de navegação
 const menuItems = [
   { number: "1", text: "Identificação Inicial", pageStep: 0 },
   { number: "2", text: "Titular do Plano", pageStep: 1 },
@@ -26,18 +23,19 @@ export function MenuSidebar({
   onMenuClick,
   currentStep,
   completedSteps,
+  isMobile = false,
 }: MenuSidebarProps) {
   const [savedSteps, setSavedSteps] = useState<number[]>([]);
 
-  // Carrega os dados salvos do localStorage apenas se contiverem dados válidos (desativado por enquanto)
   useEffect(() => {
-    setSavedSteps([]); // Desativa a lógica de savedSteps até implementação da API
+    setSavedSteps([]);
   }, [currentStep]);
 
   return (
-    <div className="w-[233px] flex flex-col gap-[8px]">
+    <div
+      className={`${isMobile ? "w-full" : "w-[233px]"} flex flex-col gap-[8px]`}
+    >
       {menuItems.map((item, index) => {
-        // Lógica baseada em posição: concluído se já passou, ativo se atual, pendente se futuro
         const isCompleted = currentStep > item.pageStep;
         const isActive = item.pageStep === currentStep;
         const isDisabled = item.pageStep > currentStep;
@@ -66,5 +64,3 @@ export function MenuSidebar({
 }
 
 export default MenuSidebar;
-
-

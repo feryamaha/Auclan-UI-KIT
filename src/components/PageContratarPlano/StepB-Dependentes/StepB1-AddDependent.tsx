@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "../../ui/Button";
 import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layoutMain";
@@ -15,21 +15,43 @@ interface StepB1AddDependentProps {
   onBack: () => void;
 }
 
+// Exemplo de dados para um dropdown de parentesco (caso precise usar assim como BRAZILIAN_STATES no A3)
+// Se esse step não utiliza dropdown, só deixe definido igual para futura evolução.
+const RELATIONSHIP_TYPES = [
+  { value: "", label: "Selecione o parentesco" },
+  { value: "CONJUGE", label: "Cônjuge" },
+  { value: "FILHO", label: "Filho(a)" },
+  { value: "ENTEADO", label: "Enteado(a)" },
+  { value: "OUTRO", label: "Outro" },
+];
+
 export function StepB1AddDependent({
   onNext,
   onBack,
 }: StepB1AddDependentProps) {
   const { onMenuClick, currentStep, completedSteps } = useFormContext();
 
+  // Lógica mobile (EXATAMENTE igual A3)
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const mainContent = (
     <div className="w-full h-full flex gap-[24px]">
-      <div className="w-max">
-        <MenuSidebar
-          onMenuClick={onMenuClick || (() => {})}
-          currentStep={currentStep}
-          completedSteps={Array.from(completedSteps)}
-        />
-      </div>
+      {/* Só mostra MenuSidebar no desktop */}
+      {!isMobile && (
+        <div className="w-max">
+          <MenuSidebar
+            onMenuClick={onMenuClick || (() => {})}
+            currentStep={currentStep}
+            completedSteps={Array.from(completedSteps)}
+          />
+        </div>
+      )}
       <div className="w-full flex flex-col gap-[32px] items-end">
         <div className="w-full h-max pb-[32px] border-b flex justify-between">
           <div className="w-max flex flex-col">
@@ -51,7 +73,7 @@ export function StepB1AddDependent({
               </p>
             </div>
           </div>
-          <div className="w-max flex">
+          <div className="w-max flex hidden @tablet:block">
             <DocolMekal />
           </div>
         </div>
@@ -66,7 +88,7 @@ export function StepB1AddDependent({
             Adicionar dependente
           </Button>
         </div>
-        <div className="w-[442px] flex flex-col gap-[32px] items-center">
+        <div className="w-full @tablet:w-[442px] flex flex-col gap-[32px] items-center">
           <div className="max-w-[309px] flex flex-col items-center justify-center text-center gap-[16px]">
             <div className="w-[48px] h-[48px] bg-red25 flex items-center justify-center rounded-full">
               <Icon name="IconADDITIONicon" className="w-5 h-5 rotate-180" />
@@ -106,7 +128,14 @@ export function StepB1AddDependent({
   );
 
   return (
-    <ContractPlansLayout sideContent={sideContent}>
+    <ContractPlansLayout
+      sideContent={sideContent}
+      currentStep={currentStep}
+      totalSteps={6}
+      stepTitle="Endereço"
+      completedSteps={Array.from(completedSteps)}
+      onMenuClick={onMenuClick}
+    >
       {mainContent}
     </ContractPlansLayout>
   );

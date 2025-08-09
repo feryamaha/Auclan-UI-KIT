@@ -6,7 +6,7 @@ import { Container } from "../ui/Container";
 
 export function Footer() {
   return (
-    <footer className="w-full ">
+    <footer className="w-full hidden @laptop:block ">
       <div className="w-full @Desktop:bg-gray50 relative z-[-1] ">
         <Image
           src="/assets/icons/footer/bgFooter.png"

@@ -53,19 +53,27 @@ export function StepB2AddInitialData({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-      <div className="flex gap-[24px] w-[80%] h-[80%]">
+      <div className="max-w-[558px] @mobile:w-[80%] h-[80%] flex gap-[24px] absolute bottom-0 @tablet:static">
         {/* Modal Content */}
-        <div className="flex-1 bg-white rounded-r-[16px] flex flex-col overflow-hidden">
+        <div className="w-full flex-1 bg-white rounded-[16px] flex flex-col overflow-hidden">
           {/* Header */}
           <div className="flex justify-between items-center border-b px-[32px] py-[16px]">
-            <h2 className="TypographyPlato20">Dados iniciais do dependente</h2>
+            <h2 className="TypographyPlato20">Incluir dependente</h2>
             <button onClick={onBack} className="p-[12px]">
               <Icon name="IconClose" />
             </button>
           </div>
 
+          <div className="w-full pt-[32px] px-[32px] flex flex-col gap-[8px]">
+            <p className="Typography14hoversidebarOK">Etapa 1 de 2</p>
+            <h2 className="TypographyPlato24">Dados Iniciais</h2>
+            <p className="TypographyPinter16w400">
+              Vamos começar pelo CPF, nome e data de nascimento.
+            </p>
+          </div>
+
           {/* Body */}
-          <div className="flex-1 overflow-y-auto px-[32px] py-[16px] flex flex-col gap-[24px]">
+          <div className="flex-1 overflow-y-auto pt-[24px] flex flex-col gap-[24px] px-[32px]">
             <FloatingLabelInput
               label="Nome"
               name="nome"
