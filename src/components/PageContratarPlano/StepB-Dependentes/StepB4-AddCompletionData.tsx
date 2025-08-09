@@ -1,127 +1,83 @@
 "use client";
-
 import React from "react";
 import { Icon } from "@/scripts/Icon";
 import { Button } from "@/components/ui/Button";
+import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout";
+import MenuSidebar from "@/components/ui/MenuSidebar";
+import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
+import IncludeBeneficiaryCard from "@/components/ui/IncludeBeneficiaryCard";
 import { useFormContext } from "@/context/FormContext";
-import { UseFormReturn } from "react-hook-form"; // Import necessário para tipar form
-import { FormData } from "@/lib/formSchema"; // Assuma que isso existe e define FormData com dependents
 
-// Interface para dependent (baseada no seu código; ajuste conforme o schema real)
-interface Dependent {
-  fullName: string;
-  cpf: string;
-  birthDate: string;
-  motherName: string;
-  sex: string;
-  parentesco: string;
-  rg: string;
-  orgaoEmissor: string;
-  cns: string;
+interface StepB4AddCompletionDataProps {
+  onNext: () => void;
+  onBack: () => void;
+  onAddDependent: () => void;
 }
 
-export function StepB4AddCompletionData() {
-  const { form, handleNext, handleBack, setStep } = useFormContext();
-
-  // Checagem para form não ser undefined (non-null assertion para TS)
-  if (!form) {
-    throw new Error("Form is not available in context");
-  }
-  const { getValues, setValue } = form as UseFormReturn<FormData>;
-
-  const dependents = getValues("dependents") || [] as Dependent[];
-
-  const handleRemoveDependent = (index: number) => {
-    const updatedDependents = dependents.filter((_, i) => i !== index);
-    setValue("dependents", updatedDependents);
-  };
-
-  const handleEditDependent = (index: number) => {
-    setStep(32); // Volta para edição inicial; ajuste se precisar de step específico
-  };
+export function StepB4AddCompletionData({
+  onNext,
+  onBack,
+  onAddDependent,
+}: StepB4AddCompletionDataProps) {
+  const { onMenuClick, currentStep, completedSteps } = useFormContext();
 
   const mainContent = (
-    <div className="w-screen flex items-start">
-      <div className="w-full flex flex-col gap-[24px]">
-        <h2 className="TypographyPlato24">Revisão de Dependentes</h2>
-        <p className="TypographyPinter16w400">
-          Revise os dependentes adicionados antes de prosseguir.
-        </p>
-        {dependents.length === 0 ? (
-          <p className="TypographyPinter16w500g950">
-            Nenhum dependente adicionado.
-          </p>
-        ) : (
-          <ul className="flex flex-col gap-4">
-            {dependents.map((dep: Dependent, index: number) => (
-              <li
-                key={index}
-                className="border p-4 rounded-md flex justify-between items-center"
-              >
-                <div>
-                  <p>
-                    <strong>Nome:</strong> {dep.fullName}
-                  </p>
-                  <p>
-                    <strong>CPF:</strong> {dep.cpf}
-                  </p>
-                  <p>
-                    <strong>Data de Nascimento:</strong> {dep.birthDate}
-                  </p>
-                  <p>
-                    <strong>Nome da Mãe:</strong> {dep.motherName}
-                  </p>
-                  <p>
-                    <strong>Sexo:</strong> {dep.sex}
-                  </p>
-                  <p>
-                    <strong>Parentesco:</strong> {dep.parentesco}
-                  </p>
-                  <p>
-                    <strong>RG:</strong> {dep.rg}
-                  </p>
-                  <p>
-                    <strong>Órgão Emissor:</strong> {dep.orgaoEmissor}
-                  </p>
-                  <p>
-                    <strong>CNS:</strong> {dep.cns}
-                  </p>
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    variant="btnLink"
-                    onClick={() => handleEditDependent(index)}
-                  >
-                    Editar
-                  </Button>
-                  <Button
-                    variant="btnLink"
-                    className="text-red-500"
-                    onClick={() => handleRemoveDependent(index)}
-                  >
-                    Remover
-                  </Button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-        <Button variant="btnLink" className="w-max" onClick={() => setStep(32)}>
-          <Icon name="IconADDITION" className="w-5 h-5 rotate-180" />
-          Adicionar dependente
-        </Button>
-        <Button variant="btnPrimary" className="w-full" onClick={handleNext}>
+    <div className="w-full h-full flex gap-[24px]">
+      <div className="w-max">
+        <MenuSidebar
+          onMenuClick={onMenuClick || (() => {})}
+          currentStep={currentStep}
+          completedSteps={Array.from(completedSteps)}
+        />
+      </div>
+
+      <div className="w-full flex flex-col gap-[32px] items-start">
+        <div className="w-full h-max pb-[32px] border-b flex justify-between">
+          <div className="w-max flex flex-col">
+            <Button
+              variant="btnLink"
+              className="textbtnLink w-max"
+              onClick={onBack}
+            >
+              <Icon name="IconArrowright" className="w-5 h-5 rotate-180" />
+              Voltar
+            </Button>
+            <div className="w-[302px] pt-[8px]">
+              <h2 className="TypographyPlato24 pb-[8px]">Dados de Conclusão</h2>
+              <p className="TypographyPinter16w400">
+                Revise e finalize a adição dos dependentes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Aqui entra o conteúdo específico desse step */}
+        <Button variant="btnFormHover" className="w-full" onClick={onNext}>
           Avançar
+          <Icon name="IconArrowright" className="w-5 h-5" />
         </Button>
-        <Button variant="btnLink" className="w-max" onClick={handleBack}>
-          Voltar
+
+        <Button variant="btnLink" className="w-max" onClick={onAddDependent}>
+          + Adicionar outro dependente
         </Button>
       </div>
     </div>
   );
 
-  return mainContent;
+  const sideContent = (
+    <div className="w-full h-max flex flex-col gap-[8px]">
+      <div className="w-full h-max py-[16px] px-[24px] bg-white rounded-[8px]">
+        <PlanDetailsCard />
+      </div>
+      <IncludeBeneficiaryCard />
+    </div>
+  );
+
+  return (
+    <ContractPlansLayout sideContent={sideContent}>
+      {mainContent}
+    </ContractPlansLayout>
+  );
 }
 
 export default StepB4AddCompletionData;
-

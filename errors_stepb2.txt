@@ -1,0 +1,3 @@
+error TS6053: File 'src/components/PageContratarPlano/StepB-Dependentes/StepB2InitialData.tsx' not found.
+  The file is in the program because:
+    Root file specified for compilation

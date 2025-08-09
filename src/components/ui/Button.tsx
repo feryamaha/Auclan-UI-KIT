@@ -10,6 +10,7 @@ type ButtonVariant =
   | "btnForm"
   | "btnFormHover"
   | "btnCoverage"
+  | "btnCoverageList"
   | "btnScrollDown"
   | "btnLinkForm";
 
@@ -38,6 +39,7 @@ export function Button({
     btnForm: "btnForm",
     btnFormHover: "btnFormHover",
     btnCoverage: "btnCoverage",
+    btnCoverageList: "btnCoverageList",
     btnScrollDown: "btnScrollDown",
     btnLinkForm: "btnLinkForm",
   };

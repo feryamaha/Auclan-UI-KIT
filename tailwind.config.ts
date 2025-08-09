@@ -529,6 +529,19 @@ export default {
           border: "1px solid #E7E7E7",
         },
 
+        ".btnCoverageList": {
+          color: theme("colors.gray950"),
+          fontFamily: "var(--font-inter) ",
+          fontSize: "16px",
+          fontStyle: "normal",
+          fontWeight: "500",
+          lineHeight: "140%",
+          letterSpacing: "-0.32px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        },
+
         ".TypographyPinter16green": {
           color: theme("colors.greenCoverage"),
           fontFamily: "var(--font-inter) ",

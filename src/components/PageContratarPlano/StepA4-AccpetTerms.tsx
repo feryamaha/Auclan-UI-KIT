@@ -1,90 +1,101 @@
 "use client";
-
-// Importações para renderização, navegação e manipulação do formulário
 import React, { useState } from "react";
+import { Icon } from "@/scripts/Icon";
 import { Button } from "@/components/ui/Button";
 import ContractPlansLayout from "@/app/page/(contractPlans)/contractPlans/layout";
+import MenuSidebar from "@/components/ui/MenuSidebar";
+import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
+import IncludeBeneficiaryCard from "@/components/ui/IncludeBeneficiaryCard";
 import { useFormContext } from "@/context/FormContext";
-import { Path, UseFormReturn } from "react-hook-form";
-import { FormData } from "@/lib/formSchema";
 
-// Componente para o passo 4: aceitação dos termos
-export function StepA4AcceptTerms() {
-  // Obtém o contexto do formulário
-  const { form, handleNext, handleBack } = useFormContext();
+interface StepA4AcceptTermsProps {
+  onNext: () => void;
+  onBack: () => void;
+}
 
-  // Desestruturação segura do form com valores padrão
-  const {
-    register = () => ({} as any),
-    getValues = (() => ({})) as <TFieldValues extends FormData>(
-      field?: Path<TFieldValues>
-    ) => any,
-  } = (form || {}) as UseFormReturn<FormData>;
+export function StepA4AcceptTerms({ onNext, onBack }: StepA4AcceptTermsProps) {
+  const { onMenuClick, currentStep, completedSteps } = useFormContext();
+  const [isFormValid, setIsFormValid] = useState(false);
 
-  // Estado para prevenir cliques múltiplos
-  const [isProcessing, setIsProcessing] = useState(false);
-
-  // Função para avançar ao próximo passo
-  const handleAdvanceWithSafety = async () => {
-    if (isProcessing) return;
-
-    try {
-      setIsProcessing(true);
-      // Salva aceitação dos termos no localStorage
-      localStorage.setItem(
-        "termsAccepted",
-        JSON.stringify({
-          terms: getValues("terms") || false,
-        })
-      );
-      // Navega para o próximo passo
-      window.location.href = "?step=5";
-    } catch (error) {
-      console.error("Erro ao processar:", error);
-    } finally {
-      setIsProcessing(false);
-    }
-  };
-
-  // Estrutura principal do conteúdo
   const mainContent = (
-    <div className="w-full flex flex-col items-start gap-[12px] mb-[24px]">
-      <h2 className="TypographyPlato24">Aceite e Conclusão</h2>
-      <p className="TypographyPinter16w400">
-        Por favor, confirme que você aceita os termos do plano.
-      </p>
-      <form
-        className="w-full flex flex-col gap-4"
-        onSubmit={(e) => e.preventDefault()}
-      >
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            {...register("terms")}
-            className="p-2 border rounded-md border-gray-300"
-          />
-          <span>Aceito os termos e condições</span>
-        </label>
-        <Button
-          variant="btnPrimary"
-          className="w-full"
-          type="button"
-          onClick={handleAdvanceWithSafety}
-          disabled={isProcessing}
-        >
-          {isProcessing ? "Processando..." : "Avançar"}
-        </Button>
-        <Button variant="btnLink" className="w-max" onClick={handleBack}>
-          Voltar
-        </Button>
-      </form>
+    <div className="w-full h-full flex gap-[24px]">
+      <div className="w-max">
+        <MenuSidebar
+          onMenuClick={onMenuClick || (() => {})}
+          currentStep={currentStep}
+          completedSteps={Array.from(completedSteps)}
+        />
+      </div>
+
+      <div className="w-full flex flex-col gap-[32px] items-start">
+        <div className="w-full h-max pb-[32px] border-b flex justify-between">
+          <div className="w-max flex flex-col">
+            <Button
+              variant="btnLink"
+              className="textbtnLink w-max"
+              onClick={onBack}
+            >
+              <Icon name="IconArrowright" className="w-5 h-5 rotate-180" />
+              Voltar
+            </Button>
+            <div className="w-[302px] pt-[8px]">
+              <h2 className="TypographyPlato24 pb-[8px]">Aceite e Conclusão</h2>
+              <p className="TypographyPinter16w400">
+                Por favor, confirme que você aceita os termos do plano.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full flex flex-col gap-4">
+          {/* Checkbox */}
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              onChange={(e) => setIsFormValid(e.target.checked)}
+              className="w-5 h-5 border rounded-md border-gray-300"
+            />
+            <span className="TypographyPinter16w400">
+              Aceito os termos e condições
+            </span>
+          </label>
+
+          {/* Botão Avançar */}
+          {isFormValid ? (
+            <Button
+              variant="btnFormHover"
+              className="w-full"
+              type="button"
+              onClick={onNext} // Chama direto, garantindo avanço
+            >
+              Avançar
+              <Icon name="IconArrowright" className="w-5 h-5" />
+            </Button>
+          ) : (
+            <Button variant="btnForm" className="w-full" type="button" disabled>
+              Avançar
+              <Icon name="IconArrowright" className="w-5 h-5" />
+            </Button>
+          )}
+
+          {/* Botão Voltar */}
+          <Button variant="btnLink" className="w-max" onClick={onBack}>
+            Voltar
+          </Button>
+        </div>
+      </div>
     </div>
   );
 
-  // Conteúdo da barra lateral
-  const sideContent = <div>Conteúdo lateral placeholder</div>;
+  const sideContent = (
+    <div className="w-full h-max flex flex-col gap-[8px]">
+      <div className="w-full h-max py-[16px] px-[24px] bg-white rounded-[8px]">
+        <PlanDetailsCard />
+      </div>
+      <IncludeBeneficiaryCard />
+    </div>
+  );
 
-  // Renderização final
   return (
     <ContractPlansLayout sideContent={sideContent}>
       {mainContent}

@@ -1,4 +1,3 @@
-// src/components/PageContratarPlano/StepB-Dependentes/StepB1-AddDependent.tsx
 "use client";
 
 import React from "react";
@@ -11,15 +10,22 @@ import IncludeBeneficiaryCard from "../../ui/IncludeBeneficiaryCard";
 import PlanDetailsCard from "@/components/ui/PlanDetailsCard";
 import { useFormContext } from "@/context/FormContext";
 
-export function StepB1AddDependent() {
-  const { handleNext, handleBack, currentStep, completedSteps } =
-    useFormContext();
+interface StepB1AddDependentProps {
+  onNext: () => void;
+  onBack: () => void;
+}
+
+export function StepB1AddDependent({
+  onNext,
+  onBack,
+}: StepB1AddDependentProps) {
+  const { onMenuClick, currentStep, completedSteps } = useFormContext();
 
   const mainContent = (
     <div className="w-full h-full flex gap-[24px]">
       <div className="w-max">
         <MenuSidebar
-          onMenuClick={() => {}}
+          onMenuClick={onMenuClick || (() => {})}
           currentStep={currentStep}
           completedSteps={Array.from(completedSteps)}
         />
@@ -30,7 +36,7 @@ export function StepB1AddDependent() {
             <Button
               variant="btnLink"
               className="textbtnLink w-max"
-              onClick={handleBack}
+              onClick={onBack}
             >
               <Icon name="IconArrowright" className="w-5 h-5 rotate-180" />
               Voltar
@@ -54,7 +60,7 @@ export function StepB1AddDependent() {
           <Button
             variant="btnLink"
             className="textbtnLink w-max"
-            onClick={handleNext}
+            onClick={onNext}
           >
             <Icon name="IconADDITION" className="w-5 h-5 rotate-180" />
             Adicionar dependente
@@ -75,17 +81,13 @@ export function StepB1AddDependent() {
             <Button
               variant="btnLink"
               className="textbtnLink w-max"
-              onClick={handleNext}
+              onClick={onNext}
             >
               <Icon name="IconADDITION" className="w-5 h-5 rotate-180" />
               Adicionar dependente
             </Button>
           </div>
-          <Button
-            variant="btnFormHover"
-            className="w-full"
-            onClick={handleNext}
-          >
+          <Button variant="btnFormHover" className="w-full" onClick={onNext}>
             Avançar
             <Icon name="IconArrowright" className="w-5 h-5" />
           </Button>

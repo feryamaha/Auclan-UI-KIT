@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { Icon } from "@/scripts/Icon";
 
+
+
 // Definindo a interface de props para o MenuSidebar
-interface MenuSidebarProps {
+export interface MenuSidebarProps {
   onMenuClick: (step: number) => void; // Função para lidar com o clique no menu
   currentStep: number; // Passo atual do processo
   completedSteps: number[]; // Etapas já concluídas
@@ -64,3 +66,5 @@ export function MenuSidebar({
 }
 
 export default MenuSidebar;
+
+
