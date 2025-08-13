@@ -1,0 +1,67 @@
+[
+  {
+    "conceptId": "intro",
+    "arrayId": "array-button-intro",
+    "posts": [
+      {
+        "id": "1",
+        "title": "Introdução ao Button",
+        "content1": "O componente 'Button' é um dos mais usados para interações em interfaces web. Ele pode desencadear ações, submeter formulários, abrir modais e muito mais.",
+        "content2": "Este componente precisa ser claro, acessível e estilizado de acordo com a identidade visual da aplicação."
+      }
+    ]
+  },
+  {
+    "conceptId": "usos",
+    "arrayId": "array-button-usos",
+    "posts": [
+      {
+        "id": "2",
+        "title": "Usos Comuns",
+        "content1": "Os botões servem para: submeter formulários, acionar eventos JavaScript, navegação interna, entre outros.",
+        "content2": "Utilize tags <button> sempre que o elemento tiver intenção de clique/ação. Prefira <a> para navegação."
+      }
+    ]
+  },
+  {
+    "conceptId": "tipos",
+    "arrayId": "array-button-tipos",
+    "posts": [
+      {
+        "id": "3",
+        "title": "Tipos de Botão",
+        "content1": "Você pode ter botões de vários estilos: primário, secundário, de alerta, de texto, ícone, etc.",
+        "content2": "Cada tipo pode ser definido via prop ou classe CSS. Exemplo: 'btn-primary', 'btn-secondary', etc."
+      }
+    ]
+  },
+  {
+    "conceptId": "acessibilidade",
+    "arrayId": "array-button-accessibility",
+    "posts": [
+      {
+        "id": "4",
+        "title": "Acessibilidade em Botões",
+        "content1": "Botões acessíveis usam a tag <button>, possuem labels claros, e respondem ao teclado.",
+        "content2": "Evite usar <div> com onClick simulando botão. Usuários de leitor de tela terão dificuldade."
+      }
+    ]
+  },
+  {
+    "conceptId": "exemplos",
+    "arrayId": "array-button-exemplos",
+    "posts": [
+      {
+        "id": "5",
+        "title": "Exemplos de Implementação",
+        "content1": "Exemplo de botão simples:",
+        "code": [
+          {
+            "description": "Botão React/Next.js",
+            "javascript": "<button className=\"btn btn-primary\">Clique aqui</button>"
+          }
+        ]
+      }
+    ]
+  }
+]

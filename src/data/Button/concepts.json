@@ -1,0 +1,24 @@
+{
+  "concepts": [
+    {
+      "id": "intro",
+      "title": "Introdução ao Button"
+    },
+    {
+      "id": "usos",
+      "title": "Usos Comuns"
+    },
+    {
+      "id": "tipos",
+      "title": "Tipos de Botão"
+    },
+    {
+      "id": "acessibilidade",
+      "title": "Acessibilidade em Botões"
+    },
+    {
+      "id": "exemplos",
+      "title": "Exemplos de Implementação"
+    }
+  ]
+}

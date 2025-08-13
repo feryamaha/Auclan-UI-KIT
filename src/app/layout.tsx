@@ -1,60 +1,49 @@
-// Arquivo: src/app/layout.tsx
-// Propósito: Define o layout raiz da aplicação Next.js, configurando fontes e estrutura base.
-
-import type { Metadata } from "next";
 import { Inter, Lato } from "next/font/google";
 import "./globals.css";
-import { Footer } from "@/components/PageHome/Footer";
 import { Header } from "@/components/PageHome/Header";
+import { Sidebar } from "@/components/PageHome/Sidebar";
 
-// Configuração de fontes otimizada pelo Next.js
 const lato = Lato({
   variable: "--font-lato",
   subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"], // Corrigido para usar apenas os pesos disponíveis para Lato
-  display: "swap", // Evita FOUT
+  weight: ["100", "300", "400", "700", "900"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"], // Ampliado para incluir todos os pesos necessários
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
-// Metadados para SEO
-export const metadata: Metadata = {
-  title: "Dental Uni - Plano Odontológico",
-  description: "Dental Uni - Plano Odontológico",
-  icons: {
-    icon: "/favicon.ico",
-  },
+export const metadata = {
+  title: "Auclan UI Kit",
+  description: "Documentação e playground de componentes Auclan",
+  icons: { icon: "/favicon.ico" },
 };
 
-// Configuração da viewport conforme recomendação do Next.js
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
-  // Adicione outras propriedades da viewport se necessário
-};
-
-// Componente de layout raiz (Server Component)
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${lato.variable}`}>
       <body>
-        {/* Header - Componente essencial presente em todas as páginas */}
+        {/* Header fixo */}
         <Header />
 
-        {/* Conteúdo principal */}
-        <main className="min-h-screen ">{children}</main>
+        {/* pt-16 para espaço do header fixo */}
+        <div className="pt-16 flex w-full">
+          {/* Sidebar fixo */}
+          <Sidebar active="" />
 
-        {/* Footer - Componente essencial presente em todas as páginas */}
-        <Footer />
+          {/* Main: ajuste a largura da sidebar (ml-56 = 224px) */}
+          <main className="flex-1 ml-56 p-6 bg-white h-[calc(100vh-4rem)] overflow-y-auto">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

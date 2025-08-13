@@ -11,22 +11,6 @@ const nextConfig = {
         source: '/',
         destination: '/page',
       },
-      {
-        source: '/comparative',
-        destination: '/page/comparative',
-      },
-      {
-        source: '/help',
-        destination: '/page/help',
-      },
-      {
-        source: '/plans',
-        destination: '/page/plans',
-      },
-      {
-        source: '/contractPlans',
-        destination: '/page/contractPlans',
-      },
     ];
   },
   webpack: (config) => {

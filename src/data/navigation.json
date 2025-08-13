@@ -1,0 +1,13 @@
+[
+  {
+    "category": "Button",
+    "items": [
+      { "label": "Primário", "slug": "primary" },
+      { "label": "Secundário", "slug": "secondary" }
+    ]
+  },
+  {
+    "category": "Accordion",
+    "items": [{ "label": "Simples", "slug": "simple" }]
+  }
+]
