@@ -1,6 +1,7 @@
 import { SectionButton } from "@/components/ui/Button/SectionButton";
 import NotFound from "@/app/not-found";
 import { SectionForm } from "../ui/Form/SectionForm";
+import { Avatar } from "../ui/Avatar/Avatar";
 
 type MainContentProps = {
   section?: string;
@@ -18,6 +19,9 @@ export function MainContent({ section }: MainContentProps) {
       break;
     case "form":
       content = <SectionForm />;
+      break;
+    case "avatar":
+      content = <Avatar />;
       break;
     // Adicione mais cases conforme precisar
     default:
