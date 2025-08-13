@@ -120,10 +120,19 @@ export default {
     require("tailwindcss-animate"),
     function ({ addUtilities, theme }: any) {
       const newUtilities = {
-        ".TypLato18w600": {
+        ".TypLato32w600": {
           color: theme("colors.gray700"),
           fontFamily: "var(--font-lato) ",
           fontSize: "32px",
+          fontStyle: "normal",
+          fontWeight: "600",
+          lineHeight: "140%",
+          letterSpacing: "-0.36px",
+        },
+        ".TypLato18w600": {
+          color: theme("colors.gray700"),
+          fontFamily: "var(--font-lato) ",
+          fontSize: "18px",
           fontStyle: "normal",
           fontWeight: "600",
           lineHeight: "140%",
@@ -135,6 +144,15 @@ export default {
           fontSize: "14px",
           fontStyle: "normal",
           fontWeight: "600",
+          lineHeight: "140%",
+          letterSpacing: "-0.36px",
+        },
+        ".TypLato14w400": {
+          color: theme("colors.gray700"),
+          fontFamily: "var(--font-lato) ",
+          fontSize: "14px",
+          fontStyle: "normal",
+          fontWeight: "400",
           lineHeight: "140%",
           letterSpacing: "-0.36px",
         },
@@ -176,7 +194,6 @@ export default {
           boxShadow:
             "0px 1px 4px 0px rgba(0, 0, 0, 0.08), 0px 1px 2px 0px rgba(25, 25, 25, 0.08)",
         },
-
         ".btnPrimary": {
           height: "40px",
           display: "inline-flex",
@@ -227,6 +244,111 @@ export default {
           fontStyle: "normal",
           fontWeight: "600",
           lineHeight: "130%",
+        },
+        ".btnPrimaryADD": {
+          height: "40px",
+          width: "40px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: "6px",
+          /* background: theme("colors.redSTD"), */
+          boxShadow:
+            " 0 1px 4px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(25, 25, 25, 0.08)",
+        },
+        ".btnPrimaryADDmd": {
+          height: "36px",
+          width: "36px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: "6px",
+          /* background: theme("colors.redSTD"), */
+          boxShadow:
+            " 0 1px 4px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(25, 25, 25, 0.08)",
+        },
+        ".btnPrimaryADDsm": {
+          height: "32px",
+          width: "32px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: "6px",
+          /* background: theme("colors.redSTD"), */
+          boxShadow:
+            " 0 1px 4px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(25, 25, 25, 0.08)",
+        },
+        ".btnAddOFF": {
+          height: "40px",
+          width: "40px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borders: "1px solid #EBEBEB",
+          borderRadius: "6px",
+          background: theme("colors.white"),
+        },
+        ".btnAddOFFmd": {
+          height: "36px",
+          width: "36px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borders: "1px solid #EBEBEB",
+          borderRadius: "6px",
+          background: theme("colors.white"),
+        },
+        ".btnAddOFFsm": {
+          height: "32px",
+          width: "32px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borders: "1px solid #EBEBEB",
+          borderRadius: "6px",
+          background: theme("colors.white"),
+        },
+        ".btnAddDefault": {
+          height: "40px",
+          width: "40px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+        ".btnAddDefaultMD": {
+          height: "36px",
+          width: "36px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+        ".btnAddDefaultSM": {
+          height: "32px",
+          width: "32px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+        ".btnAddDefaultOFF": {
+          height: "40px",
+          width: "40px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+        ".btnAddDefaultOFFmd": {
+          height: "36px",
+          width: "36px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+        ".btnAddDefaultOFFsm": {
+          height: "32px",
+          width: "32px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         },
         ".btnPrimaryOFF": {
           height: "40px",

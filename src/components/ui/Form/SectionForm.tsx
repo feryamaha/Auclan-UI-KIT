@@ -6,7 +6,7 @@ import { FloatingLabelInput } from "./FloatingLabelInput";
 export function SectionForm() {
   return (
     <div className="w-full h-[82.5vh] flex flex-col justify-between">
-      <h2 className="TypLato18w600 mb-4">Inputs Components</h2>
+      <h2 className="TypLato32w600 mb-4">Inputs Components</h2>
       <div className="w-full justify-between flex flex-wrap ">
         <div className="w-max h-max flex flex-col gap-8">
           {/* Input padrão com label flutuante */}

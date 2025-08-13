@@ -8,7 +8,7 @@ export function SectionButton() {
     <div className="w-full h-[82.5vh] flex flex-col items-center justify-around gap-2">
       {/* primary button */}
       <div className="w-full items-center flex justify-around">
-        <div className="h-full justify-between flex gap-12">
+        <div className="h-full justify-between flex gap-4">
           <div className="w-max h-max flex flex-col gap-4 ">
             <Button
               variant="btnPrimary"
@@ -52,7 +52,7 @@ export function SectionButton() {
           </div>
         </div>
 
-        <div className="h-full justify-evenly flex gap-12">
+        <div className="h-full justify-evenly flex gap-4">
           <div className="w-max h-max flex flex-col gap-4 ">
             <Button
               variant="btnPrimary"
@@ -102,7 +102,7 @@ export function SectionButton() {
           </div>
         </div>
 
-        <div className="h-full justify-evenly flex gap-12">
+        <div className="h-full justify-evenly flex gap-4">
           {/* add buttons left */}
           <div className="w-max h-max flex flex-col gap-4 ">
             <Button
@@ -148,6 +148,58 @@ export function SectionButton() {
             >
               <Icon name="IconAddBTNprimaryOFF" />
               Primary button
+            </Button>
+          </div>
+        </div>
+        <div className="flex flex-col gap-4">
+          <div className="h-full justify-evenly flex gap-4">
+            <Button
+              variant="btnPrimaryADD"
+              className="bg-red500 hover:bg-red700 w-max"
+            >
+              <Icon name="IconAddBTNprimary" />
+            </Button>
+          </div>
+          <div className="h-full justify-evenly flex gap-4">
+            <Button
+              variant="btnPrimaryADDmd"
+              className="bg-red500 hover:bg-red700 w-max"
+            >
+              <Icon name="IconAddBTNprimary" />
+            </Button>
+          </div>
+          <div className="h-full justify-evenly flex gap-4">
+            <Button
+              variant="btnPrimaryADDsm"
+              className="bg-red500 hover:bg-red700 w-max"
+            >
+              <Icon name="IconAddBTNprimary" />
+            </Button>
+          </div>
+        </div>
+        <div className="flex flex-col gap-4">
+          <div className="h-full justify-evenly flex gap-4">
+            <Button
+              variant="btnPrimaryADD"
+              className="bg-gray200 w-max cursor-not-allowed"
+            >
+              <Icon name="IconAddBTNprimaryOFF" />
+            </Button>
+          </div>
+          <div className="h-full justify-evenly flex gap-4">
+            <Button
+              variant="btnPrimaryADDmd"
+              className="bg-gray200 w-max cursor-not-allowed"
+            >
+              <Icon name="IconAddBTNprimaryOFF" />
+            </Button>
+          </div>
+          <div className="h-full justify-evenly flex gap-4">
+            <Button
+              variant="btnPrimaryADDsm"
+              className="bg-gray200 w-max cursor-not-allowed"
+            >
+              <Icon name="IconAddBTNprimaryOFF" />
             </Button>
           </div>
         </div>
@@ -292,6 +344,46 @@ export function SectionButton() {
             </Button>
           </div>
         </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button
+            variant="btnPrimaryADD"
+            className="bg-white border hover:bg-gray100 w-max"
+          >
+            <Icon name="IconAddBTNprimaryOFF" />
+          </Button>
+          <Button
+            variant="btnPrimaryADDmd"
+            className="bg-white border hover:bg-gray100 w-max"
+          >
+            <Icon name="IconAddBTNprimaryOFF" />
+          </Button>
+          <Button
+            variant="btnPrimaryADDsm"
+            className="bg-white border hover:bg-gray100 w-max"
+          >
+            <Icon name="IconAddBTNprimaryOFF" />
+          </Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button
+            variant="btnAddOFF"
+            className="bg-white border w-max cursor-not-allowed"
+          >
+            <Icon name="IconAddBTNsecondaryOFF" />
+          </Button>
+          <Button
+            variant="btnAddOFFmd"
+            className="bg-white border w-max cursor-not-allowed"
+          >
+            <Icon name="IconAddBTNsecondaryOFF" />
+          </Button>
+          <Button
+            variant="btnAddOFFsm"
+            className="bg-white border w-max cursor-not-allowed"
+          >
+            <Icon name="IconAddBTNsecondaryOFF" />
+          </Button>
+        </div>
       </div>
       {/* tertiary button */}
       <div className="w-full items-center flex justify-around">
@@ -405,6 +497,46 @@ export function SectionButton() {
               Tertiary button
             </Button>
           </div>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button
+            variant="btnAddDefault"
+            className="bg-white hover:bg-gray50 hover:border hover:rounded-md w-max"
+          >
+            <Icon name="IconAddBTNsecondary" />
+          </Button>
+          <Button
+            variant="btnAddDefaultMD"
+            className="bg-white hover:bg-gray50 hover:border hover:rounded-md w-max"
+          >
+            <Icon name="IconAddBTNsecondary" />
+          </Button>
+          <Button
+            variant="btnAddDefaultSM"
+            className="bg-white hover:bg-gray50 hover:border hover:rounded-md w-max"
+          >
+            <Icon name="IconAddBTNsecondary" />
+          </Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button
+            variant="btnAddDefaultOFF"
+            className="w-max cursor-not-allowed"
+          >
+            <Icon name="IconAddBTNsecondaryOFF" />
+          </Button>
+          <Button
+            variant="btnAddDefaultOFFmd"
+            className="w-max cursor-not-allowed"
+          >
+            <Icon name="IconAddBTNsecondaryOFF" />
+          </Button>
+          <Button
+            variant="btnAddDefaultOFFsm"
+            className="w-max cursor-not-allowed"
+          >
+            <Icon name="IconAddBTNsecondaryOFF" />
+          </Button>
         </div>
       </div>
     </div>

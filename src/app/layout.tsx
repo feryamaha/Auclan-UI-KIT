@@ -40,7 +40,7 @@ export default function RootLayout({
           <Sidebar active="" />
 
           {/* Main: ajuste a largura da sidebar (ml-56 = 224px) */}
-          <main className="flex-1 ml-56 p-6 bg-white h-[calc(100vh-4rem)] overflow-y-auto">
+          <main className="flex-1 ml-48 p-2 bg-white h-[calc(100vh-4rem)] overflow-y-auto">
             {children}
           </main>
         </div>

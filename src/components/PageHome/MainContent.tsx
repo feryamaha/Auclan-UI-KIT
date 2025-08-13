@@ -27,7 +27,7 @@ export function MainContent({ section }: MainContentProps) {
 
   // Aqui você encapsula o conteúdo num "container" para organizar como desejar
   return (
-    <div className="w-full h-[82.5vh] p-4 flex flex-col items-center justify-center">
+    <div className="w-full h-[82.5vh] flex flex-col items-center justify-center">
       {" "}
       {/* Edite as classes como quiser */}
       {content}

@@ -9,6 +9,18 @@ type ButtonVariant =
   | "btnPrimaryOFF"
   | "btnPrimaryOFFmd"
   | "btnPrimaryOFFsm"
+  | "btnPrimaryADD"
+  | "btnPrimaryADDmd"
+  | "btnPrimaryADDsm"
+  | "btnAddOFF"
+  | "btnAddOFFmd"
+  | "btnAddOFFsm"
+  | "btnAddDefault"
+  | "btnAddDefaultMD"
+  | "btnAddDefaultSM"
+  | "btnAddDefaultOFF"
+  | "btnAddDefaultOFFmd"
+  | "btnAddDefaultOFFsm"
   | "btnSecondary"
   | "btnSecondaryMD"
   | "btnSecondarySM"
@@ -42,6 +54,18 @@ export function Button({
     btnPrimaryOFF: "btnPrimaryOFF",
     btnPrimaryOFFmd: "btnPrimaryOFFmd",
     btnPrimaryOFFsm: "btnPrimaryOFFsm",
+    btnPrimaryADD: "btnPrimaryADD",
+    btnPrimaryADDmd: "btnPrimaryADDmd",
+    btnPrimaryADDsm: "btnPrimaryADDsm",
+    btnAddOFF: "btnAddOFF",
+    btnAddOFFmd: "btnAddOFFmd",
+    btnAddOFFsm: "btnAddOFFsm",
+    btnAddDefault: "btnAddDefault",
+    btnAddDefaultMD: "btnAddDefaultMD",
+    btnAddDefaultSM: "btnAddDefaultSM",
+    btnAddDefaultOFF: "btnAddDefaultOFF",
+    btnAddDefaultOFFmd: "btnAddDefaultOFFmd",
+    btnAddDefaultOFFsm: "btnAddDefaultOFFsm",
     btnSecondary: "btnSecondary",
     btnSecondaryMD: "btnSecondaryMD",
     btnSecondarySM: "btnSecondarySM",
