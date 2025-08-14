@@ -1,42 +1,42 @@
-import React from "react";
-import { Icon } from "@/scripts/Icon";
-import { Button } from "./Button";
+import React from 'react'
+import { Icon } from '@/scripts/Icon'
+import { Button } from '@/components/ui/Button'
 
 // Define aqui o tipo das props, igual ao seu Button
 type ButtonVariant =
-  | "btnPrimary"
-  | "btnPrimaryMD"
-  | "btnPrimarySM"
-  | "btnPrimaryOFF"
-  | "btnPrimaryOFFmd"
-  | "btnPrimaryOFFsm"
-  | "btnPrimaryADD"
-  | "btnPrimaryADDmd"
-  | "btnPrimaryADDsm"
-  | "btnAddOFF"
-  | "btnAddOFFmd"
-  | "btnAddOFFsm"
-  | "btnAddDefault"
-  | "btnAddDefaultMD"
-  | "btnAddDefaultSM"
-  | "btnAddDefaultOFF"
-  | "btnAddDefaultOFFmd"
-  | "btnAddDefaultOFFsm"
-  | "btnSecondary"
-  | "btnSecondaryMD"
-  | "btnSecondarySM"
-  | "btnSecondaryOFF"
-  | "btnSecondaryOFFmd"
-  | "btnSecondaryOFFsm"
-  | "btnTertiary"
-  | "btnTertiaryOFF";
+  | 'btnPrimary'
+  | 'btnPrimaryMD'
+  | 'btnPrimarySM'
+  | 'btnPrimaryOFF'
+  | 'btnPrimaryOFFmd'
+  | 'btnPrimaryOFFsm'
+  | 'btnPrimaryADD'
+  | 'btnPrimaryADDmd'
+  | 'btnPrimaryADDsm'
+  | 'btnAddOFF'
+  | 'btnAddOFFmd'
+  | 'btnAddOFFsm'
+  | 'btnAddDefault'
+  | 'btnAddDefaultMD'
+  | 'btnAddDefaultSM'
+  | 'btnAddDefaultOFF'
+  | 'btnAddDefaultOFFmd'
+  | 'btnAddDefaultOFFsm'
+  | 'btnSecondary'
+  | 'btnSecondaryMD'
+  | 'btnSecondarySM'
+  | 'btnSecondaryOFF'
+  | 'btnSecondaryOFFmd'
+  | 'btnSecondaryOFFsm'
+  | 'btnTertiary'
+  | 'btnTertiaryOFF'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  href?: string;
-  className?: string;
-  onClick?: () => void;
-  target?: string;
-  variant?: ButtonVariant;
+  href?: string
+  className?: string
+  onClick?: () => void
+  target?: string
+  variant?: ButtonVariant
 }
 
 // ------- PRIMARY BUTTONS --------
@@ -46,21 +46,21 @@ export const ButtonPrimary = (props: ButtonProps) => (
     className="hover:bg-red700 w-full pBTN"
     {...props}
   />
-);
+)
 export const ButtonPrimaryMD = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryMD"
     className="hover:bg-red700 w-full pBTN"
     {...props}
   />
-);
+)
 export const ButtonPrimarySM = (props: ButtonProps) => (
   <Button
     variant="btnPrimarySM"
     className="hover:bg-red700 w-full pBTN"
     {...props}
   />
-);
+)
 
 export const ButtonPrimaryOFF = (props: ButtonProps) => (
   <Button
@@ -68,21 +68,21 @@ export const ButtonPrimaryOFF = (props: ButtonProps) => (
     className="w-full pBTN cursor-not-allowed"
     {...props}
   />
-);
+)
 export const ButtonPrimaryOFFMD = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryOFFmd"
     className="w-full pBTN cursor-not-allowed"
     {...props}
   />
-);
+)
 export const ButtonPrimaryOFFSM = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryOFFsm"
     className="w-full pBTN cursor-not-allowed"
     {...props}
   />
-);
+)
 
 export const ButtonPrimaryAddRight = (props: ButtonProps) => (
   <Button
@@ -93,7 +93,7 @@ export const ButtonPrimaryAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimaryMDAddRight = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryMD"
@@ -103,7 +103,7 @@ export const ButtonPrimaryMDAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimarySMAddRight = (props: ButtonProps) => (
   <Button
     variant="btnPrimarySM"
@@ -113,7 +113,7 @@ export const ButtonPrimarySMAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimary" />
     {props.children}
   </Button>
-);
+)
 
 export const ButtonPrimaryOFFAddRight = (props: ButtonProps) => (
   <Button
@@ -124,7 +124,7 @@ export const ButtonPrimaryOFFAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimaryOFFMDAddRight = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryOFFmd"
@@ -134,7 +134,7 @@ export const ButtonPrimaryOFFMDAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimaryOFFSMAddRight = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryOFFsm"
@@ -144,7 +144,7 @@ export const ButtonPrimaryOFFSMAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimaryOFF" />
     {props.children}
   </Button>
-);
+)
 
 export const ButtonPrimaryAddLeft = (props: ButtonProps) => (
   <Button
@@ -155,7 +155,7 @@ export const ButtonPrimaryAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimaryMDAddLeft = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryMD"
@@ -165,7 +165,7 @@ export const ButtonPrimaryMDAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimarySMAddLeft = (props: ButtonProps) => (
   <Button
     variant="btnPrimarySM"
@@ -175,7 +175,7 @@ export const ButtonPrimarySMAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimary" />
     {props.children}
   </Button>
-);
+)
 
 export const ButtonPrimaryOFFAddLeft = (props: ButtonProps) => (
   <Button
@@ -186,7 +186,7 @@ export const ButtonPrimaryOFFAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimaryOFFMDAddLeft = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryOFFmd"
@@ -196,7 +196,7 @@ export const ButtonPrimaryOFFMDAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimaryOFFSMAddLeft = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryOFFsm"
@@ -206,7 +206,7 @@ export const ButtonPrimaryOFFSMAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimaryOFF" />
     {props.children}
   </Button>
-);
+)
 
 export const ButtonPrimaryADD = (props: ButtonProps) => (
   <Button
@@ -216,7 +216,7 @@ export const ButtonPrimaryADD = (props: ButtonProps) => (
   >
     <Icon name="IconAddBTNprimary" />
   </Button>
-);
+)
 export const ButtonPrimaryADDMD = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryADDmd"
@@ -225,7 +225,7 @@ export const ButtonPrimaryADDMD = (props: ButtonProps) => (
   >
     <Icon name="IconAddBTNprimary" />
   </Button>
-);
+)
 export const ButtonPrimaryADDSM = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryADDsm"
@@ -234,7 +234,7 @@ export const ButtonPrimaryADDSM = (props: ButtonProps) => (
   >
     <Icon name="IconAddBTNprimary" />
   </Button>
-);
+)
 
 export const ButtonPrimaryADDOFF = (props: ButtonProps) => (
   <Button
@@ -245,7 +245,7 @@ export const ButtonPrimaryADDOFF = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimaryADDMDOFF = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryADDmd"
@@ -255,7 +255,7 @@ export const ButtonPrimaryADDMDOFF = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimaryADDSMOFF = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryADDsm"
@@ -265,7 +265,7 @@ export const ButtonPrimaryADDSMOFF = (props: ButtonProps) => (
     <Icon name="IconAddBTNprimaryOFF" />
     {props.children}
   </Button>
-);
+)
 
 // ------- SECONDARY BUTTONS --------
 export const ButtonSecondary = (props: ButtonProps) => (
@@ -274,42 +274,42 @@ export const ButtonSecondary = (props: ButtonProps) => (
     className="hover:bg-gray50 w-full pBTN"
     {...props}
   />
-);
+)
 export const ButtonSecondaryMD = (props: ButtonProps) => (
   <Button
     variant="btnSecondaryMD"
     className="hover:bg-gray50 w-full pBTN"
     {...props}
   />
-);
+)
 export const ButtonSecondarySM = (props: ButtonProps) => (
   <Button
     variant="btnSecondarySM"
     className="hover:bg-gray50 w-full pBTN"
     {...props}
   />
-);
+)
 export const ButtonSecondaryOFF = (props: ButtonProps) => (
   <Button
     variant="btnSecondaryOFF"
     className="w-full pBTN cursor-not-allowed"
     {...props}
   />
-);
+)
 export const ButtonSecondaryOFFMD = (props: ButtonProps) => (
   <Button
     variant="btnSecondaryOFFmd"
     className="w-full pBTN cursor-not-allowed"
     {...props}
   />
-);
+)
 export const ButtonSecondaryOFFSM = (props: ButtonProps) => (
   <Button
     variant="btnSecondaryOFFsm"
     className="w-full pBTN cursor-not-allowed"
     {...props}
   />
-);
+)
 
 export const ButtonSecondaryAddRight = (props: ButtonProps) => (
   <Button
@@ -320,7 +320,7 @@ export const ButtonSecondaryAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonSecondaryMDAddRight = (props: ButtonProps) => (
   <Button
     variant="btnSecondaryMD"
@@ -330,7 +330,7 @@ export const ButtonSecondaryMDAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonSecondarySMAddRight = (props: ButtonProps) => (
   <Button
     variant="btnSecondarySM"
@@ -340,7 +340,7 @@ export const ButtonSecondarySMAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 
 export const ButtonSecondaryOFFAddRight = (props: ButtonProps) => (
   <Button
@@ -351,7 +351,7 @@ export const ButtonSecondaryOFFAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonSecondaryOFFMDAddRight = (props: ButtonProps) => (
   <Button
     variant="btnSecondaryOFFmd"
@@ -361,7 +361,7 @@ export const ButtonSecondaryOFFMDAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonSecondaryOFFSMAddRight = (props: ButtonProps) => (
   <Button
     variant="btnSecondaryOFFsm"
@@ -371,7 +371,7 @@ export const ButtonSecondaryOFFSMAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 
 // AddLeft
 export const ButtonSecondaryAddLeft = (props: ButtonProps) => (
@@ -383,7 +383,7 @@ export const ButtonSecondaryAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonSecondaryMDAddLeft = (props: ButtonProps) => (
   <Button
     variant="btnSecondaryMD"
@@ -393,7 +393,7 @@ export const ButtonSecondaryMDAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonSecondarySMAddLeft = (props: ButtonProps) => (
   <Button
     variant="btnSecondarySM"
@@ -403,7 +403,7 @@ export const ButtonSecondarySMAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonSecondaryOFFAddLeft = (props: ButtonProps) => (
   <Button
     variant="btnSecondaryOFF"
@@ -413,7 +413,7 @@ export const ButtonSecondaryOFFAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonSecondaryOFFMDAddLeft = (props: ButtonProps) => (
   <Button
     variant="btnSecondaryOFFmd"
@@ -423,7 +423,7 @@ export const ButtonSecondaryOFFMDAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonSecondaryOFFSMAddLeft = (props: ButtonProps) => (
   <Button
     variant="btnSecondaryOFFsm"
@@ -433,7 +433,7 @@ export const ButtonSecondaryOFFSMAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 
 // Add-only icon branco
 export const ButtonPrimaryADDWhite = (props: ButtonProps) => (
@@ -445,7 +445,7 @@ export const ButtonPrimaryADDWhite = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimaryADDWhiteMD = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryADDmd"
@@ -455,7 +455,7 @@ export const ButtonPrimaryADDWhiteMD = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonPrimaryADDWhiteSM = (props: ButtonProps) => (
   <Button
     variant="btnPrimaryADDsm"
@@ -465,7 +465,7 @@ export const ButtonPrimaryADDWhiteSM = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 
 // Add-only icon OFF
 export const ButtonAddOFF = (props: ButtonProps) => (
@@ -477,7 +477,7 @@ export const ButtonAddOFF = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonAddOFFMD = (props: ButtonProps) => (
   <Button
     variant="btnAddOFFmd"
@@ -487,7 +487,7 @@ export const ButtonAddOFFMD = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonAddOFFSM = (props: ButtonProps) => (
   <Button
     variant="btnAddOFFsm"
@@ -497,19 +497,19 @@ export const ButtonAddOFFSM = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 
 // ------- TERTIARY BUTTONS --------
 export const ButtonTertiary = (props: ButtonProps) => (
   <Button variant="btnTertiary" className="hover:underline w-full" {...props} />
-);
+)
 export const ButtonTertiaryOFF = (props: ButtonProps) => (
   <Button
     variant="btnTertiaryOFF"
     className="w-full cursor-not-allowed"
     {...props}
   />
-);
+)
 
 // Right icon
 export const ButtonTertiaryAddRight = (props: ButtonProps) => (
@@ -517,7 +517,7 @@ export const ButtonTertiaryAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonTertiaryOFFAddRight = (props: ButtonProps) => (
   <Button
     variant="btnTertiaryOFF"
@@ -527,7 +527,7 @@ export const ButtonTertiaryOFFAddRight = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 
 // Left icon
 export const ButtonTertiaryAddLeft = (props: ButtonProps) => (
@@ -535,7 +535,7 @@ export const ButtonTertiaryAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonTertiaryOFFAddLeft = (props: ButtonProps) => (
   <Button
     variant="btnTertiaryOFF"
@@ -545,7 +545,7 @@ export const ButtonTertiaryOFFAddLeft = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 
 // Add-only icon tertiary
 export const ButtonAddDefault = (props: ButtonProps) => (
@@ -557,7 +557,7 @@ export const ButtonAddDefault = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonAddDefaultMD = (props: ButtonProps) => (
   <Button
     variant="btnAddDefaultMD"
@@ -567,7 +567,7 @@ export const ButtonAddDefaultMD = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 export const ButtonAddDefaultSM = (props: ButtonProps) => (
   <Button
     variant="btnAddDefaultSM"
@@ -577,7 +577,7 @@ export const ButtonAddDefaultSM = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondary" />
     {props.children}
   </Button>
-);
+)
 
 // Add-only icon tertiary OFF
 export const ButtonAddDefaultOFF = (props: ButtonProps) => (
@@ -589,7 +589,7 @@ export const ButtonAddDefaultOFF = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonAddDefaultOFFMD = (props: ButtonProps) => (
   <Button
     variant="btnAddDefaultOFFmd"
@@ -599,7 +599,7 @@ export const ButtonAddDefaultOFFMD = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 export const ButtonAddDefaultOFFSM = (props: ButtonProps) => (
   <Button
     variant="btnAddDefaultOFFsm"
@@ -609,7 +609,7 @@ export const ButtonAddDefaultOFFSM = (props: ButtonProps) => (
     <Icon name="IconAddBTNsecondaryOFF" />
     {props.children}
   </Button>
-);
+)
 
 // ------- SHOWCASE --------
 export function UIKitButtonShowcase() {
@@ -794,5 +794,5 @@ export function UIKitButtonShowcase() {
         </div>
       </div>
     </div>
-  );
+  )
 }

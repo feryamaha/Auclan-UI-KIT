@@ -1,132 +1,132 @@
-import React from "react";
-import { Icon } from "@/scripts/Icon";
+import React from 'react'
+import { Icon } from '@/scripts/Icon'
 
 // 1. Definição dos tipos de variantes do Badge
 type BadgeVariant =
-  | "BadgeDefault"
-  | "BadgeDefaultOFF"
-  | "BadgeDefaultArrow"
-  | "BadgeDefaultArrowOFF"
-  | "BadgeOnlyDoubleArrow"
-  | "BadgeOnlyDoubleArrowOFF"
-  | "BadgeNumber"
-  | "BadgeNumberOFF"
-  | "BadgeStatusSuccess"
-  | "BadgeStatusInfo"
-  | "BadgeStatusWarning"
-  | "BadgeStatusDanger"
-  | "BadgeSuccessFill"
-  | "BadgeInfoFill"
-  | "BadgeWarningFill"
-  | "BadgeDangerFill"
-  | "BadgeStatusArrowSuccess"
-  | "BadgeStatusArrowInfo"
-  | "BadgeStatusArrowWarning"
-  | "BadgeStatusArrowDanger"
-  | "BadgeArrowSuccessFill"
-  | "BadgeArrowInfoFill"
-  | "BadgeArrowWarningFill"
-  | "BadgeArrowDangerFill";
+  | 'BadgeDefault'
+  | 'BadgeDefaultOFF'
+  | 'BadgeDefaultArrow'
+  | 'BadgeDefaultArrowOFF'
+  | 'BadgeOnlyDoubleArrow'
+  | 'BadgeOnlyDoubleArrowOFF'
+  | 'BadgeNumber'
+  | 'BadgeNumberOFF'
+  | 'BadgeStatusSuccess'
+  | 'BadgeStatusInfo'
+  | 'BadgeStatusWarning'
+  | 'BadgeStatusDanger'
+  | 'BadgeSuccessFill'
+  | 'BadgeInfoFill'
+  | 'BadgeWarningFill'
+  | 'BadgeDangerFill'
+  | 'BadgeStatusArrowSuccess'
+  | 'BadgeStatusArrowInfo'
+  | 'BadgeStatusArrowWarning'
+  | 'BadgeStatusArrowDanger'
+  | 'BadgeArrowSuccessFill'
+  | 'BadgeArrowInfoFill'
+  | 'BadgeArrowWarningFill'
+  | 'BadgeArrowDangerFill'
 
 // 2. Interface das props do Badge
 interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  className?: string;
-  icon?: React.ReactNode;
-  children?: React.ReactNode;
-  variant?: BadgeVariant;
+  className?: string
+  icon?: React.ReactNode
+  children?: React.ReactNode
+  variant?: BadgeVariant
 }
 
 // 3. Função para mapear variante para classes CSS
 function getBadgeClass(variant?: BadgeVariant): string {
   switch (variant) {
-    case "BadgeDefault":
-      return "BadgeDefault";
-    case "BadgeDefaultOFF":
-      return "BadgeDefaultOFF";
-    case "BadgeDefaultArrow":
-      return "BadgeDefault";
-    case "BadgeDefaultArrowOFF":
-      return "BadgeDefaultOFF";
-    case "BadgeOnlyDoubleArrow":
-      return "OnlyDoubleArrow";
-    case "BadgeOnlyDoubleArrowOFF":
-      return "OnlyDoubleArrowOFF";
-    case "BadgeNumber":
-      return "OnlyDoubleArrow TypInter12w400";
-    case "BadgeNumberOFF":
-      return "OnlyDoubleArrowOFF TypInter12w400off";
-    case "BadgeStatusSuccess":
-      return "BadgeStatus border";
-    case "BadgeStatusInfo":
-      return "BadgeStatus border";
-    case "BadgeStatusWarning":
-      return "BadgeStatus border";
-    case "BadgeStatusDanger":
-      return "BadgeStatus border";
-    case "BadgeSuccessFill":
-      return "BadgeSucesssFill";
-    case "BadgeInfoFill":
-      return "BadgeInfoFill";
-    case "BadgeWarningFill":
-      return "BadgeWarningFill";
-    case "BadgeDangerFill":
-      return "BadgeDangerFill";
-    case "BadgeStatusArrowSuccess":
-      return "BadgeStatusArrow";
-    case "BadgeStatusArrowInfo":
-      return "BadgeStatusArrow";
-    case "BadgeStatusArrowWarning":
-      return "BadgeStatusArrow";
-    case "BadgeStatusArrowDanger":
-      return "BadgeStatusArrow";
-    case "BadgeArrowSuccessFill":
-      return "BadgeArrowSucessFill";
-    case "BadgeArrowInfoFill":
-      return "BadgeArrowINFOFill";
-    case "BadgeArrowWarningFill":
-      return "BadgeArrowWarningFill";
-    case "BadgeArrowDangerFill":
-      return "BadgeArrowDangerFill";
+    case 'BadgeDefault':
+      return 'BadgeDefault'
+    case 'BadgeDefaultOFF':
+      return 'BadgeDefaultOFF'
+    case 'BadgeDefaultArrow':
+      return 'BadgeDefault'
+    case 'BadgeDefaultArrowOFF':
+      return 'BadgeDefaultOFF'
+    case 'BadgeOnlyDoubleArrow':
+      return 'OnlyDoubleArrow'
+    case 'BadgeOnlyDoubleArrowOFF':
+      return 'OnlyDoubleArrowOFF'
+    case 'BadgeNumber':
+      return 'OnlyDoubleArrow TypInter12w400'
+    case 'BadgeNumberOFF':
+      return 'OnlyDoubleArrowOFF TypInter12w400off'
+    case 'BadgeStatusSuccess':
+      return 'BadgeStatus border'
+    case 'BadgeStatusInfo':
+      return 'BadgeStatus border'
+    case 'BadgeStatusWarning':
+      return 'BadgeStatus border'
+    case 'BadgeStatusDanger':
+      return 'BadgeStatus border'
+    case 'BadgeSuccessFill':
+      return 'BadgeSucesssFill'
+    case 'BadgeInfoFill':
+      return 'BadgeInfoFill'
+    case 'BadgeWarningFill':
+      return 'BadgeWarningFill'
+    case 'BadgeDangerFill':
+      return 'BadgeDangerFill'
+    case 'BadgeStatusArrowSuccess':
+      return 'BadgeStatusArrow'
+    case 'BadgeStatusArrowInfo':
+      return 'BadgeStatusArrow'
+    case 'BadgeStatusArrowWarning':
+      return 'BadgeStatusArrow'
+    case 'BadgeStatusArrowDanger':
+      return 'BadgeStatusArrow'
+    case 'BadgeArrowSuccessFill':
+      return 'BadgeArrowSucessFill'
+    case 'BadgeArrowInfoFill':
+      return 'BadgeArrowINFOFill'
+    case 'BadgeArrowWarningFill':
+      return 'BadgeArrowWarningFill'
+    case 'BadgeArrowDangerFill':
+      return 'BadgeArrowDangerFill'
     default:
-      return "";
+      return ''
   }
 }
 
 // 4. Componente Badge Base
 const Badge = ({
   className,
-  variant = "BadgeDefault",
+  variant = 'BadgeDefault',
   icon,
   children,
   ...rest
 }: BadgeProps) => (
   <span
-    className={`${getBadgeClass(variant)}${className ? " " + className : ""}`}
+    className={`${getBadgeClass(variant)}${className ? ' ' + className : ''}`}
     {...rest}
   >
     {icon}
     {children}
   </span>
-);
+)
 
 // 5. Componentização por variante (padrão Design System)
-export const BadgeDefault = (props: Omit<BadgeProps, "variant" | "icon">) => (
+export const BadgeDefault = (props: Omit<BadgeProps, 'variant' | 'icon'>) => (
   <Badge variant="BadgeDefault" {...props}>
     Badge
   </Badge>
-);
+)
 
 export const BadgeDefaultOFF = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge variant="BadgeDefaultOFF" {...props}>
     Badge
   </Badge>
-);
+)
 
 // Arrow
 export const BadgeDefaultArrow = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeDefaultArrow"
@@ -135,10 +135,10 @@ export const BadgeDefaultArrow = (
   >
     Badge
   </Badge>
-);
+)
 
 export const BadgeDefaultArrowOFF = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeDefaultArrowOFF"
@@ -147,49 +147,49 @@ export const BadgeDefaultArrowOFF = (
   >
     Badge
   </Badge>
-);
+)
 
 // Apenas ícone de seta
 export const BadgeOnlyDoubleArrow = (
-  props: Omit<BadgeProps, "variant" | "icon" | "children">
+  props: Omit<BadgeProps, 'variant' | 'icon' | 'children'>
 ) => (
   <Badge
     variant="BadgeOnlyDoubleArrow"
     icon={<Icon name="IconDoubleArrow" />}
   />
-);
+)
 
 export const BadgeOnlyDoubleArrowOFF = (
-  props: Omit<BadgeProps, "variant" | "icon" | "children">
+  props: Omit<BadgeProps, 'variant' | 'icon' | 'children'>
 ) => (
   <Badge
     variant="BadgeOnlyDoubleArrowOFF"
     icon={<Icon name="IconDoubleArrowOFF" />}
   />
-);
+)
 
 // Badge Number
 export const BadgeNumber = ({
   number = 2,
   ...props
-}: Omit<BadgeProps, "variant" | "icon" | "children"> & { number?: number }) => (
+}: Omit<BadgeProps, 'variant' | 'icon' | 'children'> & { number?: number }) => (
   <Badge variant="BadgeNumber" {...props}>
     {number}
   </Badge>
-);
+)
 
 export const BadgeNumberOFF = ({
   number = 2,
   ...props
-}: Omit<BadgeProps, "variant" | "icon" | "children"> & { number?: number }) => (
+}: Omit<BadgeProps, 'variant' | 'icon' | 'children'> & { number?: number }) => (
   <Badge variant="BadgeNumberOFF" {...props}>
     {number}
   </Badge>
-);
+)
 
 // Status Point
 export const BadgeStatusSuccess = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeStatusSuccess"
@@ -198,9 +198,9 @@ export const BadgeStatusSuccess = (
   >
     Badge
   </Badge>
-);
+)
 export const BadgeStatusInfo = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeStatusInfo"
@@ -209,9 +209,9 @@ export const BadgeStatusInfo = (
   >
     Badge
   </Badge>
-);
+)
 export const BadgeStatusWarning = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeStatusWarning"
@@ -220,9 +220,9 @@ export const BadgeStatusWarning = (
   >
     Badge
   </Badge>
-);
+)
 export const BadgeStatusDanger = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeStatusDanger"
@@ -231,11 +231,11 @@ export const BadgeStatusDanger = (
   >
     Badge
   </Badge>
-);
+)
 
 // Fill Status Point
 export const BadgeSuccessFill = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeSuccessFill"
@@ -244,8 +244,8 @@ export const BadgeSuccessFill = (
   >
     Badge
   </Badge>
-);
-export const BadgeInfoFill = (props: Omit<BadgeProps, "variant" | "icon">) => (
+)
+export const BadgeInfoFill = (props: Omit<BadgeProps, 'variant' | 'icon'>) => (
   <Badge
     variant="BadgeInfoFill"
     icon={<Icon name="IconPointInfo" />}
@@ -253,9 +253,9 @@ export const BadgeInfoFill = (props: Omit<BadgeProps, "variant" | "icon">) => (
   >
     Badge
   </Badge>
-);
+)
 export const BadgeWarningFill = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeWarningFill"
@@ -264,9 +264,9 @@ export const BadgeWarningFill = (
   >
     Badge
   </Badge>
-);
+)
 export const BadgeDangerFill = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeDangerFill"
@@ -275,11 +275,11 @@ export const BadgeDangerFill = (
   >
     Badge
   </Badge>
-);
+)
 
 // Status Arrow Variantes
 export const BadgeStatusArrowSuccess = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeStatusArrowSuccess"
@@ -288,9 +288,9 @@ export const BadgeStatusArrowSuccess = (
   >
     Badge
   </Badge>
-);
+)
 export const BadgeStatusArrowInfo = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeStatusArrowInfo"
@@ -299,9 +299,9 @@ export const BadgeStatusArrowInfo = (
   >
     Badge
   </Badge>
-);
+)
 export const BadgeStatusArrowWarning = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeStatusArrowWarning"
@@ -310,9 +310,9 @@ export const BadgeStatusArrowWarning = (
   >
     Badge
   </Badge>
-);
+)
 export const BadgeStatusArrowDanger = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeStatusArrowDanger"
@@ -321,11 +321,11 @@ export const BadgeStatusArrowDanger = (
   >
     Badge
   </Badge>
-);
+)
 
 // Fill Arrow Variantes
 export const BadgeArrowSuccessFill = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeArrowSuccessFill"
@@ -334,9 +334,9 @@ export const BadgeArrowSuccessFill = (
   >
     Badge
   </Badge>
-);
+)
 export const BadgeArrowInfoFill = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeArrowInfoFill"
@@ -345,9 +345,9 @@ export const BadgeArrowInfoFill = (
   >
     Badge
   </Badge>
-);
+)
 export const BadgeArrowWarningFill = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeArrowWarningFill"
@@ -356,9 +356,9 @@ export const BadgeArrowWarningFill = (
   >
     Badge
   </Badge>
-);
+)
 export const BadgeArrowDangerFill = (
-  props: Omit<BadgeProps, "variant" | "icon">
+  props: Omit<BadgeProps, 'variant' | 'icon'>
 ) => (
   <Badge
     variant="BadgeArrowDangerFill"
@@ -367,12 +367,12 @@ export const BadgeArrowDangerFill = (
   >
     Badge
   </Badge>
-);
+)
 
 // 6. Showcase - Utilização dos Badges criados (igual ao modelo dos botões)
 export function UIKitBadgeShowcase() {
   return (
-    <div className="w-full h-fit flex flex-col gap-32 items-start mt-16 ml-32 gap-2">
+    <div className="w-full h-fit flex flex-col gap-32 items-start mt-16 ml-32">
       {/* Linha Badge padrão */}
       <div>
         <h2>Badge padrão</h2>
@@ -426,7 +426,7 @@ export function UIKitBadgeShowcase() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 /* // 7. Exportação agrupada igual o uikitButton
