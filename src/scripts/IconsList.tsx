@@ -261,6 +261,205 @@ const IconAvatarSM = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const IconDoubleArrow = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="6"
+    height="9"
+    viewBox="0 0 6 9"
+    fill="none"
+  >
+    <path
+      d="M1 6.00006L3 8.00006L5 6.00006"
+      stroke="#323232"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M1 2.66669L3 0.666687L5 2.66669"
+      stroke="#323232"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+const IconDoubleArrowOFF = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="6"
+    height="9"
+    viewBox="0 0 6 9"
+    fill="none"
+  >
+    <path
+      d="M1 6.00006L3 8.00006L5 6.00006"
+      stroke="#A4A4A4"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M1 2.66669L3 0.666687L5 2.66669"
+      stroke="#A4A4A4"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+const IconDoubleArrowSucess = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="6"
+    height="9"
+    viewBox="0 0 6 9"
+    fill="none"
+  >
+    <path
+      d="M1 6.00006L3 8.00006L5 6.00006"
+      stroke="#119551"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M1 2.66669L3 0.666687L5 2.66669"
+      stroke="#119551"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+const IconDoubleArrowInfo = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="6"
+    height="9"
+    viewBox="0 0 6 9"
+    fill="none"
+  >
+    <path
+      d="M1 6.00006L3 8.00006L5 6.00006"
+      stroke="#1759D3"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M1 2.66669L3 0.666687L5 2.66669"
+      stroke="#1759D3"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+const IconDoubleArrowWarning = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="6"
+    height="9"
+    viewBox="0 0 6 9"
+    fill="none"
+  >
+    <path
+      d="M1 6.00006L3 8.00006L5 6.00006"
+      stroke="#E69A1A"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M1 2.66669L3 0.666687L5 2.66669"
+      stroke="#E69A1A"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+const IconDoubleArrowDanger = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="6"
+    height="9"
+    viewBox="0 0 6 9"
+    fill="none"
+  >
+    <path
+      d="M1 6.00006L3 8.00006L5 6.00006"
+      stroke="#DF554B"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M1 2.66669L3 0.666687L5 2.66669"
+      stroke="#DF554B"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+const IconPointSucess = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+  >
+    <circle opacity="0.2" cx="8" cy="8" r="3" fill="#119551" />
+    <circle cx="8" cy="8" r="2" fill="#119551" />
+  </svg>
+);
+
+const IconPointInfo = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+  >
+    <circle opacity="0.2" cx="8" cy="8" r="3" fill="#1759D3" />
+    <circle cx="8" cy="8" r="2" fill="#1759D3" />
+  </svg>
+);
+
+const IconPointWarning = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+  >
+    <circle opacity="0.2" cx="8" cy="8" r="3" fill="#E69A1A" />
+    <circle cx="8" cy="8" r="2" fill="#E69A1A" />
+  </svg>
+);
+
+const IconPointDanger = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+  >
+    <circle opacity="0.2" cx="8" cy="8" r="3" fill="#DF554B" />
+    <circle cx="8" cy="8" r="2" fill="#DF554B" />
+  </svg>
+);
+
 export const icons = {
   IconAddBTNprimary,
   IconAddBTNsecondary,
@@ -269,4 +468,14 @@ export const icons = {
   IconAvatar,
   IconAvatarMD,
   IconAvatarSM,
+  IconDoubleArrow,
+  IconDoubleArrowOFF,
+  IconDoubleArrowSucess,
+  IconDoubleArrowInfo,
+  IconDoubleArrowWarning,
+  IconDoubleArrowDanger,
+  IconPointSucess,
+  IconPointInfo,
+  IconPointWarning,
+  IconPointDanger,
 };

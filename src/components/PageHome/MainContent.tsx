@@ -1,7 +1,8 @@
-import { SectionButton } from "@/components/ui/Button/SectionButton";
+/* import { SectionButton } from "@/components/ui/Button/SectionButton"; */
 import NotFound from "@/app/not-found";
-import { SectionForm } from "../ui/Form/SectionForm";
 import { Avatar } from "../ui/Avatar/Avatar";
+import { UIKitBadgeShowcase } from "../ui/Badge/uikitBadge";
+import { UIKitButtonShowcase } from "../ui/Button/uikitButton";
 
 type MainContentProps = {
   section?: string;
@@ -15,17 +16,13 @@ export function MainContent({ section }: MainContentProps) {
   let content;
   switch (section) {
     case "button":
-      content = <SectionButton />;
-      break;
-    case "form":
-      content = <SectionForm />;
+      content = <UIKitButtonShowcase />;
       break;
     case "avatar":
       content = <Avatar />;
       break;
-    // Adicione mais cases conforme precisar
-    default:
-      content = <NotFound />;
+    case "badge":
+      content = <UIKitBadgeShowcase />;
       break;
   }
 

@@ -35,7 +35,40 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   onClick?: () => void;
   target?: string;
-  variant?: ButtonVariant;
+  variant: ButtonVariant; // variant obrigatório
+}
+
+const variantStyles: Record<ButtonVariant, string> = {
+  btnPrimary: "btnPrimary",
+  btnPrimaryMD: "btnPrimaryMD",
+  btnPrimarySM: "btnPrimarySM",
+  btnPrimaryOFF: "btnPrimaryOFF",
+  btnPrimaryOFFmd: "btnPrimaryOFFmd",
+  btnPrimaryOFFsm: "btnPrimaryOFFsm",
+  btnPrimaryADD: "btnPrimaryADD",
+  btnPrimaryADDmd: "btnPrimaryADDmd",
+  btnPrimaryADDsm: "btnPrimaryADDsm",
+  btnAddOFF: "btnAddOFF",
+  btnAddOFFmd: "btnAddOFFmd",
+  btnAddOFFsm: "btnAddOFFsm",
+  btnAddDefault: "btnAddDefault",
+  btnAddDefaultMD: "btnAddDefaultMD",
+  btnAddDefaultSM: "btnAddDefaultSM",
+  btnAddDefaultOFF: "btnAddDefaultOFF",
+  btnAddDefaultOFFmd: "btnAddDefaultOFFmd",
+  btnAddDefaultOFFsm: "btnAddDefaultOFFsm",
+  btnSecondary: "btnSecondary",
+  btnSecondaryMD: "btnSecondaryMD",
+  btnSecondarySM: "btnSecondarySM",
+  btnSecondaryOFF: "btnSecondaryOFF",
+  btnSecondaryOFFmd: "btnSecondaryOFFmd",
+  btnSecondaryOFFsm: "btnSecondaryOFFsm",
+  btnTertiary: "btnTertiary",
+  btnTertiaryOFF: "btnTertiaryOFF",
+};
+
+function isExternalLink(href: string): boolean {
+  return href.startsWith("http") || href.startsWith("https");
 }
 
 export function Button({
@@ -44,77 +77,55 @@ export function Button({
   children,
   onClick,
   target,
-  variant = "btnPrimary",
+  variant,
   ...props
 }: ButtonProps) {
-  const variantStyles = {
-    btnPrimary: "btnPrimary",
-    btnPrimaryMD: "btnPrimaryMD",
-    btnPrimarySM: "btnPrimarySM",
-    btnPrimaryOFF: "btnPrimaryOFF",
-    btnPrimaryOFFmd: "btnPrimaryOFFmd",
-    btnPrimaryOFFsm: "btnPrimaryOFFsm",
-    btnPrimaryADD: "btnPrimaryADD",
-    btnPrimaryADDmd: "btnPrimaryADDmd",
-    btnPrimaryADDsm: "btnPrimaryADDsm",
-    btnAddOFF: "btnAddOFF",
-    btnAddOFFmd: "btnAddOFFmd",
-    btnAddOFFsm: "btnAddOFFsm",
-    btnAddDefault: "btnAddDefault",
-    btnAddDefaultMD: "btnAddDefaultMD",
-    btnAddDefaultSM: "btnAddDefaultSM",
-    btnAddDefaultOFF: "btnAddDefaultOFF",
-    btnAddDefaultOFFmd: "btnAddDefaultOFFmd",
-    btnAddDefaultOFFsm: "btnAddDefaultOFFsm",
-    btnSecondary: "btnSecondary",
-    btnSecondaryMD: "btnSecondaryMD",
-    btnSecondarySM: "btnSecondarySM",
-    btnSecondaryOFF: "btnSecondaryOFF",
-    btnSecondaryOFFmd: "btnSecondaryOFFmd",
-    btnSecondaryOFFsm: "btnSecondaryOFFsm",
-    btnTertiary: "btnTertiary",
-    btnTertiaryOFF: "btnTertiaryOFF",
-  };
+  const variantClass = variantStyles[variant];
 
-  const renderContent = () => children;
+  if (!variantClass) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(`[Button] Variant inválida: ${variant}`);
+    }
+  }
 
-  // Links externos
-  if (href && (href.startsWith("http") || href.startsWith("https"))) {
+  // Renderiza link externo
+  if (href && isExternalLink(href)) {
     return (
       <a
         href={href}
-        className={`${variantStyles[variant]} ${className}`}
-        target={target || "_blank"} // Usa target fornecido ou _blank por padrão
+        className={`${variantClass} ${className}`.trim()}
+        target={target || "_blank"}
         rel="noopener noreferrer"
         {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
-        {renderContent()}
+        {children}
       </a>
     );
   }
 
-  // Links internos (usaméquences
+  // Renderiza link interno com Next.js
   if (href) {
     return (
       <Link
         href={href}
-        className={`${variantStyles[variant]} ${className}`}
+        className={`${variantClass} ${className}`.trim()}
         target={target}
         {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
-        {renderContent()}
+        {children}
       </Link>
     );
   }
 
-  // Botão sem href
+  // Renderiza botão normal
   return (
     <button
-      className={`${variantStyles[variant]} ${className}`}
+      className={`${variantClass} ${className}`.trim()}
       onClick={onClick}
       {...props}
     >
-      {renderContent()}
+      {children}
     </button>
   );
 }
+
