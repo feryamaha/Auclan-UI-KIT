@@ -99,6 +99,103 @@ const IconAddBTNsecondaryOFF = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const IconAddHoverTertiaryLG = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 40 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M6 0.5H34C37.0376 0.5 39.5 2.96243 39.5 6V34C39.5 37.0376 37.0376 39.5 34 39.5H6C2.96243 39.5 0.5 37.0376 0.5 34V6C0.5 2.96243 2.96243 0.5 6 0.5Z"
+      fill="#F6F6F6"
+    />
+    <path
+      d="M6 0.5H34C37.0376 0.5 39.5 2.96243 39.5 6V34C39.5 37.0376 37.0376 39.5 34 39.5H6C2.96243 39.5 0.5 37.0376 0.5 34V6C0.5 2.96243 2.96243 0.5 6 0.5Z"
+      stroke="#EBEBEB"
+    />
+    <path
+      d="M20.1667 16V24.3333"
+      stroke="#222222"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M24.3333 20.1663H16"
+      stroke="#222222"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+const IconAddHoverTertiaryMD = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    width="36"
+    height="36"
+    viewBox="0 0 36 36"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M6 0.5H30C33.0376 0.5 35.5 2.96243 35.5 6V30C35.5 33.0376 33.0376 35.5 30 35.5H6C2.96243 35.5 0.5 33.0376 0.5 30V6C0.500001 2.96243 2.96243 0.5 6 0.5Z"
+      fill="#F6F6F6"
+    />
+    <path
+      d="M6 0.5H30C33.0376 0.5 35.5 2.96243 35.5 6V30C35.5 33.0376 33.0376 35.5 30 35.5H6C2.96243 35.5 0.5 33.0376 0.5 30V6C0.500001 2.96243 2.96243 0.5 6 0.5Z"
+      stroke="#EBEBEB"
+    />
+    <path
+      d="M18.1667 14V22.3333"
+      stroke="#222222"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M22.3333 18.1663H14"
+      stroke="#222222"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+const IconAddHoverTertiarySM = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M6 0.5H26C29.0376 0.5 31.5 2.96243 31.5 6V26C31.5 29.0376 29.0376 31.5 26 31.5H6C2.96243 31.5 0.5 29.0376 0.5 26V6C0.5 2.96243 2.96243 0.5 6 0.5Z"
+      fill="#F6F6F6"
+    />
+    <path
+      d="M6 0.5H26C29.0376 0.5 31.5 2.96243 31.5 6V26C31.5 29.0376 29.0376 31.5 26 31.5H6C2.96243 31.5 0.5 29.0376 0.5 26V6C0.5 2.96243 2.96243 0.5 6 0.5Z"
+      stroke="#EBEBEB"
+    />
+    <path
+      d="M16.1667 12V20.3333"
+      stroke="#222222"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M20.3333 16.1663H12"
+      stroke="#222222"
+      stroke-width="1.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
 const IconAvatar = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     width="32"
@@ -465,6 +562,9 @@ export const icons = {
   IconAddBTNsecondary,
   IconAddBTNprimaryOFF,
   IconAddBTNsecondaryOFF,
+  IconAddHoverTertiaryLG,
+  IconAddHoverTertiaryMD,
+  IconAddHoverTertiarySM,
   IconAvatar,
   IconAvatarMD,
   IconAvatarSM,
